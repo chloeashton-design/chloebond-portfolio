@@ -1,0 +1,31 @@
+.header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: clamp(16px, 2.4cqw, 30px) clamp(20px, 4.5cqw, 72px);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.logo {
+  font-family: var(--font-serif);
+  font-size: clamp(28px, 3.4cqw, 44px);
+  letter-spacing: -0.03em;
+  color: inherit;
+  border-bottom: 0;
+}
+.logo:hover {
+  color: inherit;
+  border-bottom: 0;
+}
+
+.nav {
+  display: flex;
+  gap: clamp(12px, 1.9cqw, 30px);
+  align-items: baseline;
+}

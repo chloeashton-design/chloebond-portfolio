@@ -1,0 +1,55 @@
+.footer {
+  padding: clamp(44px, 7cqw, 110px) clamp(20px, 4.5cqw, 72px) clamp(28px, 3.6cqw, 56px);
+  border-top: 1px solid var(--line-dark);
+  position: relative;
+}
+
+.top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.email {
+  font-family: var(--font-serif);
+  font-size: clamp(43px, 9cqw, 135.5px);
+  line-height: 1;
+  letter-spacing: -0.022em;
+  border-bottom: 0;
+}
+.email:hover {
+  border-bottom: 0;
+}
+
+.meta {
+  margin-top: clamp(28px, 4cqw, 64px);
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: clamp(9px, 0.95cqw, 10.5px);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: grid;
+  gap: clamp(12px, 1.6cqw, 20px);
+}
+
+.socials {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 9px clamp(14px, 2cqw, 28px);
+}
+.socialsLabel {
+  color: var(--ink-6);
+}
+.socialLink {
+  border-bottom: 0;
+}
+
+.credit {
+  margin: 0;
+  color: var(--ink-6);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}

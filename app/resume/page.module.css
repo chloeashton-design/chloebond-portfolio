@@ -1,0 +1,158 @@
+.hero {
+  padding: clamp(44px, 7cqw, 110px) clamp(20px, 4.5cqw, 72px) clamp(24px, 3cqw, 44px);
+  position: relative;
+}
+
+.headline {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(40px, 6.5cqw, 101.5px);
+  line-height: 0.98;
+  letter-spacing: -0.022em;
+  margin: 0;
+  max-width: 13em;
+  text-wrap: balance;
+}
+
+.summary {
+  margin: clamp(18px, 2.4cqw, 32px) 0 0;
+  font-size: clamp(15px, 1.4cqw, 20px);
+  line-height: 1.5;
+  max-width: 44em;
+  color: var(--ink-2);
+  text-wrap: pretty;
+}
+
+.contactLine {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 12px clamp(18px, 2.4cqw, 34px);
+  margin-top: clamp(20px, 2.8cqw, 40px);
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: clamp(9px, 0.95cqw, 10.5px);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.contactLine a {
+  border-bottom: 1px solid var(--accent);
+}
+.contactLineMuted {
+  color: var(--ink-6);
+}
+
+.experience {
+  padding: 0 clamp(20px, 4.5cqw, 72px) clamp(24px, 3cqw, 44px);
+}
+
+.sectionLabel {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: clamp(9px, 0.95cqw, 10.5px);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-6);
+  padding-bottom: clamp(10px, 1.4cqw, 18px);
+  border-bottom: 1px solid var(--line-dark);
+}
+
+.roleRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 6px clamp(18px, 2.6cqw, 44px);
+  align-items: baseline;
+  padding: clamp(16px, 2.2cqw, 32px) 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.roleTitle {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(24px, 3cqw, 46px);
+  line-height: 1.06;
+  letter-spacing: -0.018em;
+  margin: 0;
+  min-width: 0;
+}
+
+.roleCompany {
+  margin-top: 7px;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: clamp(8.5px, 0.92cqw, 10.5px);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+}
+
+.roleBlurb {
+  margin: clamp(9px, 1.2cqw, 15px) 0 0;
+  font-size: clamp(14.5px, 1.35cqw, 19px);
+  line-height: 1.55;
+  max-width: 40em;
+  color: var(--ink-2);
+  text-wrap: pretty;
+}
+
+.roleYears {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: clamp(9px, 0.95cqw, 10.5px);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+  white-space: nowrap;
+}
+
+.columns {
+  padding: clamp(10px, 1.6cqw, 24px) clamp(20px, 4.5cqw, 72px) clamp(44px, 7cqw, 110px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  gap: clamp(26px, 3.4cqw, 60px);
+  align-items: start;
+}
+
+.columnHeading {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: clamp(9px, 0.95cqw, 10.5px);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-6);
+  padding-bottom: clamp(10px, 1.4cqw, 18px);
+  border-bottom: 1px solid var(--line-dark);
+  margin-bottom: clamp(12px, 1.6cqw, 20px);
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+  font-size: clamp(14.5px, 1.35cqw, 19px);
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.eduList {
+  display: grid;
+  gap: clamp(14px, 1.8cqw, 22px);
+}
+
+.eduProgram {
+  font-family: var(--font-serif);
+  font-size: clamp(19px, 1.9cqw, 27px);
+  line-height: 1.15;
+}
+
+.eduSchool {
+  margin-top: 5px;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: clamp(8.5px, 0.92cqw, 10.5px);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-55);
+}

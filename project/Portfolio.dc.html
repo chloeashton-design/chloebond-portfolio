@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Homemade+Apple&amp;family=Syne:wght@500&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://use.typekit.net/mcs8xwm.css">
+<style>
+@font-face{font-family:'PP Right Serif';src:url('fonts/PPRightSerif-Light.otf') format('opentype');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'PP Right Serif';src:url('fonts/PPRightSerif-LightItalic.otf') format('opentype');font-weight:400;font-style:italic;font-display:swap}
+*{box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased;scroll-behavior:auto}
+body{margin:0;background:#eceae2;color:oklch(0.235 0.012 70);font-family:forma-djr-micro,'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:400;font-size:16px}
+a{color:oklch(0.235 0.012 70);text-decoration:none;border-bottom:1px solid oklch(0.78 0.01 80)}
+a:hover{color:oklch(0.55 0.15 32);border-bottom-color:oklch(0.55 0.15 32)}
+::selection{background:oklch(0.55 0.15 32);color:#ffffff}
+button{font-family:inherit;font-size:inherit}
+@keyframes asweep{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</helmet>
+
+<div style="container-type:inline-size;margin:0 auto;background:#ffffff;min-height:100vh;max-width:{{ frameW }};box-shadow:{{ frameShadow }}">
+
+<header style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:clamp(16px,2.4cqw,30px) clamp(20px,4.5cqw,72px);position:sticky;top:0;z-index:40;background:rgba(255,255,255,0.28);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);pointer-events:none">
+  <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;color:inherit;cursor:pointer;pointer-events:auto;font-family:inherit;font-weight:400;text-transform:none;letter-spacing:inherit;text-align:left;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
+    <span style="font-family:'PP Right Serif','Instrument Serif',Georgia,serif;font-size:clamp(28px,3.4cqw,44px);letter-spacing:-0.03em">Chloe Bond</span>
+    
+  </button>
+  <nav style="display:flex;gap:clamp(12px,1.9cqw,30px);align-items:baseline;pointer-events:auto;font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(9.5px,1cqw,11px);letter-spacing:0.11em;text-transform:uppercase">
+    <button onClick="{{ goWork }}" style="background:none;border:0;padding:0;color:inherit;cursor:pointer;font-family:inherit;font-weight:500;text-transform:uppercase;letter-spacing:inherit" style-hover="color:oklch(0.55 0.15 32)">Work</button>
+    <button onClick="{{ goAbout }}" style="background:none;border:0;padding:0;color:inherit;cursor:pointer;font-family:inherit;font-weight:500;text-transform:uppercase;letter-spacing:inherit" style-hover="color:oklch(0.55 0.15 32)">About</button>
+    <button onClick="{{ goContact }}" style="background:none;border:0;padding:0;color:inherit;cursor:pointer;font-family:inherit;font-weight:500;text-transform:uppercase;letter-spacing:inherit" style-hover="color:oklch(0.55 0.15 32)">Resume</button>
+  </nav>
+</header>
+
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<main data-screen-label="Home">
+  <section style="position:relative;padding:clamp(44px,7cqw,110px) clamp(20px,4.5cqw,72px) clamp(28px,3.6cqw,56px)">
+    <h1 style="font-family: 'PP Right Serif','Instrument Serif',Georgia,serif; font-weight: 400; font-size: clamp(30px,5.6cqw,84px); line-height: 0.95; letter-spacing: -0.02em; margin: 0; text-wrap: balance">Headline placeholder sized to sit comfortably across three lines here.</h1>
+    <sc-if value="{{ annotations }}" hint-placeholder-val="{{ true }}">
+      <span style="position:absolute;top:clamp(14px,2cqw,34px);right:clamp(20px,4.5cqw,72px);text-align:right;font-family:'Homemade Apple','Caveat',cursive;font-size:clamp(12px,1.25cqw,17px);line-height:1.55;color:oklch(0.55 0.15 32);transform:rotate(-2deg);max-width:14em">temp note — voice line<br>goes about here ↗</span>
+    </sc-if>
+  </section>
+
+  <section style="padding:0 0 clamp(28px,3.6cqw,56px)">
+    <div data-img="1" style="position:relative;aspect-ratio:16/9;background:repeating-linear-gradient(135deg,oklch(0.235 0.012 70 / 0.07) 0 5px,transparent 5px 11px),oklch(0.928 0.008 85);display:flex;align-items:center;justify-content:center;padding:16px">
+      <span style="display:flex;flex-direction:column;align-items:center;gap:clamp(12px,1.6cqw,20px)">
+        <span style="width:clamp(44px,4.4cqw,64px);aspect-ratio:1/1;border:1px solid oklch(0.5 0.012 70);border-radius:999px;display:flex;align-items:center;justify-content:center">
+          <span style="width:0;height:0;border-left:clamp(10px,1cqw,14px) solid oklch(0.5 0.012 70);border-top:clamp(6px,0.62cqw,9px) solid transparent;border-bottom:clamp(6px,0.62cqw,9px) solid transparent;margin-left:3px"></span>
+        </span>
+        <span style="font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(8.5px,1.05cqw,11.5px);line-height:1.8;letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.5 0.012 70);text-align:center">Showreel — full bleed<br>video 16 : 9 — replace</span>
+      </span>
+    </div>
+    
+  </section>
+
+  <section id="work" style="display:flex;flex-wrap:wrap;gap:clamp(14px,2.6cqw,42px);padding:0 clamp(20px,4.5cqw,72px) clamp(44px,7cqw,110px)">
+    <button onClick="{{ goDeep }}" style="flex:0 0 100%;background:none;border:0;padding:0;margin:0;color:inherit;cursor:pointer;display:block;min-width:0" style-hover="opacity:0.86">
+      <div data-img="1" style="position:relative;aspect-ratio:16/9;background:repeating-linear-gradient(135deg,oklch(0.235 0.012 70 / 0.07) 0 5px,transparent 5px 11px),oklch(0.928 0.008 85);display:flex;align-items:center;justify-content:center;padding:14px"><span style="font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(8px,0.95cqw,10.5px);line-height:1.8;letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.5 0.012 70);text-align:center">Work 01<br>landscape 16 : 9</span></div>
+    </button>
+    <button onClick="{{ goVisual }}" style="flex:1 1 340px;background:none;border:0;padding:0;margin:0;color:inherit;cursor:pointer;display:block;min-width:0" style-hover="opacity:0.86">
+      <div data-img="1" style="position:relative;aspect-ratio:4/5;background:repeating-linear-gradient(135deg,oklch(0.235 0.012 70 / 0.07) 0 5px,transparent 5px 11px),oklch(0.928 0.008 85);display:flex;align-items:center;justify-content:center;padding:14px"><span style="font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(8px,0.95cqw,10.5px);line-height:1.8;letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.5 0.012 70);text-align:center">Work 02<br>portrait 4 : 5</span></div>
+    </button>
+    <button onClick="{{ goDeep }}" style="flex:1 1 340px;background:none;border:0;padding:0;margin:0;color:inherit;cursor:pointer;display:block;min-width:0" style-hover="opacity:0.86">
+      <div data-img="1" style="position:relative;aspect-ratio:4/5;background:repeating-linear-gradient(135deg,oklch(0.235 0.012 70 / 0.07) 0 5px,transparent 5px 11px),oklch(0.928 0.008 85);display:flex;align-items:center;justify-content:center;padding:14px"><span style="font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(8px,0.95cqw,10.5px);line-height:1.8;letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.5 0.012 70);text-align:center">Work 03<br>portrait 4 : 5</span></div>
+    </button>
+    <button onClick="{{ goVisual }}" style="flex:0 0 100%;background:none;border:0;padding:0;margin:0;color:inherit;cursor:pointer;display:block;min-width:0" style-hover="opacity:0.86">
+      <div data-img="1" style="position:relative;aspect-ratio:16/9;background:repeating-linear-gradient(135deg,oklch(0.235 0.012 70 / 0.07) 0 5px,transparent 5px 11px),oklch(0.928 0.008 85);display:flex;align-items:center;justify-content:center;padding:14px"><span style="font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(8px,0.95cqw,10.5px);line-height:1.8;letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.5 0.012 70);text-align:center">Work 04<br>landscape 16 : 9</span></div>
+    </button>
+    <button onClick="{{ goDeep }}" style="flex:1 1 340px;background:none;border:0;padding:0;margin:0;color:inherit;cursor:pointer;display:block;min-width:0" style-hover="opacity:0.86">
+      <div data-img="1" style="position:relative;aspect-ratio:4/5;background:repeating-linear-gradient(135deg,oklch(0.235 0.012 70 / 0.07) 0 5px,transparent 5px 11px),oklch(0.928 0.008 85);display:flex;align-items:center;justify-content:center;padding:14px"><span style="font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(8px,0.95cqw,10.5px);line-height:1.8;letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.5 0.012 70);text-align:center">Work 05<br>portrait 4 : 5</span></div>
+    </button>
+    <button onClick="{{ goVisual }}" style="flex:1 1 340px;background:none;border:0;padding:0;margin:0;color:inherit;cursor:pointer;display:block;min-width:0" style-hover="opacity:0.86">
+      <div data-img="1" style="position:relative;aspect-ratio:4/5;background:repeating-linear-gradient(135deg,oklch(0.235 0.012 70 / 0.07) 0 5px,transparent 5px 11px),oklch(0.928 0.008 85);display:flex;align-items:center;justify-content:center;padding:14px"><span style="font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(8px,0.95cqw,10.5px);line-height:1.8;letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.5 0.012 70);text-align:center">Work 06<br>portrait 4 : 5</span></div>
+    </button>
+    <button onClick="{{ goDeep }}" style="flex:0 0 100%;background:none;border:0;padding:0;margin:0;color:inherit;cursor:pointer;display:block;min-width:0" style-hover="opacity:0.86">
+      <div data-img="1" style="position:relative;aspect-ratio:16/9;background:repeating-linear-gradient(135deg,oklch(0.235 0.012 70 / 0.07) 0 5px,transparent 5px 11px),oklch(0.928 0.008 85);display:flex;align-items:center;justify-content:center;padding:14px"><span style="font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(8px,0.95cqw,10.5px);line-height:1.8;letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.5 0.012 70);text-align:center">Work 07<br>landscape 16 : 9</span></div>
+    </button>
+    <button onClick="{{ goVisual }}" style="flex:1 1 340px;background:none;border:0;padding:0;margin:0;color:inherit;cursor:pointer;display:block;min-width:0" style-hover="opacity:0.86">
+      <div data-img="1" style="position:relative;aspect-ratio:4/5;background:repeating-linear-gradient(135deg,oklch(0.235 0.012 70 / 0.07) 0 5px,transparent 5px 11px),oklch(0.928 0.008 85);display:flex;align-items:center;justify-content:center;padding:14px"><span style="font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(8px,0.95cqw,10.5px);line-height:1.8;letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.5 0.012 70);text-align:center">Work 08<br>portrait 4 : 5</span></div>
+    </button>
+    <button onClick="{{ goDeep }}" style="flex:1 1 340px;background:none;border:0;padding:0;margin:0;color:inherit;cursor:pointer;display:block;min-width:0" style-hover="opacity:0.86">
+      <div data-img="1" style="position:relative;aspect-ratio:4/5;background:repeating-linear-gradient(135deg,oklch(0.235 0.012 70 / 0.07) 0 5px,transparent 5px 11px),oklch(0.928 0.008 85);display:flex;align-items:center;justify-content:center;padding:14px"><span style="font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(8px,0.95cqw,10.5px);line-height:1.8;letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.5 0.012 70);text-align:center">Work 09<br>portrait 4 : 5</span></div>
+    </button>
+    <button onClick="{{ goVisual }}" style="flex:0 0 100%;background:none;border:0;padding:0;margin:0;color:inherit;cursor:pointer;display:block;min-width:0" style-hover="opacity:0.86">
+      <div data-img="1" style="position:relative;aspect-ratio:16/9;background:repeating-linear-gradient(135deg,oklch(0.235 0.012 70 / 0.07) 0 5px,transparent 5px 11px),oklch(0.928 0.008 85);display:flex;align-items:center;justify-content:center;padding:14px"><span style="font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(8px,0.95cqw,10.5px);line-height:1.8;letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.5 0.012 70);text-align:center">Work 10<br>landscape 16 : 9</span></div>
+    </button>
+    <button onClick="{{ goDeep }}" style="flex:1 1 340px;background:none;border:0;padding:0;margin:0;color:inherit;cursor:pointer;display:block;min-width:0" style-hover="opacity:0.86">
+      <div data-img="1" style="position:relative;aspect-ratio:4/5;background:repeating-linear-gradient(135deg,oklch(0.235 0.012 70 / 0.07) 0 5px,transparent 5px 11px),oklch(0.928 0.008 85);display:flex;align-items:center;justify-content:center;padding:14px"><span style="font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(8px,0.95cqw,10.5px);line-height:1.8;letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.5 0.012 70);text-align:center">Work 11<br>portrait 4 : 5</span></div>
+    </button>
+    <button onClick="{{ goVisual }}" style="flex:1 1 340px;background:none;border:0;padding:0;margin:0;color:inherit;cursor:pointer;display:block;min-width:0" style-hover="opacity:0.86">
+      <div data-img="1" style="position:relative;aspect-ratio:4/5;background:repeating-linear-gradient(135deg,oklch(0.235 0.012 70 / 0.07) 0 5px,transparent 5px 11px),oklch(0.928 0.008 85);display:flex;align-items:center;justify-content:center;padding:14px"><span style="font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(8px,0.95cqw,10.5px);line-height:1.8;letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.5 0.012 70);text-align:center">Work 12<br>portrait 4 : 5</span></div>
+    </button>
+  </section>
+
+</main>
+</sc-if>
+
+
+<sc-if value="{{ isDeep }}">
+<main>
+  <section style="padding:clamp(44px,7cqw,110px) clamp(20px,4.5cqw,72px) clamp(28px,3.6cqw,56px)">
+    <button onClick="{{ goWork }}" style="background:none;border:0;padding:0;color:oklch(0.52 0.012 70);cursor:pointer;font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(9.5px,1cqw,11px);letter-spacing:0.11em;text-transform:uppercase" style-hover="color:oklch(0.55 0.15 32)">← Index</button>
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:clamp(18px,2.6cqw,38px)">
+      <h1 style="font-family:'PP Right Serif','Instrument Serif',Georgia,serif;font-weight:400;font-size: clamp(44.5px,8.5cqw,132.5px);line-height:0.94;letter-spacing:-0.022em;margin:0">Project One</h1>
+      <span style="font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(9.5px,1cqw,11px);letter-spacing:0.11em;text-transform:uppercase;color:oklch(0.52 0.012 70)">Case study — 01 / 08</span>
+    </div>
+    <p style="margin:clamp(14px,2cqw,26px) 0 0;font-family:'PP Right Serif','Instrument Serif',Georgia,serif;font-style:italic;font-size: clamp(29.5px,4cqw,55.5px);line-height:1.25;max-width:26em;color:oklch(0.33 0.012 70);text-wrap:pretty">One placeholder line that sets up the project — long enough to test how a subtitle behaves against the title above it.</p>
+  </section>
+
+  <div data-img="1" style="position:relative;aspect-ratio:4/5;max-width:min(100%,46cqw);margin-inline:auto;background:repeating-linear-gradient(135deg,oklch(0.235 0.012 70 / 0.07) 0 5px,transparent 5px 11px),oklch(0.928 0.008 85);display:flex;align-items:center;justify-content:center;padding:16px;margin-bottom:clamp(28px,3.6cqw,56px)">
+    <span style="font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(8.5px,1.05cqw,11.5px);line-height:1.8;letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.5 0.012 70);text-align:center">Project hero<br>portrait 4 : 5</span>
+  </div>
+
+  <section style="padding:0 clamp(20px,4.5cqw,72px) clamp(28px,3.6cqw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:clamp(20px,3cqw,56px);align-items:start;border-bottom:1px solid oklch(0.885 0.008 80);padding-bottom:clamp(28px,3.6cqw,56px)">
+    <div style="display:grid;gap:12px;font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(9px,0.95cqw,10.5px);letter-spacing:0.09em;text-transform:uppercase">
+      <div style="display:flex;justify-content:space-between;gap:14px;border-bottom:1px solid oklch(0.9 0.008 80);padding-bottom:9px"><span style="color:oklch(0.6 0.012 70)">Client</span><span>Placeholder</span></div>
+      <div style="display:flex;justify-content:space-between;gap:14px;border-bottom:1px solid oklch(0.9 0.008 80);padding-bottom:9px"><span style="color:oklch(0.6 0.012 70)">Year</span><span>2026</span></div>
+      <div style="display:flex;justify-content:space-between;gap:14px;border-bottom:1px solid oklch(0.9 0.008 80);padding-bottom:9px"><span style="color:oklch(0.6 0.012 70)">Role</span><span>Placeholder</span></div>
+      <div style="display:flex;justify-content:space-between;gap:14px;border-bottom:1px solid oklch(0.9 0.008 80);padding-bottom:9px"><span style="color:oklch(0.6 0.012 70)">Scope</span><span style="text-align:right">Category 01, Category 02</span></div>
+      <div style="display:flex;justify-content:space-between;gap:14px"><span style="color:oklch(0.6 0.012 70)">Studio</span><span>Placeholder</span></div>
+    </div>
+    <div style="grid-column:span 2;min-width:0">
+      <p style="margin:0;font-size:clamp(15px,1.4cqw,20px);line-height:1.55;max-width:40em;text-wrap:pretty">Placeholder introduction. Three or four sentences of context will live here — the brief, the constraint, and the idea that came out of it. The column is set to a comfortable measure so the final copy can be longer or shorter without the layout breaking.</p>
+      <p style="margin:1.1em 0 0;font-size:clamp(15px,1.4cqw,20px);line-height:1.55;max-width:40em;color:oklch(0.4 0.012 70);text-wrap:pretty">A second placeholder paragraph, deliberately shorter, to show how the reading rhythm sits under the hero image.</p>
+    </div>
+  </section>
+
+  <section style="padding:clamp(10px,1.4cqw,20px) clamp(20px,4.5cqw,72px) clamp(28px,3.6cqw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:clamp(10px,1.6cqw,22px)">
+    <div data-img="1" style="position:relative;aspect-ratio:4/5;background:repeating-linear-gradient(135deg,oklch(0.235 0.012 70 / 0.07) 0 5px,transparent 5px 11px),oklch(0.928 0.008 85);display:flex;align-items:center;justify-content:center;padding:14px"><span style="font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(8px,0.95cqw,10.5px);line-height:1.8;letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.5 0.012 70);text-align:center">Application<br>portrait 4 : 5</span></div>
+    <div data-img="1" style="position:relative;aspect-ratio:4/5;background:repeating-linear-gradient(135deg,oklch(0.235 0.012 70 / 0.07) 0 5px,transparent 5px 11px),oklch(0.928 0.008 85);display:flex;align-items:center;justify-content:center;padding:14px"><span style="font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(8px,0.95cqw,10.5px);line-height:1.8;letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.5 0.012 70);text-align:center">Application<br>portrait 4 : 5</span></div>
+  </section>
+
+  <section style="padding:clamp(28px,3.6cqw,56px) clamp(20px,4.5cqw,72px);position:relative">
+    <p style="margin:0 auto;max-width:22em;font-family:'PP Right Serif','Instrument Serif',Georgia,serif;font-size: clamp(40px,6cqw,95.5px);line-height:1.1;letter-spacing:-0.015em;text-align:center;text-wrap:balance">A placeholder pull quote, sized to break the page and reset the pace.</p>
+    <p style="margin:clamp(12px,1.6cqw,22px) 0 0;text-align:center;font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(9px,0.95cqw,10.5px);letter-spacing:0.11em;text-transform:uppercase;color:oklch(0.55 0.012 70)">Attribution placeholder</p>
+  </section>
+
+  <div data-img="1" style="position:relative;aspect-ratio:4/5;max-width:min(100%,46cqw);margin-inline:auto;background:repeating-linear-gradient(135deg,oklch(0.235 0.012 70 / 0.07) 0 5px,transparent 5px 11px),oklch(0.928 0.008 85);display:flex;align-items:center;justify-content:center;padding:16px">
+    <span style="font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(8.5px,1.05cqw,11.5px);line-height:1.8;letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.5 0.012 70);text-align:center">Application<br>portrait 4 : 5</span>
+  </div>
+
+  <section style="padding:clamp(28px,3.6cqw,56px) clamp(20px,4.5cqw,72px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:clamp(20px,3cqw,52px);align-items:center">
+    <div data-img="1" style="position:relative;aspect-ratio:4/5;background:repeating-linear-gradient(135deg,oklch(0.235 0.012 70 / 0.07) 0 5px,transparent 5px 11px),oklch(0.928 0.008 85);display:flex;align-items:center;justify-content:center;padding:14px"><span style="font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(8px,0.95cqw,10.5px);line-height:1.8;letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.5 0.012 70);text-align:center">Detail<br>portrait 4 : 5</span></div>
+    <div>
+      <p style="margin:0 0 12px;font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(9px,0.95cqw,10.5px);letter-spacing:0.11em;text-transform:uppercase;color:oklch(0.52 0.012 70)">02 — System</p>
+      <p style="margin:0;font-size:clamp(15px,1.4cqw,20px);line-height:1.55;max-width:34em;text-wrap:pretty">Placeholder text describing one part of the system. This slot exists so a project can carry a middle chapter without needing a second hero image.</p>
+    </div>
+  </section>
+
+  <section style="padding:clamp(28px,3.6cqw,56px) clamp(20px,4.5cqw,72px);border-top:1px solid oklch(0.885 0.008 80);position:relative">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:clamp(16px,2.4cqw,30px)">
+      <h2 style="font-family:'PP Right Serif','Instrument Serif',Georgia,serif;font-weight:400;font-size: clamp(37px,5cqw,71px);line-height:1;margin:0">Section heading</h2>
+      <span style="font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(9px,0.95cqw,10.5px);letter-spacing:0.11em;text-transform:uppercase;color:oklch(0.55 0.012 70)">Sketches — placeholder</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(190px,100%),1fr));gap:clamp(10px,1.6cqw,22px)">
+      <div data-img="1" style="position:relative;aspect-ratio:4/5;background:repeating-linear-gradient(135deg,oklch(0.235 0.012 70 / 0.07) 0 5px,transparent 5px 11px),oklch(0.928 0.008 85);display:flex;align-items:center;justify-content:center;padding:14px;transform:rotate(-1.2deg)"><span style="font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(8px,0.95cqw,10.5px);line-height:1.8;letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.5 0.012 70);text-align:center">Sketch scan<br>4 : 5</span></div>
+      <div data-img="1" style="position:relative;aspect-ratio:4/5;background:repeating-linear-gradient(135deg,oklch(0.235 0.012 70 / 0.07) 0 5px,transparent 5px 11px),oklch(0.928 0.008 85);display:flex;align-items:center;justify-content:center;padding:14px;transform:rotate(0.8deg)"><span style="font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(8px,0.95cqw,10.5px);line-height:1.8;letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.5 0.012 70);text-align:center">Sketch scan<br>4 : 5</span></div>
+      <div data-img="1" style="position:relative;aspect-ratio:4/5;background:repeating-linear-gradient(135deg,oklch(0.235 0.012 70 / 0.07) 0 5px,transparent 5px 11px),oklch(0.928 0.008 85);display:flex;align-items:center;justify-content:center;padding:14px;transform:rotate(-0.6deg)"><span style="font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(8px,0.95cqw,10.5px);line-height:1.8;letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.5 0.012 70);text-align:center">Sketch scan<br>4 : 5</span></div>
+    </div>
+    <sc-if value="{{ annotations }}" hint-placeholder-val="{{ true }}">
+      <span style="display:inline-block;font-family:'Homemade Apple','Caveat',cursive;font-size:clamp(12.5px,1.3cqw,18px);line-height:1.55;color:oklch(0.55 0.15 32);transform:rotate(-2deg);margin-top:16px">real sketchbook scans go here — kept slightly off-grid on purpose</span>
+    </sc-if>
+  </section>
+
+  <section style="padding:0 clamp(20px,4.5cqw,72px) clamp(28px,3.6cqw,56px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr));gap:clamp(10px,1.6cqw,22px)">
+      <div data-img="1" style="position:relative;aspect-ratio:4/5;background:repeating-linear-gradient(135deg,oklch(0.235 0.012 70 / 0.07) 0 5px,transparent 5px 11px),oklch(0.928 0.008 85);display:flex;align-items:center;justify-content:center;padding:12px"><span style="font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(8px,0.9cqw,10px);letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.5 0.012 70);text-align:center">4 : 5</span></div>
+      <div data-img="1" style="position:relative;aspect-ratio:4/5;background:repeating-linear-gradient(135deg,oklch(0.235 0.012 70 / 0.07) 0 5px,transparent 5px 11px),oklch(0.928 0.008 85);display:flex;align-items:center;justify-content:center;padding:12px"><span style="font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(8px,0.9cqw,10px);letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.5 0.012 70);text-align:center">4 : 5</span></div>
+      <div data-img="1" style="position:relative;aspect-ratio:4/5;background:repeating-linear-gradient(135deg,oklch(0.235 0.012 70 / 0.07) 0 5px,transparent 5px 11px),oklch(0.928 0.008 85);display:flex;align-items:center;justify-content:center;padding:12px"><span style="font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(8px,0.9cqw,10px);letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.5 0.012 70);text-align:center">4 : 5</span></div>
+    </div>
+  </section>
+
+  <button onClick="{{ goVisual }}" style="width:100%;display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:clamp(28px,3.6cqw,56px) clamp(20px,4.5cqw,72px);background:none;border:0;border-top:1px solid oklch(0.3 0.012 70);color:inherit;cursor:pointer;text-align:left" style-hover="color:oklch(0.55 0.15 32);background:oklch(0.955 0.008 85)">
+    <span style="font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(9px,0.95cqw,10.5px);letter-spacing:0.11em;text-transform:uppercase;color:oklch(0.55 0.012 70)">Next project</span>
+    <span style="font-family:'PP Right Serif','Instrument Serif',Georgia,serif;font-size: clamp(43px,7.5cqw,111px);line-height:1;letter-spacing:-0.018em">Project Five →</span>
+  </button>
+</main>
+</sc-if>
+
+<sc-if value="{{ isVisual }}">
+<main>
+  <section style="padding:clamp(44px,7cqw,110px) clamp(20px,4.5cqw,72px) clamp(28px,3.6cqw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:clamp(14px,2.4cqw,40px);align-items:end;border-bottom:1px solid oklch(0.3 0.012 70)">
+    <div>
+      <button onClick="{{ goWork }}" style="background:none;border:0;padding:0;color:oklch(0.52 0.012 70);cursor:pointer;font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(9.5px,1cqw,11px);letter-spacing:0.11em;text-transform:uppercase" style-hover="color:oklch(0.55 0.15 32)">← Index</button>
+      <h1 style="font-family:'PP Right Serif','Instrument Serif',Georgia,serif;font-weight:400;font-size: clamp(41.5px,7cqw,101.5px);line-height:0.96;letter-spacing:-0.022em;margin:clamp(14px,2cqw,28px) 0 0">Project Five</h1>
+    </div>
+    <div style="display:grid;gap:6px;font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(9px,0.95cqw,10.5px);letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.5 0.012 70)">
+      <span>Visual sequence — no case study</span>
+      <span>Category 01 · 2024 · Placeholder client</span>
+      <span>14 images, minimal captions</span>
+    </div>
+  </section>
+
+  <div data-img="1" style="position:relative;aspect-ratio:4/5;max-width:min(100%,46cqw);margin-inline:auto;background:repeating-linear-gradient(135deg,oklch(0.235 0.012 70 / 0.07) 0 5px,transparent 5px 11px),oklch(0.928 0.008 85);display:flex;align-items:center;justify-content:center;padding:16px;margin-top:clamp(28px,3.6cqw,56px)"><span style="font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(8.5px,1.05cqw,11.5px);line-height:1.8;letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.5 0.012 70);text-align:center">Opening image<br>portrait 4 : 5</span></div>
+
+  <section style="padding:clamp(10px,1.4cqw,20px) clamp(20px,4.5cqw,72px) 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:clamp(10px,1.6cqw,22px)">
+    <div data-img="1" style="position:relative;aspect-ratio:4/5;background:repeating-linear-gradient(135deg,oklch(0.235 0.012 70 / 0.07) 0 5px,transparent 5px 11px),oklch(0.928 0.008 85);display:flex;align-items:center;justify-content:center;padding:14px"><span style="font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(8px,0.95cqw,10.5px);line-height:1.8;letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.5 0.012 70);text-align:center">portrait 4 : 5</span></div>
+    <div data-img="1" style="position:relative;aspect-ratio:4/5;background:repeating-linear-gradient(135deg,oklch(0.235 0.012 70 / 0.07) 0 5px,transparent 5px 11px),oklch(0.928 0.008 85);display:flex;align-items:center;justify-content:center;padding:14px"><span style="font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(8px,0.95cqw,10.5px);line-height:1.8;letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.5 0.012 70);text-align:center">portrait 4 : 5</span></div>
+  </section>
+
+  <sc-if value="{{ captions }}" hint-placeholder-val="{{ true }}">
+    <p style="margin:10px 0 0;padding:0 clamp(20px,4.5cqw,72px);font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(8.5px,0.9cqw,10px);letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.55 0.012 70)">Fig. 02–03 — placeholder caption in the margin</p>
+  </sc-if>
+
+  <div data-img="1" style="position:relative;aspect-ratio:4/5;max-width:min(100%,46cqw);margin-inline:auto;background:repeating-linear-gradient(135deg,oklch(0.235 0.012 70 / 0.07) 0 5px,transparent 5px 11px),oklch(0.928 0.008 85);display:flex;align-items:center;justify-content:center;padding:16px;margin-top:clamp(28px,3.6cqw,56px)"><span style="font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(8.5px,1.05cqw,11.5px);line-height:1.8;letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.5 0.012 70);text-align:center">Sequence image<br>portrait 4 : 5</span></div>
+
+  <section style="padding:clamp(28px,3.6cqw,56px) clamp(20px,4.5cqw,72px);display:flex;justify-content:center">
+    <div style="width:min(100%,46cqw)">
+      <div data-img="1" style="position:relative;aspect-ratio:4/5;background:repeating-linear-gradient(135deg,oklch(0.235 0.012 70 / 0.07) 0 5px,transparent 5px 11px),oklch(0.928 0.008 85);display:flex;align-items:center;justify-content:center;padding:14px"><span style="font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(8px,0.95cqw,10.5px);line-height:1.8;letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.5 0.012 70);text-align:center">Centred column<br>portrait 4 : 5</span></div>
+      <sc-if value="{{ captions }}" hint-placeholder-val="{{ true }}">
+        <p style="margin:10px 0 0;font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(8.5px,0.9cqw,10px);letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.55 0.012 70)">Fig. 04 — placeholder caption</p>
+      </sc-if>
+    </div>
+  </section>
+
+  <section style="padding:0 clamp(20px,4.5cqw,72px) clamp(28px,3.6cqw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));gap:clamp(10px,1.6cqw,22px)">
+    <div data-img="1" style="position:relative;aspect-ratio:4/5;background:repeating-linear-gradient(135deg,oklch(0.235 0.012 70 / 0.07) 0 5px,transparent 5px 11px),oklch(0.928 0.008 85);display:flex;align-items:center;justify-content:center;padding:12px"><span style="font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(8px,0.9cqw,10px);letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.5 0.012 70)">4 : 5</span></div>
+    <div data-img="1" style="position:relative;aspect-ratio:4/5;background:repeating-linear-gradient(135deg,oklch(0.235 0.012 70 / 0.07) 0 5px,transparent 5px 11px),oklch(0.928 0.008 85);display:flex;align-items:center;justify-content:center;padding:12px"><span style="font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(8px,0.9cqw,10px);letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.5 0.012 70)">4 : 5</span></div>
+    <div data-img="1" style="position:relative;aspect-ratio:4/5;background:repeating-linear-gradient(135deg,oklch(0.235 0.012 70 / 0.07) 0 5px,transparent 5px 11px),oklch(0.928 0.008 85);display:flex;align-items:center;justify-content:center;padding:12px"><span style="font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(8px,0.9cqw,10px);letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.5 0.012 70)">4 : 5</span></div>
+  </section>
+
+  <button onClick="{{ goDeep }}" style="width:100%;display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:clamp(28px,3.6cqw,56px) clamp(20px,4.5cqw,72px);background:none;border:0;border-top:1px solid oklch(0.3 0.012 70);color:inherit;cursor:pointer;text-align:left" style-hover="color:oklch(0.55 0.15 32);background:oklch(0.955 0.008 85)">
+    <span style="font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(9px,0.95cqw,10.5px);letter-spacing:0.11em;text-transform:uppercase;color:oklch(0.55 0.012 70)">Next project</span>
+    <span style="font-family:'PP Right Serif','Instrument Serif',Georgia,serif;font-size: clamp(43px,7.5cqw,111px);line-height:1;letter-spacing:-0.018em">Project One →</span>
+  </button>
+</main>
+</sc-if>
+
+<sc-if value="{{ isAbout }}">
+<main>
+  <section style="padding:clamp(20px,2.6cqw,40px) clamp(20px,4.5cqw,72px) clamp(28px,3.6cqw,56px)">
+    
+    <h1 style="font-family:'PP Right Serif','Instrument Serif',Georgia,serif;font-weight:400;font-size: clamp(38.5px,5.5cqw,86px);line-height:1.03;letter-spacing:-0.02em;margin:0;max-width:22em;text-wrap:balance">A placeholder statement about practice, held to about two lines so it can be rewritten without redesigning the page.</h1>
+  </section>
+
+  <section style="padding:0 clamp(20px,4.5cqw,72px) clamp(28px,3.6cqw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:clamp(22px,3.4cqw,60px);align-items:start">
+    <div style="position:relative">
+      <div style="position:relative;aspect-ratio:1/1;background:oklch(0.928 0.008 85);overflow:hidden"><img src="images/headshot.png" alt="Portrait" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%"></div>
+      <sc-if value="{{ annotations }}" hint-placeholder-val="{{ true }}">
+        <span style="display:block;margin-top:12px;font-family:'Homemade Apple','Caveat',cursive;font-size:clamp(12px,1.2cqw,16px);line-height:1.55;color:oklch(0.55 0.15 32);transform:rotate(-2deg);text-align:center">handwritten aside about the photo ↖</span>
+      </sc-if>
+    </div>
+    <div style="min-width:0">
+      <p style="margin:0;font-size:clamp(15px,1.4cqw,20px);line-height:1.6;max-width:38em;text-wrap:pretty">Placeholder biography, first paragraph. Long-form copy will go here later — where the practice sits, what kinds of problems it takes on, and how a project usually starts.</p>
+      <p style="margin:1.2em 0 0;font-size:clamp(15px,1.4cqw,20px);line-height:1.6;max-width:38em;color:oklch(0.4 0.012 70);text-wrap:pretty">Second placeholder paragraph, shorter. It exists to test how the measure reads when the text runs past the image beside it, and to hold space for teaching, writing, or speaking notes.</p>
+      
+    </div>
+  </section>
+
+</main>
+</sc-if>
+
+<sc-if value="{{ isContact }}">
+<main data-screen-label="Resume">
+  <section style="padding:clamp(44px,7cqw,110px) clamp(20px,4.5cqw,72px) clamp(24px,3cqw,44px);position:relative">
+    <h1 style="font-family:'PP Right Serif','Instrument Serif',Georgia,serif;font-weight:400;font-size: clamp(40px,6.5cqw,101.5px);line-height:0.98;letter-spacing:-0.022em;margin:0;max-width:13em;text-wrap:balance">Senior brand &amp; marketing designer, ten years across brand, campaigns and web.</h1>
+    <p style="margin:clamp(18px,2.4cqw,32px) 0 0;font-size:clamp(15px,1.4cqw,20px);line-height:1.5;max-width:44em;color:oklch(0.33 0.012 70);text-wrap:pretty">Multidisciplinary practice across brand, digital marketing, web, campaigns, events, social, presentations and print — bringing strategy, craft and intuition to cohesive brand experiences, with strengths in art direction, design systems, cross-functional collaboration and AI-assisted creative workflows.</p>
+    <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:12px clamp(18px,2.4cqw,34px);margin-top:clamp(20px,2.8cqw,40px);font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(9px,0.95cqw,10.5px);letter-spacing:0.1em;text-transform:uppercase">
+      <a href="mailto:hello@chloebond.ca" style="border-bottom:1px solid oklch(0.55 0.15 32)">hello@chloebond.ca</a>
+      <a href="tel:+16133152569" style="border-bottom:1px solid oklch(0.8 0.012 70)">+1 (613) 315-2569</a>
+      <a href="https://linkedin.com/in/chlobond" style="border-bottom:1px solid oklch(0.8 0.012 70)">LinkedIn</a>
+      <span style="color:oklch(0.6 0.012 70)">Ottawa, Ontario, Canada</span>
+    </div>
+  </section>
+
+  <section style="padding:0 clamp(20px,4.5cqw,72px) clamp(24px,3cqw,44px)">
+    <div style="font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(9px,0.95cqw,10.5px);letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.6 0.012 70);padding-bottom:clamp(10px,1.4cqw,18px);border-bottom:1px solid oklch(0.3 0.012 70)">Experience</div>
+    <sc-for list="{{ roles }}" as="r" hint-placeholder-count="4">
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px clamp(18px,2.6cqw,44px);align-items:baseline;padding:clamp(16px,2.2cqw,32px) 0;border-bottom:1px solid oklch(0.885 0.008 80)">
+        <div style="min-width:0">
+          <h2 style="font-family:'PP Right Serif','Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(24px,3cqw,46px);line-height:1.06;letter-spacing:-0.018em;margin:0">{{ r.role }}</h2>
+          <div style="margin-top:7px;font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(8.5px,0.92cqw,10.5px);letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.55 0.012 70)">{{ r.company }}</div>
+          <p style="margin:clamp(9px,1.2cqw,15px) 0 0;font-size:clamp(14.5px,1.35cqw,19px);line-height:1.55;max-width:40em;color:oklch(0.33 0.012 70);text-wrap:pretty">{{ r.blurb }}</p>
+        </div>
+        <span style="font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(9px,0.95cqw,10.5px);letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.55 0.012 70);white-space:nowrap">{{ r.years }}</span>
+      </div>
+    </sc-for>
+  </section>
+
+  <section style="padding:clamp(10px,1.6cqw,24px) clamp(20px,4.5cqw,72px) clamp(44px,7cqw,110px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:clamp(26px,3.4cqw,60px);align-items:start">
+    <div style="min-width:0">
+      <div style="font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(9px,0.95cqw,10.5px);letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.6 0.012 70);padding-bottom:clamp(10px,1.4cqw,18px);border-bottom:1px solid oklch(0.3 0.012 70);margin-bottom:clamp(12px,1.6cqw,20px)">Capabilities</div>
+      <ul style="margin:0;padding:0;list-style:none;display:grid;gap:8px;font-size:clamp(14.5px,1.35cqw,19px);line-height:1.5;color:oklch(0.33 0.012 70)">
+        <li>Brand design &amp; visual identity</li>
+        <li>Art direction</li>
+        <li>Design systems &amp; component libraries</li>
+        <li>Web &amp; landing page design</li>
+        <li>Campaign, event &amp; social design</li>
+        <li>Typography, colour &amp; layout</li>
+        <li>Accessible design</li>
+        <li>Illustration &amp; iconography</li>
+        <li>Production-ready design for digital &amp; print</li>
+        <li>Cross-functional collaboration</li>
+        <li>Mentorship</li>
+      </ul>
+    </div>
+    <div style="min-width:0">
+      <div style="font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(9px,0.95cqw,10.5px);letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.6 0.012 70);padding-bottom:clamp(10px,1.4cqw,18px);border-bottom:1px solid oklch(0.3 0.012 70);margin-bottom:clamp(12px,1.6cqw,20px)">Tools</div>
+      <ul style="margin:0;padding:0;list-style:none;display:grid;gap:8px;font-size:clamp(14.5px,1.35cqw,19px);line-height:1.5;color:oklch(0.33 0.012 70)">
+        <li>Figma</li>
+        <li>Adobe Illustrator</li>
+        <li>Adobe Photoshop</li>
+        <li>Adobe InDesign</li>
+        <li>Claude</li>
+        <li>ChatGPT</li>
+      </ul>
+    </div>
+    <div style="min-width:0">
+      <div style="font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(9px,0.95cqw,10.5px);letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.6 0.012 70);padding-bottom:clamp(10px,1.4cqw,18px);border-bottom:1px solid oklch(0.3 0.012 70);margin-bottom:clamp(12px,1.6cqw,20px)">Education</div>
+      <div style="display:grid;gap:clamp(14px,1.8cqw,22px)">
+        <div>
+          <div style="font-family:'PP Right Serif','Instrument Serif',Georgia,serif;font-size:clamp(19px,1.9cqw,27px);line-height:1.15">Graphic Design, Advanced Diploma</div>
+          <div style="margin-top:5px;font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(8.5px,0.92cqw,10.5px);letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.55 0.012 70)">Algonquin College · 2014—2017</div>
+        </div>
+        <div>
+          <div style="font-family:'PP Right Serif','Instrument Serif',Georgia,serif;font-size:clamp(19px,1.9cqw,27px);line-height:1.15">Design Foundations, Ontario College Certificate</div>
+          <div style="margin-top:5px;font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(8.5px,0.92cqw,10.5px);letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.55 0.012 70)">Algonquin College · 2013—2014</div>
+        </div>
+        <div>
+          <div style="font-family:'PP Right Serif','Instrument Serif',Georgia,serif;font-size:clamp(19px,1.9cqw,27px);line-height:1.15">Design Leadership Certificate</div>
+          <div style="margin-top:5px;font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(8.5px,0.92cqw,10.5px);letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.55 0.012 70)">BrainStation · 2023</div>
+        </div>
+        <div>
+          <div style="font-family:'PP Right Serif','Instrument Serif',Georgia,serif;font-size:clamp(19px,1.9cqw,27px);line-height:1.15">UX Design Certificate</div>
+          <div style="margin-top:5px;font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(8.5px,0.92cqw,10.5px);letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.55 0.012 70)">BrainStation · 2022</div>
+        </div>
+        <div>
+          <div style="font-family:'PP Right Serif','Instrument Serif',Georgia,serif;font-size:clamp(19px,1.9cqw,27px);line-height:1.15">Social Media Marketing Certificate</div>
+          <div style="margin-top:5px;font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(8.5px,0.92cqw,10.5px);letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.55 0.012 70)">Digital Marketing Institute · 2022</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+</sc-if>
+
+<footer style="padding:clamp(44px,7cqw,110px) clamp(20px,4.5cqw,72px) clamp(28px,3.6cqw,56px);border-top:1px solid oklch(0.3 0.012 70);position:relative">
+  <div style="display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap">
+    <a href="mailto:hello@chloebond.ca" style="font-family:'PP Right Serif','Instrument Serif',Georgia,serif;font-size: clamp(43px,9cqw,135.5px);line-height:1;letter-spacing:-0.022em;border-bottom:0">hello@chloebond.ca</a>
+    <sc-if value="{{ annotations }}" hint-placeholder-val="{{ true }}">
+      
+    </sc-if>
+  </div>
+  <div style="margin-top:clamp(28px,4cqw,64px);font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(9px,0.95cqw,10.5px);letter-spacing:0.1em;text-transform:uppercase;display:grid;gap:clamp(12px,1.6cqw,20px)">
+    <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:9px clamp(14px,2cqw,28px)">
+      <span style="color:oklch(0.6 0.012 70)">Socials</span>
+      <a href="#" style="border-bottom:0">LinkedIn</a>
+      <a href="#" style="border-bottom:0">Instagram</a>
+      <a href="#" style="border-bottom:0">Behance</a>
+    </div>
+    <p style="margin:0;color:oklch(0.6 0.012 70);letter-spacing:0.1em;text-transform:uppercase">Placeholder footer credit line — one short sentence sits here.</p>
+  </div>
+</footer>
+
+</div>
+
+<sc-if value="{{ hover }}">
+  <div style="position:fixed;right:24px;top:50%;transform:translateY(-50%);width:min(26vw,300px);z-index:30;pointer-events:none">
+    <div style="position:relative;aspect-ratio:4/5;background:repeating-linear-gradient(135deg,oklch(0.235 0.012 70 / 0.09) 0 5px,transparent 5px 11px),oklch(0.915 0.008 85);display:flex;align-items:center;justify-content:center;padding:14px;box-shadow:0 24px 50px -28px oklch(0.3 0.02 70 / 0.5)">
+      <span style="font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:10px;line-height:1.9;letter-spacing:0.1em;text-transform:uppercase;color:oklch(0.45 0.012 70);text-align:center">{{ hover.name }}<br>{{ hover.ratio }}<br>hover preview</span>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ menu }}">
+  <div style="position:fixed;inset:0;z-index:80;display:flex;justify-content:center;background:oklch(0.3 0.02 70 / 0.25)">
+    <div style="container-type:inline-size;width:100%;background:#ffffff;display:flex;flex-direction:column;overflow:auto;max-width:{{ frameW }}">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:clamp(16px,2.4cqw,30px) clamp(20px,4.5cqw,72px);border-bottom:1px solid oklch(0.885 0.008 80)">
+        <span style="font-family:'PP Right Serif','Instrument Serif',Georgia,serif;font-size:clamp(19px,2.1cqw,27px)">Chloe Bond</span>
+        <button onClick="{{ closeMenu }}" style="background:none;border:0;padding:0 0 2px;color:inherit;cursor:pointer;font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(9.5px,1cqw,11px);letter-spacing:0.11em;text-transform:uppercase;border-bottom:1px solid oklch(0.55 0.15 32)">Close</button>
+      </div>
+      <nav style="padding:clamp(24px,4cqw,64px) clamp(20px,4.5cqw,72px);display:grid;gap:clamp(20px,3cqw,50px);grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));align-items:start">
+        <div style="display:grid;gap:clamp(4px,0.6cqw,10px)">
+          <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;color:inherit;cursor:pointer;text-align:left;font-family:'PP Right Serif','Instrument Serif',Georgia,serif;font-size: clamp(52.5px,9cqw,132.5px);line-height:1.02;letter-spacing:-0.02em" style-hover="color:oklch(0.55 0.15 32)">Index</button>
+          <button onClick="{{ goWork }}" style="background:none;border:0;padding:0;color:inherit;cursor:pointer;text-align:left;font-family:'PP Right Serif','Instrument Serif',Georgia,serif;font-size: clamp(52.5px,9cqw,132.5px);line-height:1.02;letter-spacing:-0.02em" style-hover="color:oklch(0.55 0.15 32)">Work</button>
+          <button onClick="{{ goAbout }}" style="background:none;border:0;padding:0;color:inherit;cursor:pointer;text-align:left;font-family:'PP Right Serif','Instrument Serif',Georgia,serif;font-size: clamp(52.5px,9cqw,132.5px);line-height:1.02;letter-spacing:-0.02em" style-hover="color:oklch(0.55 0.15 32)">About</button>
+          <button onClick="{{ goContact }}" style="background:none;border:0;padding:0;color:inherit;cursor:pointer;text-align:left;font-family:'PP Right Serif','Instrument Serif',Georgia,serif;font-size: clamp(52.5px,9cqw,132.5px);line-height:1.02;letter-spacing:-0.02em" style-hover="color:oklch(0.55 0.15 32)">Resume</button>
+        </div>
+        <div style="display:grid;gap:9px;font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:clamp(9.5px,1cqw,11px);letter-spacing:0.1em;text-transform:uppercase;border-top:1px solid oklch(0.885 0.008 80);padding-top:16px">
+          <span style="color:oklch(0.6 0.012 70)">Projects</span>
+          <button onClick="{{ goDeep }}" style="background:none;border:0;padding:0;color:inherit;cursor:pointer;font-family:inherit;font-weight:500;text-transform:uppercase;letter-spacing:inherit;text-align:left;font-family:inherit;font-size:inherit;letter-spacing:inherit;text-transform:inherit" style-hover="color:oklch(0.55 0.15 32)">01 — Project One</button>
+          <button onClick="{{ goDeep }}" style="background:none;border:0;padding:0;color:inherit;cursor:pointer;font-family:inherit;font-weight:500;text-transform:uppercase;letter-spacing:inherit;text-align:left;font-family:inherit;font-size:inherit;letter-spacing:inherit;text-transform:inherit" style-hover="color:oklch(0.55 0.15 32)">02 — Project Two</button>
+          <button onClick="{{ goVisual }}" style="background:none;border:0;padding:0;color:inherit;cursor:pointer;font-family:inherit;font-weight:500;text-transform:uppercase;letter-spacing:inherit;text-align:left;font-family:inherit;font-size:inherit;letter-spacing:inherit;text-transform:inherit" style-hover="color:oklch(0.55 0.15 32)">03 — Project Three</button>
+          <button onClick="{{ goDeep }}" style="background:none;border:0;padding:0;color:inherit;cursor:pointer;font-family:inherit;font-weight:500;text-transform:uppercase;letter-spacing:inherit;text-align:left;font-family:inherit;font-size:inherit;letter-spacing:inherit;text-transform:inherit" style-hover="color:oklch(0.55 0.15 32)">04 — Project Four</button>
+          <button onClick="{{ goVisual }}" style="background:none;border:0;padding:0;color:inherit;cursor:pointer;font-family:inherit;font-weight:500;text-transform:uppercase;letter-spacing:inherit;text-align:left;font-family:inherit;font-size:inherit;letter-spacing:inherit;text-transform:inherit" style-hover="color:oklch(0.55 0.15 32)">05 — Project Five</button>
+        </div>
+      </nav>
+    </div>
+  </div>
+</sc-if>
+
+<div style="position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:95;display:flex;align-items:center;gap:2px;padding:4px;background:oklch(0.235 0.012 70);border-radius:999px;box-shadow:0 12px 30px -14px oklch(0.2 0.02 70 / 0.6);font-family:'Syne',ui-monospace,Menlo,monospace;font-weight:500;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase">
+  <span style="background:#ffffff;color:oklch(0.235 0.012 70);padding:6px 11px 5px;border-radius:999px">Dir A</span>
+  <a href="Portfolio%20Direction%20B.dc.html" style="border-bottom:0;color:oklch(0.7 0.012 70);padding:6px 11px 5px;border-radius:999px">Dir B</a>
+  <span style="width:1px;height:16px;background:rgba(255,255,255,0.22);margin:0 5px"></span>
+  <button onClick="{{ setDesktop }}" style="background:{{ deskBg }};border:0;border-radius:999px;padding:6px 12px 5px;color:{{ deskFg }};cursor:pointer;font-family:inherit;font-weight:500;font-size:inherit;letter-spacing:inherit;text-transform:inherit">Desktop</button>
+  <button onClick="{{ setMobile }}" style="background:{{ mobBg }};border:0;border-radius:999px;padding:6px 12px 5px;color:{{ mobFg }};cursor:pointer;font-family:inherit;font-weight:500;font-size:inherit;letter-spacing:inherit;text-transform:inherit">Mobile</button>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;annotations&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Handmade layer&quot;},&quot;marginCaptions&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Handmade layer&quot;},&quot;workIndexStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Type index&quot;,&quot;Image grid&quot;],&quot;default&quot;:&quot;Type index&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;hoverPreview&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Interaction&quot;},&quot;imageLoading&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Interaction&quot;},&quot;motion&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Considered&quot;,&quot;Minimal&quot;],&quot;default&quot;:&quot;Considered&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Interaction&quot;}}">
+class Component extends DCLogic {
+  state = { route: 'home', menu: false, mobile: false, hover: null, filter: 'All' };
+
+
+  componentDidMount() { this.frames(); this.enter(); }
+  componentDidUpdate() {
+    this.frames();
+    if (this.lastRoute !== this.state.route) this.enter();
+  }
+
+  motionOn() {
+    if ((this.props || {}).motion === 'Minimal') return false;
+    try { return !window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) { return true; }
+  }
+
+  // Placeholder frames behave like real images: space reserved by ratio,
+  // skeleton until "decoded", content fades up. No layout shift on swap.
+  frames() {
+    const loading = (this.props || {}).imageLoading ?? true;
+    const nodes = document.querySelectorAll('[data-img]');
+    if (!loading || !this.motionOn() || !window.IntersectionObserver) {
+      nodes.forEach((n) => { n.__f = 1; n.style.opacity = '1'; });
+      return;
+    }
+    if (!this.io) {
+      this.io = new IntersectionObserver((entries) => {
+        entries.forEach((e, i) => {
+          if (!e.isIntersecting) return;
+          this.io.unobserve(e.target);
+          setTimeout(() => this.load(e.target), 90 + (i % 4) * 110);
+        });
+      }, { rootMargin: '220px 0px' });
+    }
+    nodes.forEach((n) => {
+      if (n.__f) return;
+      n.__f = 1;
+      const sk = document.createElement('span');
+      sk.setAttribute('data-sk', '1');
+      sk.style.cssText = 'position:absolute;inset:0;overflow:hidden;background:oklch(0.905 0.008 85);transition:opacity 0.5s ease';
+      const sweep = document.createElement('span');
+      sweep.style.cssText = 'position:absolute;inset:0;background:linear-gradient(100deg,transparent 20%,oklch(0.97 0.006 85 / 0.85) 50%,transparent 80%);animation:asweep 1.5s ease-in-out infinite';
+      sk.appendChild(sweep);
+      n.appendChild(sk);
+      Array.prototype.forEach.call(n.children, (c) => {
+        if (c === sk) return;
+        c.style.opacity = '0';
+        c.style.transform = 'translateY(7px)';
+        c.style.transition = 'opacity 0.6s cubic-bezier(0.2,0.7,0.2,1), transform 0.6s cubic-bezier(0.2,0.7,0.2,1)';
+      });
+      this.io.observe(n);
+    });
+    clearTimeout(this.safety);
+    this.safety = setTimeout(() => {
+      document.querySelectorAll('[data-img]').forEach((n) => this.load(n));
+    }, 3200);
+  }
+
+  load(n) {
+    if (!n || n.__l) return;
+    n.__l = 1;
+    const sk = n.querySelector('[data-sk]');
+    if (sk) { sk.style.opacity = '0'; setTimeout(() => { if (sk.parentNode) sk.parentNode.removeChild(sk); }, 520); }
+    Array.prototype.forEach.call(n.children, (c) => {
+      if (c === sk) return;
+      c.style.opacity = '1';
+      c.style.transform = 'none';
+    });
+  }
+
+  enter() {
+    this.lastRoute = this.state.route;
+    const m = document.querySelector('main');
+    if (!m) return;
+    if (!this.motionOn()) { m.style.opacity = '1'; m.style.transform = 'none'; return; }
+    m.style.transition = 'none';
+    m.style.opacity = '0';
+    m.style.transform = 'translateY(10px)';
+    requestAnimationFrame(() => {
+      m.style.transition = 'opacity 0.5s cubic-bezier(0.2,0.7,0.2,1), transform 0.55s cubic-bezier(0.2,0.7,0.2,1)';
+      m.style.opacity = '1';
+      m.style.transform = 'none';
+    });
+  }
+
+  jumpToWork() {
+    const run = () => {
+      const el = document.getElementById('work');
+      if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 90, behavior: 'smooth' });
+    };
+    if (this.state.route === 'home') run();
+    else { this.nav('home'); setTimeout(run, 280); }
+  }
+
+  nav(route) {
+    const go = () => {
+      this.setState({ route: route, menu: false, hover: null });
+      try { window.scrollTo(0, 0); } catch (e) {}
+    };
+    if (route === this.state.route || !this.motionOn()) { go(); return; }
+    const m = document.querySelector('main');
+    if (m) {
+      m.style.transition = 'opacity 0.16s ease, transform 0.16s ease';
+      m.style.opacity = '0';
+      m.style.transform = 'translateY(-6px)';
+    }
+    this.setState({ menu: false, hover: null });
+    setTimeout(go, 165);
+  }
+
+  renderVals() {
+    const p = this.props || {};
+    const st = this.state;
+    const previewOn = p.hoverPreview ?? true;
+    const idx = p.workIndexStyle ?? 'Type index';
+    const f = st.filter;
+    const on = (c) => f === 'All' || f === c;
+    const caps = ['All', 'Category 01', 'Category 02', 'Category 03', 'Category 04', 'Category 05', 'Category 06'];
+    const hv = (name, ratio) => () => { if (previewOn) this.setState({ hover: { name: name, ratio: ratio } }); };
+    const dark = '#ffffff';
+    const dim = 'oklch(0.62 0.012 70)';
+    return {
+      annotations: p.annotations ?? true,
+      captions: p.marginCaptions ?? true,
+      typeIndex: idx === 'Type index',
+      gridIndex: idx !== 'Type index',
+      isHome: st.route === 'home',
+      isDeep: st.route === 'deep',
+      isVisual: st.route === 'visual',
+      isAbout: st.route === 'about',
+      isContact: st.route === 'contact',
+      roles: [
+        { role: 'Senior Graphic Designer', company: 'Rewind', years: 'May 2023 — Aug 2026', blurb: 'Owned brand design end to end, from creative brief to final delivery, across web, campaigns, events, social and presentations. Led a company-wide rebrand and website redesign, built a reusable component library that cut landing-page production time by roughly 85%, and art directed three designers alongside freelance and agency partners.' },
+        { role: 'Graphic Designer', company: 'Rewind', years: 'Mar 2021 — May 2023', blurb: 'Grew the role from campaign execution into brand and web ownership, earning promotion to Senior. Designed across digital campaigns, web, social and presentations, and created the early guidelines, templates, illustrations and icons that gave the brand a distinct visual voice.' },
+        { role: 'Senior Graphic Designer', company: 'Ruckify', years: 'Nov 2020 — Feb 2021', blurb: 'Led art direction and visual identity across digital and marketing touchpoints for an early-stage company, building cohesive typography, colour, iconography and layout systems — including a 60+ page ESG report.' },
+        { role: 'Graphic Designer, Contract', company: 'Point Blank', years: 'Aug 2020 — Nov 2020', blurb: 'Developed brand guides, campaign creative, social assets and pitch materials across multiple agency clients, working independently within a distributed remote team.' },
+        { role: 'Graphic Designer', company: 'Tweed', years: 'Aug 2018 — May 2020', blurb: 'Designed national B2C campaigns across digital, web, retail, social, email, events and print within a 40+ person internal agency, producing production-ready assets for launches, activations and retail experiences.' },
+        { role: 'Graphic Designer', company: 'Aragona Agency', years: 'Jun 2017 — Aug 2018', blurb: 'Designed digital and print brand collateral for technical B2B clients including Mitel, Solacom and Curtiss-Wright.' }
+      ],
+      menu: st.menu,
+      hover: previewOn ? st.hover : null,
+      frameW: st.mobile ? '390px' : '100%',
+      frameShadow: st.mobile ? '0 0 0 1px oklch(0.86 0.008 80), 0 40px 80px -40px oklch(0.3 0.02 70 / 0.45)' : 'none',
+      deskBg: st.mobile ? 'transparent' : dark,
+      deskFg: st.mobile ? dim : 'oklch(0.235 0.012 70)',
+      mobBg: st.mobile ? dark : 'transparent',
+      mobFg: st.mobile ? 'oklch(0.235 0.012 70)' : dim,
+      show: {
+        brand: on('Category 01'), art: on('Category 02'), web: on('Category 03'),
+        digital: on('Category 04'), campaign: on('Category 05'), editorial: on('Category 06')
+      },
+      chips: caps.map((c) => ({ name: c, active: f === c, fg: f === c ? '#ffffff' : 'inherit', onClick: () => this.setState({ filter: c }) })),
+      goHome: () => this.nav('home'),
+      goWork: () => this.jumpToWork(),
+      goDeep: () => this.nav('deep'),
+      goVisual: () => this.nav('visual'),
+      goAbout: () => this.nav('about'),
+      goContact: () => this.nav('contact'),
+      toggleMenu: () => this.setState((s) => ({ menu: !s.menu })),
+      closeMenu: () => this.setState({ menu: false }),
+      setDesktop: () => this.setState({ mobile: false }),
+      setMobile: () => this.setState({ mobile: true }),
+      hOff: () => this.setState({ hover: null }),
+      h1: hv('Project One', 'portrait 4 : 5'),
+      h2: hv('Project Two', 'portrait 4 : 5'),
+      h3: hv('Project Three', 'portrait 4 : 5'),
+      h4: hv('Project Four', 'portrait 4 : 5'),
+      h5: hv('Project Five', 'portrait 4 : 5')
+    };
+  }
+}
+</script>
+</body>
+</html>
