@@ -31,6 +31,12 @@
   padding: 16px;
 }
 
+/* Same slot as .hero, but real artwork runs to the edge without the
+   placeholder's inset. */
+.heroLoop {
+  padding: 0;
+}
+
 .overview {
   padding: clamp(28px, 3.6cqw, 56px) clamp(20px, 4.5cqw, 72px);
   display: grid;

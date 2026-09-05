@@ -1,0 +1,22 @@
+/* Full-bleed hero loop. Mirrors the geometry of the .ph-frame hero it replaces,
+   minus the placeholder's inset padding -- real artwork runs edge to edge. */
+.frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  /* The plate's own sky blue, so the box never flashes paper-white while the
+     video loads. Doubles as the visible state under reduced motion, and for
+     any browser that supports neither video nor the GIF fallback. */
+  background-color: #3736ff;
+  background-image: var(--hero-poster);
+  background-size: cover;
+  background-position: center;
+}
+
+.media {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

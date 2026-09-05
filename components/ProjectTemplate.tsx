@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import PlaceholderImage from './PlaceholderImage';
+import HeroLoop from './HeroLoop';
 import type { Project } from '../lib/projects';
 import styles from './ProjectTemplate.module.css';
 
@@ -13,7 +14,11 @@ export default function ProjectTemplate({ project, nextProject }: { project: Pro
         <h1 className={styles.title}>{project.title}</h1>
       </section>
 
-      <PlaceholderImage ratio="16/9" label="Project hero" sublabel="landscape 16 : 9" className={styles.hero} />
+      {project.hero ? (
+        <HeroLoop hero={project.hero} className={styles.heroLoop} />
+      ) : (
+        <PlaceholderImage ratio="16/9" label="Project hero" sublabel="landscape 16 : 9" className={styles.hero} />
+      )}
 
       <section className={styles.overview}>
         <div className={styles.intro}>
