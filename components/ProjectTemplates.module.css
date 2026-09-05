@@ -125,7 +125,7 @@
 }
 .introP {
   margin: 0;
-  font-size: clamp(15px, 1.4cqw, 20px);
+  font-size: var(--text-body);
   line-height: 1.55;
   max-width: 40em;
   text-wrap: pretty;
@@ -185,7 +185,7 @@
 }
 .detailText {
   margin: 0;
-  font-size: clamp(15px, 1.4cqw, 20px);
+  font-size: var(--text-body);
   line-height: 1.55;
   max-width: 34em;
   text-wrap: pretty;

@@ -16,7 +16,7 @@
 
 .summary {
   margin: clamp(18px, 2.4cqw, 32px) 0 0;
-  font-size: clamp(15px, 1.4cqw, 20px);
+  font-size: var(--text-body);
   line-height: 1.5;
   max-width: 44em;
   color: var(--ink-2);
@@ -88,7 +88,7 @@
 
 .roleBlurb {
   margin: clamp(9px, 1.2cqw, 15px) 0 0;
-  font-size: clamp(14.5px, 1.35cqw, 19px);
+  font-size: var(--text-body);
   line-height: 1.55;
   max-width: 40em;
   color: var(--ink-2);
@@ -131,7 +131,7 @@
   list-style: none;
   display: grid;
   gap: 8px;
-  font-size: clamp(14.5px, 1.35cqw, 19px);
+  font-size: var(--text-body);
   line-height: 1.5;
   color: var(--ink-2);
 }

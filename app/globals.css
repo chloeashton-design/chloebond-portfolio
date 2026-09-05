@@ -22,6 +22,9 @@
   --font-mono: var(--syne), ui-monospace, Menlo, monospace;
   --font-hand: var(--homemadeApple), cursive;
   --font-body: forma-djr-micro, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  /* One size for all running body copy (about, resume, case-study prose). */
+  --text-body: clamp(14px, 1.25cqw, 18px);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
