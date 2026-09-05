@@ -10,15 +10,23 @@ export interface Project {
   tileFull: boolean;
 }
 
-const pattern: Array<{ type: ProjectType; tileRatio: '16/9' | '4/5'; tileFull: boolean }> = [
-  { type: 'case-study', tileRatio: '16/9', tileFull: true },
-  { type: 'visual-sequence', tileRatio: '4/5', tileFull: false },
-  { type: 'case-study', tileRatio: '4/5', tileFull: false },
+const TOTAL_PROJECTS = 8;
+
+const pattern: Array<{ tileRatio: '16/9' | '4/5'; tileFull: boolean }> = [
+  { tileRatio: '16/9', tileFull: true },
+  { tileRatio: '4/5', tileFull: false },
+  { tileRatio: '4/5', tileFull: false },
 ];
 
-export const projects: Project[] = Array.from({ length: 12 }, (_, i) => {
+// Project 8 is a deliberate override to land on a full-bleed landscape tile,
+// rather than whatever the repeating 3-tile pattern would give it.
+const tileOverrides: Record<number, { tileRatio: '16/9' | '4/5'; tileFull: boolean }> = {
+  8: { tileRatio: '16/9', tileFull: true },
+};
+
+export const projects: Project[] = Array.from({ length: TOTAL_PROJECTS }, (_, i) => {
   const index = i + 1;
-  const slot = pattern[i % pattern.length];
+  const slot = tileOverrides[index] ?? pattern[i % pattern.length];
   const type: ProjectType = index % 2 === 1 ? 'case-study' : 'visual-sequence';
   return {
     slug: `project-${String(index).padStart(2, '0')}`,
@@ -35,7 +43,7 @@ export function getProject(slug: string): Project | undefined {
 }
 
 export function getAdjacentProject(current: Project): Project {
-  const nextIndex = current.index % projects.length; // wraps 12 -> 0 -> project[0]
+  const nextIndex = current.index % projects.length; // wraps last project back to project[0]
   return projects[nextIndex];
 }
 
