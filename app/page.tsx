@@ -14,7 +14,7 @@ export default function HomePage() {
         <HandNote className={styles.note}>
           all fuelled by coffee
           <br />
-          and meticulous overthinking &#8599;
+          and meticulous overthinking &#8601;
         </HandNote>
       </section>
 
