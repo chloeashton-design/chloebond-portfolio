@@ -37,13 +37,6 @@
   object-position: 50% 50%;
 }
 
-.portraitNote {
-  display: block;
-  margin-top: 12px;
-  font-size: clamp(12px, 1.2cqw, 16px);
-  text-align: center;
-}
-
 .bioCol {
   min-width: 0;
 }
@@ -57,5 +50,4 @@
 }
 .bioP + .bioP {
   margin: 1.2em 0 0;
-  color: var(--ink-3);
 }
