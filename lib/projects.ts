@@ -15,9 +15,11 @@ const pattern: Array<{ tileRatio: '16/9' | '4/5'; tileFull: boolean }> = [
   { tileRatio: '4/5', tileFull: false },
 ];
 
-// Project 8 is a deliberate override to land on a full-bleed landscape tile,
-// rather than whatever the repeating 3-tile pattern would give it.
+// Deliberate exceptions to the repeating 3-tile pattern. Projects 2 and 3 run
+// landscape while staying side by side; project 8 closes the grid full-bleed.
 const tileOverrides: Record<number, { tileRatio: '16/9' | '4/5'; tileFull: boolean }> = {
+  2: { tileRatio: '16/9', tileFull: false },
+  3: { tileRatio: '16/9', tileFull: false },
   8: { tileRatio: '16/9', tileFull: true },
 };
 
