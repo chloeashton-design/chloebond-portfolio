@@ -12,9 +12,9 @@ export default function HomePage() {
           A decade of ideas, identities, and everything in between.
         </h1>
         <HandNote className={styles.note}>
-          still fueled by coffee
+          all fuelled by coffee
           <br />
-          and too many tabs &#8599;
+          and meticulous overthinking &#8599;
         </HandNote>
       </section>
 

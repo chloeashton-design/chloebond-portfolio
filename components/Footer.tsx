@@ -21,7 +21,9 @@ export default function Footer() {
             Behance
           </a>
         </div>
-        <p className={styles.credit}>Vibe-coded with Claude Code, a lot of coffee, and zero patience for slow websites.</p>
+        <p className={styles.credit}>
+          &copy; Chloe Bond 2026. Vibe-coded with Claude Code and an unreasonable amount of ambition.
+        </p>
       </div>
     </footer>
   );
