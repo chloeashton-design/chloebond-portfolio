@@ -9,12 +9,12 @@ export default function HomePage() {
     <main className="page-enter">
       <section className={styles.hero}>
         <h1 className={styles.headline}>
-          Headline placeholder sized to sit comfortably across three lines here.
+          Brand, campaigns, and web design for teams who need it to just work.
         </h1>
         <HandNote className={styles.note}>
-          temp note &mdash; voice line
+          still fueled by coffee
           <br />
-          goes about here &#8599;
+          and too many tabs &#8599;
         </HandNote>
       </section>
 

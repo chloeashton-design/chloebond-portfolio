@@ -21,7 +21,7 @@ export default function Footer() {
             Behance
           </a>
         </div>
-        <p className={styles.credit}>Placeholder footer credit line &mdash; one short sentence sits here.</p>
+        <p className={styles.credit}>Vibe-coded with Claude Code, a lot of coffee, and zero patience for slow websites.</p>
       </div>
     </footer>
   );

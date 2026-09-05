@@ -7,8 +7,7 @@ export default function AboutPage() {
     <main className="page-enter">
       <section className={styles.hero}>
         <h1 className={styles.headline}>
-          A placeholder statement about practice, held to about two lines so it can be rewritten without redesigning
-          the page.
+          I make brand and marketing work that&rsquo;s built to actually get used &mdash; not just admired in a deck.
         </h1>
       </section>
 
@@ -24,17 +23,21 @@ export default function AboutPage() {
             />
           </div>
           <HandNote className={styles.portraitNote} style={{ textAlign: 'center' }}>
-            handwritten aside about the photo &#8598;
+            taken on a normal Tuesday &#8598;
           </HandNote>
         </div>
         <div className={styles.bioCol}>
           <p className={styles.bioP}>
-            Placeholder biography, first paragraph. Long-form copy will go here later &mdash; where the practice
-            sits, what kinds of problems it takes on, and how a project usually starts.
+            I&rsquo;m a brand and marketing designer based in Ottawa, with ten years spent moving between brand
+            identity, web, campaigns, events, and the systems that hold it all together. I like the part of the job
+            where strategy turns into something people can actually see and use &mdash; a rebrand that ships, a
+            component library that saves the next designer a week, a campaign that looks like it came from one place
+            even when six teams touched it.
           </p>
           <p className={styles.bioP}>
-            Second placeholder paragraph, shorter. It exists to test how the measure reads when the text runs past
-            the image beside it, and to hold space for teaching, writing, or speaking notes.
+            Lately that includes figuring out where AI actually earns a place in a creative workflow versus where it
+            just adds noise &mdash; Claude and ChatGPT are both part of how I work now, not just what I put on a
+            resume.
           </p>
         </div>
       </section>
