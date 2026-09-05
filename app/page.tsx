@@ -18,21 +18,6 @@ export default function HomePage() {
         </HandNote>
       </section>
 
-      <section className={styles.reel}>
-        <PlaceholderImage ratio="16/9" style={{ padding: 16 }}>
-          <span className={styles.reelIcon}>
-            <span className={styles.playCircle}>
-              <span className={styles.playTriangle} />
-            </span>
-            <span className={styles.reelLabel}>
-              Showreel &mdash; full bleed
-              <br />
-              video 16 : 9 &mdash; replace
-            </span>
-          </span>
-        </PlaceholderImage>
-      </section>
-
       <section id="work" className={styles.grid}>
         {projects.map((project) => (
           <Link

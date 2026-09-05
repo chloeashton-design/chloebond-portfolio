@@ -22,47 +22,6 @@
   max-width: 14em;
 }
 
-.reel {
-  padding: 0 0 clamp(28px, 3.6cqw, 56px);
-}
-
-.reelIcon {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: clamp(12px, 1.6cqw, 20px);
-}
-
-.playCircle {
-  width: clamp(44px, 4.4cqw, 64px);
-  aspect-ratio: 1 / 1;
-  border: 1px solid var(--ink-4);
-  border-radius: 999px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.playTriangle {
-  width: 0;
-  height: 0;
-  border-left: clamp(10px, 1cqw, 14px) solid var(--ink-4);
-  border-top: clamp(6px, 0.62cqw, 9px) solid transparent;
-  border-bottom: clamp(6px, 0.62cqw, 9px) solid transparent;
-  margin-left: 3px;
-}
-
-.reelLabel {
-  font-family: var(--font-mono);
-  font-weight: 500;
-  font-size: clamp(8.5px, 1.05cqw, 11.5px);
-  line-height: 1.8;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink-4);
-  text-align: center;
-}
-
 .grid {
   display: flex;
   flex-wrap: wrap;
