@@ -9,7 +9,7 @@ export default function HomePage() {
     <main className="page-enter">
       <section className={styles.hero}>
         <h1 className={styles.headline}>
-          Brand, campaigns, and web design for teams who need it to just work.
+          A decade of ideas, identities, and everything in between.
         </h1>
         <HandNote className={styles.note}>
           still fueled by coffee

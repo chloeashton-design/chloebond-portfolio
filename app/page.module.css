@@ -6,7 +6,10 @@
 .headline {
   font-family: var(--font-serif);
   font-weight: 400;
-  font-size: clamp(30px, 5.6cqw, 84px);
+  /* Deliberately the largest statement headline on the site (about/resume
+     top out around 86-101px); project titles stay a touch bigger since
+     they're two-word names, not sentences. */
+  font-size: clamp(38px, 7.8cqw, 120px);
   line-height: 0.95;
   letter-spacing: -0.02em;
   margin: 0;
@@ -20,6 +23,17 @@
   text-align: right;
   font-size: clamp(12px, 1.25cqw, 17px);
   max-width: 14em;
+}
+
+/* On narrow screens the pinned note wraps onto enough lines to collide with
+   the headline, so let it fall into normal flow underneath instead. */
+@container (max-width: 900px) {
+  .note {
+    position: static;
+    display: block;
+    max-width: none;
+    margin-top: clamp(14px, 3cqw, 22px);
+  }
 }
 
 .grid {
