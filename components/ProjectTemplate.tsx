@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import PlaceholderImage from './PlaceholderImage';
 import HeroLoop from './HeroLoop';
 import type { Project, ProjectContent } from '../lib/projects';
@@ -56,25 +57,45 @@ export default function ProjectTemplate({ project, nextProject }: { project: Pro
         </div>
       </section>
 
-      <section className={styles.pairRow}>
-        <PlaceholderImage ratio="4/5" label="Project image" sublabel="portrait 4 : 5" />
-        <PlaceholderImage ratio="4/5" label="Project image" sublabel="portrait 4 : 5" />
-      </section>
+      {project.gallery ? (
+        project.gallery.map((row, i) => (
+          <section key={i} className={styles.galleryRow} data-columns={row.length}>
+            {row.map((image) => (
+              <Image
+                key={image.src}
+                src={image.src}
+                alt={image.alt}
+                width={image.width}
+                height={image.height}
+                className={styles.galleryImage}
+                sizes={row.length > 1 ? '(max-width: 700px) 100vw, 45vw' : '(max-width: 700px) 100vw, 90vw'}
+              />
+            ))}
+          </section>
+        ))
+      ) : (
+        <>
+          <section className={styles.pairRow}>
+            <PlaceholderImage ratio="4/5" label="Project image" sublabel="portrait 4 : 5" />
+            <PlaceholderImage ratio="4/5" label="Project image" sublabel="portrait 4 : 5" />
+          </section>
 
-      <section className={styles.wideRow}>
-        <PlaceholderImage ratio="16/9" label="Project image" sublabel="landscape 16 : 9" />
-      </section>
+          <section className={styles.wideRow}>
+            <PlaceholderImage ratio="16/9" label="Project image" sublabel="landscape 16 : 9" />
+          </section>
 
-      <section className={styles.tripleRow}>
-        <PlaceholderImage ratio="4/5" label="Project image" sublabel="4 : 5" />
-        <PlaceholderImage ratio="4/5" label="Project image" sublabel="4 : 5" />
-        <PlaceholderImage ratio="4/5" label="Project image" sublabel="4 : 5" />
-      </section>
+          <section className={styles.tripleRow}>
+            <PlaceholderImage ratio="4/5" label="Project image" sublabel="4 : 5" />
+            <PlaceholderImage ratio="4/5" label="Project image" sublabel="4 : 5" />
+            <PlaceholderImage ratio="4/5" label="Project image" sublabel="4 : 5" />
+          </section>
 
-      <section className={styles.pairRow}>
-        <PlaceholderImage ratio="4/5" label="Project image" sublabel="portrait 4 : 5" />
-        <PlaceholderImage ratio="4/5" label="Project image" sublabel="portrait 4 : 5" />
-      </section>
+          <section className={styles.pairRow}>
+            <PlaceholderImage ratio="4/5" label="Project image" sublabel="portrait 4 : 5" />
+            <PlaceholderImage ratio="4/5" label="Project image" sublabel="portrait 4 : 5" />
+          </section>
+        </>
+      )}
 
       <Link href={`/work/${nextProject.slug}`} className={styles.nextButton}>
         <span className={styles.nextLabel}>Next project</span>

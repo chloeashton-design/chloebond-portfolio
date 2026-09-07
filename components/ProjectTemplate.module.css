@@ -90,6 +90,27 @@
   text-align: right;
 }
 
+/* Real artwork. Each image keeps its own intrinsic ratio rather than being
+   fitted to a slot, so a row of matched ratios lines up and a mixed row
+   simply sits top-aligned. */
+.galleryRow {
+  padding: 0 clamp(20px, 4.5cqw, 72px) clamp(10px, 1.6cqw, 22px);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(10px, 1.6cqw, 22px);
+  align-items: start;
+}
+
+.galleryRow[data-columns='2'] {
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+}
+
+.galleryImage {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .pairRow {
   padding: 0 clamp(20px, 4.5cqw, 72px) clamp(10px, 1.6cqw, 22px);
   display: grid;

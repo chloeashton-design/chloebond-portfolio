@@ -23,6 +23,20 @@ export interface ProjectContent {
   scope: string;
 }
 
+/** One piece of project artwork, rendered at its own intrinsic ratio. */
+export interface ProjectImage {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+}
+
+/**
+ * The image sequence below a project's overview. Each inner array is one row:
+ * a single image runs full width, two sit side by side.
+ */
+export type ProjectGallery = ProjectImage[][];
+
 export interface Project {
   slug: string;
   index: number;
@@ -37,6 +51,8 @@ export interface Project {
   hero?: HeroLoop;
   /** When set, replaces the placeholder intro and metadata on the project page. */
   content?: ProjectContent;
+  /** When set, replaces the placeholder image rows on the project page. */
+  gallery?: ProjectGallery;
 }
 
 const TOTAL_PROJECTS = 8;
@@ -68,6 +84,63 @@ const heroes: Record<number, HeroLoop> = {
   },
 };
 
+// Dimensions are the supplied artwork's own, scaled down for web but never
+// re-cropped, so each image keeps the ratio it was designed at.
+const galleries: Record<number, ProjectGallery> = {
+  2: [
+    [
+      {
+        src: '/media/project-02/proton-cards.webp',
+        alt: 'Three illustrated Proton.ai note cards on a blue ground: "Just a note from us" with a delivery van and map pins, "Let\'s keep it rolling" with a forklift stacking boxes, and "Special delivery just for you" set at night outside a warehouse.',
+        width: 1920,
+        height: 1080,
+      },
+    ],
+    [
+      {
+        src: '/media/project-02/proton-newsletter1.webp',
+        alt: 'The Proton Playbook email newsletter, issue 14, headed by a lime illustration of a smiling character striding beside a yellow delivery truck.',
+        width: 1600,
+        height: 2000,
+      },
+      {
+        src: '/media/project-02/proton-newsletter2.webp',
+        alt: "The Distributor's Dispatch email newsletter, issue 07, headed by a blue night-time illustration of a warehouse loading dock and city skyline.",
+        width: 1600,
+        height: 2000,
+      },
+    ],
+    [
+      {
+        src: '/media/project-02/proton-lisbon-offsite-tee.webp',
+        alt: 'White t-shirt printed in blue with a Lisbon panel: azulejo tiles, the 25 de Abril bridge, Belém Tower, a tram, and the word LISBON.',
+        width: 1600,
+        height: 2000,
+      },
+      {
+        src: '/media/project-02/proton-lisbon-offsite-tote.webp',
+        alt: 'Canvas tote bag on a yellow ground, printed with a grid of blue azulejo tiles carrying company values: Customers First, One Team, Own Your Results, Think Big Start Small, Lead With Curiosity, Be Open.',
+        width: 1600,
+        height: 2000,
+      },
+    ],
+    [
+      {
+        src: '/media/project-02/proton-pin.webp',
+        alt: 'Enamel pin on a navy backing card reading "Build the dream with Proton". The pin is a row of keycaps spelling out "Eat. Sleep. Vibe code. Repeat."',
+        width: 2000,
+        height: 1839,
+      },
+      {
+        src: '/media/project-02/proton-team-merch1.webp',
+        alt: 'Black YETI travel mug on a lime ground, printed with CHILL MODE in chunky white type.',
+        width: 1080,
+        height: 1080,
+      },
+    ],
+  ],
+};
+
 const pattern: Array<{ tileRatio: '16/9' | '4/5'; tileFull: boolean }> = [
   { tileRatio: '16/9', tileFull: true },
   { tileRatio: '4/5', tileFull: false },
@@ -93,6 +166,7 @@ export const projects: Project[] = Array.from({ length: TOTAL_PROJECTS }, (_, i)
     tileFull: slot.tileFull,
     hero: heroes[index],
     content: content[index],
+    gallery: galleries[index],
   };
 });
 
