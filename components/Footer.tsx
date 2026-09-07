@@ -2,8 +2,8 @@ import styles from './Footer.module.css';
 
 const socials = [
   { label: 'LinkedIn', href: 'https://linkedin.com/in/chlobond' },
-  { label: 'Instagram', href: '#' },
-  { label: 'Behance', href: '#' },
+  { label: 'Instagram', href: 'https://www.instagram.com/bychloebond/' },
+  { label: 'Behance', href: 'https://www.behance.net/chlocou' },
 ];
 
 const isExternal = (href: string) => href.startsWith('http');
