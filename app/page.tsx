@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import PlaceholderImage from '../components/PlaceholderImage';
+import HeroLoop from '../components/HeroLoop';
 import HandNote from '../components/HandNote';
 import { projects } from '../lib/projects';
 import styles from './page.module.css';
@@ -25,11 +26,15 @@ export default function HomePage() {
             href={`/work/${project.slug}`}
             className={`${styles.tile} ${project.tileFull ? styles.tileFull : styles.tileHalf}`}
           >
-            <PlaceholderImage
-              ratio={project.tileRatio}
-              label={project.title}
-              sublabel={project.tileRatio === '16/9' ? 'landscape 16 : 9' : 'portrait 4 : 5'}
-            />
+            {project.hero ? (
+              <HeroLoop hero={project.hero} ratio={project.tileRatio} />
+            ) : (
+              <PlaceholderImage
+                ratio={project.tileRatio}
+                label={project.title}
+                sublabel={project.tileRatio === '16/9' ? 'landscape 16 : 9' : 'portrait 4 : 5'}
+              />
+            )}
           </Link>
         ))}
       </section>

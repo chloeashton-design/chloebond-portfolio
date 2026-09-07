@@ -1,14 +1,15 @@
-/* Full-bleed hero loop. Mirrors the geometry of the .ph-frame hero it replaces,
-   minus the placeholder's inset padding -- real artwork runs edge to edge. */
+/* A looping hero. Fills whichever slot it is given -- the full-bleed banner on a
+   project page, or that project's tile on the home work grid -- so the ratio and
+   the holding colour both come in as custom properties. */
 .frame {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: var(--hero-ratio, 16 / 9);
   overflow: hidden;
-  /* The plate's own sky blue, so the box never flashes paper-white while the
-     video loads. Doubles as the visible state under reduced motion, and for
-     any browser that supports neither video nor the GIF fallback. */
-  background-color: #3736ff;
+  /* Holding colour, so the box never flashes paper-white before the poster
+     paints. Set per project from its artwork; falls back to the placeholder
+     tone the rest of the grid uses. */
+  background-color: var(--hero-tint, var(--skeleton));
   background-image: var(--hero-poster);
   background-size: cover;
   background-position: center;

@@ -9,11 +9,26 @@ import styles from './HeroLoop.module.css';
  * A looping hero. Plays WebM/MP4 where video is supported and falls back to the
  * GIF where it isn't. Visitors who ask for reduced motion get the poster frame.
  *
+ * Used in two places: the banner inside a project page, and that project's tile
+ * on the home work grid. `ratio` matches whichever slot it is filling.
+ *
  * The asset set is `${src}.webm`, `${src}.mp4`, `${src}.gif` and `${src}-poster.webp`.
  */
-export default function HeroLoop({ hero, className }: { hero: HeroLoopMeta; className?: string }) {
+export default function HeroLoop({
+  hero,
+  ratio = '16/9',
+  className,
+}: {
+  hero: HeroLoopMeta;
+  ratio?: '16/9' | '4/5' | '1/1';
+  className?: string;
+}) {
+  const frameRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [reduced, setReduced] = useState(false);
+  // Starts true so the markup is identical on server and first client render;
+  // the observer corrects it immediately for anything below the fold.
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     let mq: MediaQueryList;
@@ -22,34 +37,56 @@ export default function HeroLoop({ hero, className }: { hero: HeroLoopMeta; clas
     } catch {
       return;
     }
+    const sync = () => setReduced(mq.matches);
+    sync();
+    mq.addEventListener('change', sync);
+    return () => mq.removeEventListener('change', sync);
+  }, []);
 
-    const apply = () => {
-      setReduced(mq.matches);
-      const video = videoRef.current;
-      if (!video) return;
-      if (mq.matches) {
-        video.pause();
+  // Only the tiles actually on screen decode video. Matters on the work grid,
+  // where every project that defines a hero would otherwise play at once.
+  useEffect(() => {
+    const node = frameRef.current;
+    if (!node || !('IntersectionObserver' in window)) return;
+
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((entry) => setVisible(entry.isIntersecting)),
+      { rootMargin: '200px 0px' },
+    );
+    io.observe(node);
+    return () => io.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (reduced || !visible) {
+      video.pause();
+      if (reduced) {
         // Park on the poster frame so the frozen hero reads as a composed still.
         const park = () => { video.currentTime = hero.posterTime ?? 0; };
         if (video.readyState >= 1) park();
         else video.addEventListener('loadedmetadata', park, { once: true });
-      } else {
-        // autoplay may still be blocked, in which case the poster stays up
-        void video.play().catch(() => {});
       }
-    };
+      return;
+    }
 
-    apply();
-    mq.addEventListener('change', apply);
-    return () => mq.removeEventListener('change', apply);
-  }, [hero.posterTime]);
+    // autoplay may still be blocked, in which case the poster stays up
+    void video.play().catch(() => {});
+  }, [reduced, visible, hero.posterTime]);
 
   const poster = `${hero.src}-poster.webp`;
 
   return (
     <div
+      ref={frameRef}
       className={`${styles.frame}${className ? ` ${className}` : ''}`}
-      style={{ '--hero-poster': `url("${poster}")` } as CSSProperties}
+      style={{
+        '--hero-poster': `url("${poster}")`,
+        '--hero-ratio': ratio.replace('/', ' / '),
+        ...(hero.tint ? { '--hero-tint': hero.tint } : {}),
+      } as CSSProperties}
     >
       <video
         ref={videoRef}

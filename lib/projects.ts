@@ -10,6 +10,8 @@ export interface HeroLoop {
    * snapping to whatever happens to be at 0s.
    */
   posterTime?: number;
+  /** Holding colour shown before the poster paints. Pick it out of the artwork. */
+  tint?: string;
 }
 
 export interface Project {
@@ -19,7 +21,10 @@ export interface Project {
   /** aspect ratio + layout used for this project's tile in the home work grid */
   tileRatio: '16/9' | '4/5';
   tileFull: boolean;
-  /** When set, the project page hero plays this loop instead of a placeholder. */
+  /**
+   * When set, this loop replaces the placeholder in both of the project's slots:
+   * its tile on the home work grid, and the banner inside the project page.
+   */
   hero?: HeroLoop;
 }
 
@@ -32,6 +37,7 @@ const heroes: Record<number, HeroLoop> = {
     alt: 'A lime delivery truck rolls up to a blue warehouse loading bay, settles on its springs with a puff of exhaust, then pulls away down the street.',
     // Mid-idle, truck parked at the bay. The loop's 0s frame is an empty street.
     posterTime: 3,
+    tint: '#3736ff', // the plate's sky blue
   },
 };
 
