@@ -1,10 +1,22 @@
 import Link from 'next/link';
 import PlaceholderImage from './PlaceholderImage';
 import HeroLoop from './HeroLoop';
-import type { Project } from '../lib/projects';
+import type { Project, ProjectContent } from '../lib/projects';
 import styles from './ProjectTemplate.module.css';
 
+/** Shown by any project that doesn't have real copy yet. */
+const placeholder: ProjectContent = {
+  intro:
+    'Placeholder introduction. A short blurb about the role and the work will live here — what the project was, what it needed, and what was delivered. The column is set to a comfortable measure so the final copy can be longer or shorter without the layout breaking.',
+  client: 'Placeholder',
+  year: '2026',
+  role: 'Placeholder',
+  scope: 'Category 01, Category 02',
+};
+
 export default function ProjectTemplate({ project, nextProject }: { project: Project; nextProject: Project }) {
+  const content = project.content ?? placeholder;
+
   return (
     <main className="page-enter">
       <section className={styles.header}>
@@ -22,28 +34,24 @@ export default function ProjectTemplate({ project, nextProject }: { project: Pro
 
       <section className={styles.overview}>
         <div className={styles.intro}>
-          <p className={styles.introP}>
-            Placeholder introduction. A short blurb about the role and the work will live here &mdash; what the
-            project was, what it needed, and what was delivered. The column is set to a comfortable measure so the
-            final copy can be longer or shorter without the layout breaking.
-          </p>
+          <p className={styles.introP}>{content.intro}</p>
         </div>
         <div className={styles.metaTable}>
           <div className={styles.metaRow}>
             <span className={styles.metaRowKey}>Client</span>
-            <span className={styles.metaRowVal}>Placeholder</span>
+            <span className={styles.metaRowVal}>{content.client}</span>
           </div>
           <div className={styles.metaRow}>
             <span className={styles.metaRowKey}>Year</span>
-            <span className={styles.metaRowVal}>2026</span>
+            <span className={styles.metaRowVal}>{content.year}</span>
           </div>
           <div className={styles.metaRow}>
             <span className={styles.metaRowKey}>Role</span>
-            <span className={styles.metaRowVal}>Placeholder</span>
+            <span className={styles.metaRowVal}>{content.role}</span>
           </div>
           <div className={styles.metaRow}>
             <span className={styles.metaRowKey}>Scope</span>
-            <span className={styles.metaRowVal}>Category 01, Category 02</span>
+            <span className={styles.metaRowVal}>{content.scope}</span>
           </div>
         </div>
       </section>

@@ -14,6 +14,15 @@ export interface HeroLoop {
   tint?: string;
 }
 
+/** Real copy for a project. Without an entry, the page keeps its placeholders. */
+export interface ProjectContent {
+  intro: string;
+  client: string;
+  year: string;
+  role: string;
+  scope: string;
+}
+
 export interface Project {
   slug: string;
   index: number;
@@ -26,9 +35,27 @@ export interface Project {
    * its tile on the home work grid, and the banner inside the project page.
    */
   hero?: HeroLoop;
+  /** When set, replaces the placeholder intro and metadata on the project page. */
+  content?: ProjectContent;
 }
 
 const TOTAL_PROJECTS = 8;
+
+// Real project names. Anything unnamed falls back to "Project 0N".
+const names: Record<number, string> = {
+  2: 'Proton.ai',
+};
+
+const content: Record<number, ProjectContent> = {
+  2: {
+    intro:
+      'I’ve been a design partner to Proton.ai, an AI platform for distributors, since 2025. Working closely with their marketing team, I provide ongoing creative support across illustration, art direction and design consultation, website graphics, and employee merchandise for team offsites, celebrations, and everything in between.',
+    client: 'Proton.ai',
+    year: '2025-2026',
+    role: 'Freelance graphic designer',
+    scope: 'Art direction, illustration, graphic design',
+  },
+};
 
 // Projects whose hero slot has real artwork rather than a placeholder.
 const heroes: Record<number, HeroLoop> = {
@@ -61,10 +88,11 @@ export const projects: Project[] = Array.from({ length: TOTAL_PROJECTS }, (_, i)
   return {
     slug: `project-${String(index).padStart(2, '0')}`,
     index,
-    title: `Project ${String(index).padStart(2, '0')}`,
+    title: names[index] ?? `Project ${String(index).padStart(2, '0')}`,
     tileRatio: slot.tileRatio,
     tileFull: slot.tileFull,
     hero: heroes[index],
+    content: content[index],
   };
 });
 
