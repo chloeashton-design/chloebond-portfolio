@@ -81,8 +81,21 @@ img {
   animation: pageEnter 0.55s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 
+/* Scroll reveal. 'idle' carries no styles, so content is visible whenever the
+   script hasn't run. See components/Reveal.tsx. */
+[data-reveal='pending'] {
+  opacity: 0;
+  transform: translateY(16px);
+}
+[data-reveal='in'] {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
+  [data-reveal] { opacity: 1 !important; transform: none !important; }
 }
 
 /* Placeholder image frame -- stands in for final photography/imagery */

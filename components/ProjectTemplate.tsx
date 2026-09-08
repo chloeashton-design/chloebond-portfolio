@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import PlaceholderImage from './PlaceholderImage';
 import HeroLoop from './HeroLoop';
+import Reveal from './Reveal';
 import type { Project, ProjectContent } from '../lib/projects';
 import styles from './ProjectTemplate.module.css';
 
@@ -59,19 +60,25 @@ export default function ProjectTemplate({ project, nextProject }: { project: Pro
 
       {project.gallery ? (
         project.gallery.map((row, i) => (
-          <section key={i} className={styles.galleryRow} data-columns={row.length}>
-            {row.map((image) => (
-              <Image
-                key={image.src}
-                src={image.src}
-                alt={image.alt}
-                width={image.width}
-                height={image.height}
-                className={styles.galleryImage}
-                sizes={row.length > 1 ? '(max-width: 700px) 100vw, 45vw' : '(max-width: 700px) 100vw, 90vw'}
-              />
-            ))}
-          </section>
+          <Reveal key={i}>
+            <section className={styles.galleryRow} data-columns={row.length}>
+              {row.map((item) =>
+                item.kind === 'video' ? (
+                  <HeroLoop key={item.src} hero={item} ratio={item.ratio} />
+                ) : (
+                  <Image
+                    key={item.src}
+                    src={item.src}
+                    alt={item.alt}
+                    width={item.width}
+                    height={item.height}
+                    className={styles.galleryImage}
+                    sizes={row.length > 1 ? '(max-width: 700px) 100vw, 45vw' : '(max-width: 700px) 100vw, 90vw'}
+                  />
+                ),
+              )}
+            </section>
+          </Reveal>
         ))
       ) : (
         <>

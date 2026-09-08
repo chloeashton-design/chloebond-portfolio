@@ -1,7 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  async redirects() {
+    return [
+      // Project 2 moved from its numbered slug to a named one. Kept so any
+      // link shared while the old URL was live still lands on the project.
+      { source: '/work/project-02', destination: '/work/proton', permanent: true },
+    ];
+  },
 };
 
 export default nextConfig;

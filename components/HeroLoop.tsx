@@ -103,11 +103,12 @@ export default function HeroLoop({
         height={1080}
         aria-label={hero.alt}
       >
-        <source src={`${hero.src}.webm`} type="video/webm" />
-        <source src={`${hero.src}.mp4`} type="video/mp4" />
+        {(hero.sources ?? ['webm', 'mp4']).map((format) => (
+          <source key={format} src={`${hero.src}.${format}`} type={`video/${format}`} />
+        ))}
         {/* Fallback for browsers with no video support at all. Hidden under
             reduced motion, where the poster background shows through instead. */}
-        {!reduced && (
+        {!reduced && (hero.gifFallback ?? true) && (
           // eslint-disable-next-line @next/next/no-img-element
           <img className={styles.media} src={`${hero.src}.gif`} width={960} height={540} alt={hero.alt} />
         )}

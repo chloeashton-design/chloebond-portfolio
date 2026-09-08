@@ -12,6 +12,14 @@ export interface HeroLoop {
   posterTime?: number;
   /** Holding colour shown before the poster paints. Pick it out of the artwork. */
   tint?: string;
+  /**
+   * Which video files sit alongside src, in preference order. Defaults to
+   * webm then mp4. Flat vector artwork sometimes encodes smaller as H.264 than
+   * VP9, in which case shipping mp4 alone saves the visitor a download.
+   */
+  sources?: Array<'webm' | 'mp4'>;
+  /** Whether a .gif sits alongside src, for browsers with no video at all. */
+  gifFallback?: boolean;
 }
 
 /** Real copy for a project. Without an entry, the page keeps its placeholders. */
@@ -25,17 +33,26 @@ export interface ProjectContent {
 
 /** One piece of project artwork, rendered at its own intrinsic ratio. */
 export interface ProjectImage {
+  kind?: 'image';
   src: string;
   alt: string;
   width: number;
   height: number;
 }
 
+/** A silent looping clip sitting in the gallery, played like the hero loop. */
+export interface ProjectVideo extends HeroLoop {
+  kind: 'video';
+  ratio: '16/9' | '4/5' | '1/1';
+}
+
+export type GalleryItem = ProjectImage | ProjectVideo;
+
 /**
- * The image sequence below a project's overview. Each inner array is one row:
- * a single image runs full width, two sit side by side.
+ * The media sequence below a project's overview. Each inner array is one row:
+ * a single item runs full width, two sit side by side.
  */
-export type ProjectGallery = ProjectImage[][];
+export type ProjectGallery = GalleryItem[][];
 
 export interface Project {
   slug: string;
@@ -60,6 +77,12 @@ const TOTAL_PROJECTS = 8;
 // Real project names. Anything unnamed falls back to "Project 0N".
 const names: Record<number, string> = {
   2: 'Proton.ai',
+};
+
+// URL slugs for named projects. Unlisted projects keep "project-0N".
+// next.config.ts redirects the old numbered path so shared links keep working.
+const slugs: Record<number, string> = {
+  2: 'proton',
 };
 
 const content: Record<number, ProjectContent> = {
@@ -112,6 +135,20 @@ const galleries: Record<number, ProjectGallery> = {
     ],
     [
       {
+        kind: 'video',
+        src: '/media/project-02/web-graphics',
+        alt: 'A screen recording scrolling down the Proton.ai website, past the hero, product illustrations, feature sections and a customer quote.',
+        ratio: '16/9',
+        // mp4 only: this footage encodes smaller as H.264 than as VP9, so a
+        // webm would just be a bigger file for the browser to prefer.
+        sources: ['mp4'],
+        gifFallback: false,
+        posterTime: 2,
+        tint: '#e9ecf6', // the site's pale grey chrome
+      },
+    ],
+    [
+      {
         src: '/media/project-02/proton-lisbon-offsite-tee.webp',
         alt: 'White t-shirt printed in blue with a Lisbon panel: azulejo tiles, the 25 de Abril bridge, Belém Tower, a tram, and the word LISBON.',
         width: 1600,
@@ -159,7 +196,7 @@ export const projects: Project[] = Array.from({ length: TOTAL_PROJECTS }, (_, i)
   const index = i + 1;
   const slot = tileOverrides[index] ?? pattern[i % pattern.length];
   return {
-    slug: `project-${String(index).padStart(2, '0')}`,
+    slug: slugs[index] ?? `project-${String(index).padStart(2, '0')}`,
     index,
     title: names[index] ?? `Project ${String(index).padStart(2, '0')}`,
     tileRatio: slot.tileRatio,
