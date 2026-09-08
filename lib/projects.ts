@@ -82,14 +82,140 @@ export interface Project {
 const TOTAL_PROJECTS = 9;
 
 // Real project names. Anything unnamed falls back to "Project 0N".
-const names: Record<number, string> = {};
+const names: Record<number, string> = {
+  1: 'Rewind Website Redesign',
+  2: 'Rewind Brand Refresh',
+  3: 'Bonds Decor Rebrand',
+  4: 'Wild Fauna',
+  5: 'Rückify ESG Report',
+  6: 'Rückify Brand Evolution',
+  7: 'Rewind Hero Animations',
+  8: 'Sole Sneaker Club',
+  9: 'Tweed Campaigns',
+};
 
 // URL slugs for named projects. Unlisted projects keep "project-0N".
 // When a project takes a named slug, add a redirect in next.config.ts from its
 // numbered path so any link shared while that URL was live still resolves.
 const slugs: Record<number, string> = {};
 
-const content: Record<number, ProjectContent> = {};
+const content: Record<number, ProjectContent> = {
+  1: {
+    intro: [
+      'As Rewind evolved from a Shopify-focused backup tool into an enterprise business continuity platform, the website still reflected the company it had been. With four distinct audiences across eCommerce, DevOps, Accounting, and Productivity, the redesign needed to make Rewind’s new positioning feel clearer, more confident, and more relevant.',
+      'I led the redesign end to end, owning both the design and the project plan behind it. I worked closely with our PMM and development agency, building the site as a flexible system rather than a collection of one-off pages.',
+      'A key idea I proposed, and the executive team backed, was an adaptive homepage with five views: one general and one for each vertical. Visitors could switch audiences and see the messaging and featured tools update around their needs, making the experience immediately more relevant.',
+      'The result was a more confident, scalable website that better matched Rewind’s enterprise positioning and gave each audience a clearer path into the product. The new system also made it easier for the team to evolve pages, messaging, and vertical-specific content over time.',
+    ],
+    client: 'Rewind',
+    year: '2026',
+    role: 'Senior Graphic Designer (design lead + project lead)',
+    scope: 'Web Design, UX',
+    tools: 'Figma, Claude',
+  },
+  2: {
+    intro: [
+      'Rewind’s market had shifted. AI-driven workflows and automation made protecting business-critical SaaS apps a top priority for prospects, and we were no longer just a backup tool. We needed to become the SaaS resilience platform for enterprise companies, but our startup-era look and feel didn’t match the size of deals we wanted to close.',
+      'I advocated for the redesign and gathered input from every essential stakeholder, including executives, on what the new Rewind should look like. From that input, I developed the creative direction: a darker palette, cleaner typography, and an ownable photography direction that moved away from playful startup illustrations toward something confident and polished, while staying true to Rewind’s essence. I pitched the direction to the executive team and got 100% alignment.',
+      'To help the team adopt the new brand quickly, I built the brand guidelines as a live microsite in Claude instead of a static PDF, so internal and external partners could reference it directly. I also built a full design system in Claude Design that let the team self-serve slide decks, social content, and other production work without design input on every asset, freeing design time for creative thinking and strategy.',
+      'The rebrand landed with full executive alignment and minimal rounds of revisions, which mattered given how many senior stakeholders had a stake in it. The live guidelines microsite and self-serve design system let the new brand scale across the org, internally and externally, without design becoming a bottleneck. It gave Rewind the confident, enterprise-ready look the business needed to compete for larger deals.',
+    ],
+    client: 'Rewind',
+    year: '2026',
+    role: 'Senior Graphic Designer (brand lead)',
+    scope: 'Brand, Strategy',
+    tools: 'Figma, Adobe Illustrator, Adobe Photoshop, Claude, Claude Design',
+  },
+  3: {
+    intro: [
+      'Bonds Decor is a local, family-owned home decor and paint retailer heading into their 100th anniversary in 2027. Their existing brand felt generic and modern, nothing like a business with a century of history behind it. They brought me in to rebuild it from the ground up ahead of their centennial celebration.',
+      'I stripped back the modern look and rebuilt the identity around nostalgia and heritage: a new logo, colour palette, and typography grounded in a warm, vintage-inspired aesthetic. The direction draws on a century of craftsmanship and connection, aiming for something that feels established and enduring rather than trendy.',
+      'Since paint is their primary product, I built the logo around a paintbrush with three strokes representing red, blue, and yellow, the three primary colours behind every other colour. I also designed a dedicated lockup for their 100th anniversary to show the flexibility of the new mark.',
+      'The client loved the direction enough to build the rest of the business around it. The new identity now extends to a store sign, a truck wrap, and the design of their new store opening, all built around the art direction I set. I’m continuing on as an ongoing design consultant for their marketing team, rolling the brand out across their website, ad campaigns, email signatures, and signage.',
+    ],
+    client: 'Bonds Decor',
+    year: '2026',
+    role: 'Freelance Graphic Designer (Chloe Bond Design)',
+    scope: 'Brand, Identity',
+    tools: 'Adobe Illustrator, Adobe InDesign, Adobe Photoshop, ChatGPT',
+  },
+  4: {
+    intro: [
+      'Wild Fauna is a forest and nature school in Ottawa’s east end that teaches kids through outdoor exploration and play. They came to me for a logo redesign since a full rebrand wasn’t in their budget. I believed in their mission enough to do the full rebrand anyway.',
+      'I built a complete brand package: logo, colour palette, typography, doodles and icons, and real examples of the brand in use.',
+      'I also helped them define brand pillars, giving them a clear point of view for how they talk about Wild Fauna and a strategy for how they show up in the world, plus ongoing support to help them carry it forward.',
+      'The client loved it immediately and started rolling the new logo into their Facebook profile and cover photos right away, with a full announcement planned for the following month. In their words: “It does not feel like enough for the beautiful work you created and how perfectly you captured our vision.” They’ve since asked to stay connected for future work.',
+    ],
+    client: 'Wild Fauna',
+    year: '2026',
+    role: 'Freelance Graphic Designer (Chloe Bond Design)',
+    scope: 'Brand, Identity',
+    tools: 'Adobe Illustrator, Adobe InDesign, Adobe Photoshop, ChatGPT',
+  },
+  5: {
+    intro: [
+      'Rückify was an online peer-to-peer marketplace for renting anything, built around the sharing economy. Ahead of a major acquisition, the team needed an in-depth ESG report that could double as a pitch deck, making the case for Rückify’s mission, vision, and social, economic, and governance potential to investors.',
+      'My role was to build a clean, data-driven design system that reflected Rückify’s brand while keeping the report clear and credible for investors. I led creative direction and execution across the full report: layout and typesetting for more than 60 pages, data visualization and infographics to simplify complex information, and image treatments and colour systems to keep everything consistent.',
+      'I worked closely with our Senior Content Marketing Manager and an external content team from PwC to build the report from the ground up, aligning content, design, and strategy into one cohesive story. We ran multiple rounds of review with executive stakeholders, refining both narrative and visuals as we went.',
+      'Shortly after the report went out, Rückify closed an additional $7M+ capital raise. I can’t say the report alone drove that, but it helped position the company clearly enough for investors to see where their money should go. Internally, it landed just as well: the executive team and employees got genuinely excited about where Rückify was headed, giving the company a shared vision and a real morale boost.',
+    ],
+    client: 'Rückify',
+    year: '2021',
+    role: 'Senior Graphic Designer',
+    scope: 'Editorial, Layout',
+    tools: 'Adobe InDesign, Adobe Illustrator, Adobe Photoshop',
+  },
+  6: {
+    intro: [
+      'Rückify was growing fast and had only ever had a contractor handle the logo and basic foundational design work. They brought me onto the marketing team to actually evolve the brand and bring the look and feel up to match where the company was headed.',
+      'As a lean team, I had a lot of creative control and was the main point of contact for all things brand and creative. I built out brand guidelines, custom iconography, and image treatments, and set the tone for the brand’s overall creative direction, both the look and feel and the copy.',
+      'I designed email templates covering rental booking confirmations, welcome emails, and trending items, and designed in-store signage for partner retailers offering rentable gear, like ski equipment, through Rückify.',
+      'The brand evolved into a more trusted, legitimate-looking rental marketplace, which led to more sign-ups and bookings.',
+    ],
+    client: 'Rückify',
+    year: '2021',
+    role: 'Senior Graphic Designer',
+    scope: 'Brand, In-house',
+    tools: 'Adobe Illustrator, Adobe Photoshop, Adobe InDesign, Adobe XD',
+  },
+  7: {
+    intro: [
+      'Rewind’s hero graphics were static product UI screenshots, which didn’t land well with our less technical audiences, like Shopify store owners and accountants using QuickBooks Online. The product itself felt complex, and I proposed we create graphics that actually showed what Rewind does instead of just showing the interface.',
+      'I took the initiative to move to an animated approach, since it let us visualize the real value simply: Rewind takes your data, backs it up, and makes it recoverable. I designed the animations and storyboarded how the movement needed to work, then partnered with our in-house motion designer, Felix Pennell, to bring them to life.',
+      'The result was a consistent hero animation treatment that made Rewind’s capabilities easy to understand at a glance. We A/B tested the new animations against the old static graphics, and the animations won.',
+    ],
+    client: 'Rewind',
+    year: '2023',
+    role: 'Senior Graphic Designer',
+    scope: 'Animation, Illustration',
+    tools: 'Adobe Illustrator, Adobe After Effects',
+  },
+  8: {
+    intro: [
+      'Sole Sneaker Club is a digital fashion NFT project raising funds to provide new shoes to underprivileged youth. They approached me to build a youthful, nostalgic, playful brand identity for the project. NFTs were still a new concept to a lot of people, so I wanted the identity to feel relevant without feeling unfamiliar.',
+      'To ground the identity in something familiar, I pulled from the Y2K fashion era that was trending at the time, referencing brands like Von Dutch, Juicy Couture, Phat Farm, Ed Hardy, and Paul Frank. I developed the creative strategy, logo, and custom illustration work that carried that nostalgic, playful feel across the brand, including merch designs for their first printed collection.',
+      'The client was thrilled with the brand identity and merch designs. The first merch collection sold out in three days.',
+    ],
+    client: 'Sole Sneaker Club',
+    year: '2023',
+    role: 'Freelance Graphic Designer (Chloe Bond Design)',
+    scope: 'Brand, Identity',
+    tools: 'Adobe Creative Suite (Illustrator, InDesign, Photoshop)',
+  },
+  9: {
+    intro: [
+      'Tweed needed a series of retail campaigns that could work across both digital and print, from social content to in-store signage across Canada. I worked on three: Holiday, Valentine’s Day, and a campaign celebrating Tweed’s TerraCycle partnership reaching one million pieces of packaging recycled. Each needed to feel approachable, celebratory, and distinctly Tweed while holding together across a wide range of formats.',
+      'I worked closely with our art director and photography studio across all three campaigns, helping develop concepts, style props, support the shoots, and retouch the final imagery. From there, I designed the full campaign systems across social, retail signage, and in-store applications.',
+      'For Holiday, cannabis became part of the seasonal visual language, appearing as a gift bow and mistletoe across store windows nationwide. Valentine’s Day paired Tweed’s cannabis-infused milk chocolate with a bud bouquet, while the TerraCycle campaign used the one-million-piece milestone as the creative centrepiece to spotlight the brand’s environmental commitment.',
+      'The campaigns rolled out across retail and digital channels, supporting product launches, seasonal moments, and brand initiatives at a national scale. They also gave me hands-on experience carrying a campaign from concept and shoot through to final execution across print and digital, a foundation that shaped how I approached campaign work from then on.',
+    ],
+    client: 'Tweed (Canopy Growth)',
+    year: '2019',
+    role: 'Graphic Designer',
+    scope: 'Campaign, Retail',
+    tools: 'Adobe Photoshop, Adobe Illustrator, Adobe InDesign',
+  },
+};
 
 // Projects whose hero slot has real motion rather than a placeholder.
 const heroes: Record<number, HeroLoop> = {};
