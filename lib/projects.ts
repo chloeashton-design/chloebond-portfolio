@@ -61,9 +61,8 @@ export interface Project {
   slug: string;
   index: number;
   title: string;
-  /** aspect ratio + layout used for this project's tile in the home work grid */
-  tileRatio: '16/9' | '4/5';
-  tileFull: boolean;
+  /** The wide tile in its row of three. Its ratio sets that row's height. */
+  tileLarge: boolean;
   /**
    * When set, this loop replaces the placeholder in both of the project's slots:
    * its tile on the home work grid, and the banner inside the project page.
@@ -80,7 +79,7 @@ export interface Project {
   gallery?: ProjectGallery;
 }
 
-const TOTAL_PROJECTS = 8;
+const TOTAL_PROJECTS = 9;
 
 // Real project names. Anything unnamed falls back to "Project 0N".
 const names: Record<number, string> = {
@@ -311,29 +310,20 @@ const galleries: Record<number, ProjectGallery> = {
   ],
 };
 
-const pattern: Array<{ tileRatio: '16/9' | '4/5'; tileFull: boolean }> = [
-  { tileRatio: '16/9', tileFull: true },
-  { tileRatio: '4/5', tileFull: false },
-  { tileRatio: '4/5', tileFull: false },
-];
-
-// Deliberate exceptions to the repeating 3-tile pattern. Projects 2 and 3 run
-// landscape while staying side by side; project 8 closes the grid full-bleed.
-const tileOverrides: Record<number, { tileRatio: '16/9' | '4/5'; tileFull: boolean }> = {
-  2: { tileRatio: '16/9', tileFull: false },
-  3: { tileRatio: '16/9', tileFull: false },
-  8: { tileRatio: '16/9', tileFull: true },
-};
+/**
+ * Three projects per row, one of them wide. The wide slot walks across the
+ * grid — first in row one, middle in row two, last in row three — so the
+ * emphasis travels diagonally down the page.
+ */
+const LARGE_TILES = new Set([1, 5, 9]);
 
 export const projects: Project[] = Array.from({ length: TOTAL_PROJECTS }, (_, i) => {
   const index = i + 1;
-  const slot = tileOverrides[index] ?? pattern[i % pattern.length];
   return {
     slug: slugs[index] ?? `project-${String(index).padStart(2, '0')}`,
     index,
     title: names[index] ?? `Project ${String(index).padStart(2, '0')}`,
-    tileRatio: slot.tileRatio,
-    tileFull: slot.tileFull,
+    tileLarge: LARGE_TILES.has(index),
     hero: heroes[index],
     heroImage: heroImages[index],
     content: content[index],

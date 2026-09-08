@@ -25,7 +25,7 @@ export default function HomePage() {
           <Link
             key={project.slug}
             href={`/work/${project.slug}`}
-            className={`${styles.tile} ${project.tileFull ? styles.tileFull : styles.tileHalf}`}
+            className={`${styles.tile} ${project.tileLarge ? styles.tileLarge : styles.tileSmall}`}
             aria-label={project.title}
           >
             <span className={styles.tileMeta}>
@@ -40,24 +40,24 @@ export default function HomePage() {
                 </span>
               </span>
             </span>
-            {project.hero ? (
-              <HeroLoop hero={project.hero} ratio={project.tileRatio} />
-            ) : project.heroImage ? (
-              <Image
-                src={project.heroImage.src}
-                alt={project.heroImage.alt}
-                width={project.heroImage.width}
-                height={project.heroImage.height}
-                className={styles.tileImage}
-                sizes={project.tileFull ? '(max-width: 700px) 100vw, 90vw' : '(max-width: 700px) 100vw, 45vw'}
-              />
-            ) : (
-              <PlaceholderImage
-                ratio={project.tileRatio}
-                label={project.title}
-                sublabel={project.tileRatio === '16/9' ? 'landscape 16 : 9' : 'portrait 4 : 5'}
-              />
-            )}
+            {/* The media is stretched to its row's height and cropped to fill,
+                so all three tiles in a row line up regardless of the artwork's
+                own ratio. */}
+            <span className={styles.tileMedia}>
+              {project.hero ? (
+                <HeroLoop hero={project.hero} />
+              ) : project.heroImage ? (
+                <Image
+                  src={project.heroImage.src}
+                  alt={project.heroImage.alt}
+                  width={project.heroImage.width}
+                  height={project.heroImage.height}
+                  sizes={project.tileLarge ? '(max-width: 700px) 100vw, 50vw' : '(max-width: 700px) 100vw, 25vw'}
+                />
+              ) : (
+                <PlaceholderImage ratio="16/9" label={project.title} />
+              )}
+            </span>
           </Link>
         ))}
       </section>
