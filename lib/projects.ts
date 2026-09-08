@@ -119,6 +119,22 @@ const galleries: Record<number, ProjectGallery> = {
         height: 1080,
       },
     ],
+    // Headers sit directly above the mockup they belong to, so this row's
+    // order mirrors the newsletters below: Playbook left, Dispatch right.
+    [
+      {
+        src: '/media/project-02/proton-playbook-header.webp',
+        alt: 'The Proton Playbook newsletter header: bold blue type beside a grinning lime delivery truck character holding a clipboard of plays, on a pale grid.',
+        width: 1440,
+        height: 600,
+      },
+      {
+        src: '/media/project-02/proton-dispatch-header.webp',
+        alt: "The Distributor's Dispatch newsletter header: white type over a night-time blue scene of warehouses, forklifts, delivery trucks and a plane overhead.",
+        width: 1440,
+        height: 600,
+      },
+    ],
     [
       {
         src: '/media/project-02/proton-newsletter1.webp',
