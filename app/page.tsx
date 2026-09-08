@@ -26,7 +26,7 @@ export default function HomePage() {
             key={project.slug}
             href={`/work/${project.slug}`}
             className={`${styles.tile} ${project.tileFull ? styles.tileFull : styles.tileHalf}`}
-            aria-label={`${project.title} — see more`}
+            aria-label={project.title}
           >
             {project.hero ? (
               <HeroLoop hero={project.hero} ratio={project.tileRatio} />
@@ -46,8 +46,9 @@ export default function HomePage() {
                 sublabel={project.tileRatio === '16/9' ? 'landscape 16 : 9' : 'portrait 4 : 5'}
               />
             )}
-            <span className={styles.tileOverlay} aria-hidden="true">
-              See more &rarr;
+            <span className={styles.tileMeta}>
+              <span className={styles.tileIndex}>{String(project.index).padStart(2, '0')}</span>
+              <span className={styles.tileName}>{project.title}</span>
             </span>
           </Link>
         ))}

@@ -55,29 +55,34 @@
   min-width: 0;
 }
 
-/* Hover affordance: a paper scrim carrying the invitation to click through.
-   Replaces the old whole-tile opacity dim, which would have washed this out. */
-.tileOverlay {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
+/* Eyebrow under each tile: index then project name, always visible rather
+   than hidden behind a hover state, so it reads on touch as well. */
+.tileMeta {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.82);
-  color: var(--ink);
-  font-family: var(--font-serif);
-  font-size: clamp(26px, 3.4cqw, 56px);
-  line-height: 1;
-  letter-spacing: -0.02em;
-  opacity: 0;
-  transition: opacity 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
-  pointer-events: none;
+  align-items: baseline;
+  gap: clamp(8px, 1.1cqw, 15px);
+  margin-top: clamp(10px, 1.2cqw, 16px);
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: clamp(9px, 0.95cqw, 10.5px);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
-.tile:hover .tileOverlay,
-.tile:focus-visible .tileOverlay {
-  opacity: 1;
+.tileIndex {
+  color: var(--ink-6);
+}
+
+.tileName {
+  color: var(--ink);
+  transition: color 0.25s ease;
+}
+
+/* The only hover cue left: the name picks up the accent, matching how
+   links behave everywhere else on the site. */
+.tile:hover .tileName,
+.tile:focus-visible .tileName {
+  color: var(--accent);
 }
 
 .tileImage {
