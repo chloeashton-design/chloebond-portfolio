@@ -8,8 +8,9 @@ import styles from './ProjectTemplate.module.css';
 
 /** Shown by any project that doesn't have real copy yet. */
 const placeholder: ProjectContent = {
-  intro:
+  intro: [
     'Placeholder introduction. A short blurb about the role and the work will live here — what the project was, what it needed, and what was delivered. The column is set to a comfortable measure so the final copy can be longer or shorter without the layout breaking.',
+  ],
   client: 'Placeholder',
   year: '2026',
   role: 'Placeholder',
@@ -30,13 +31,27 @@ export default function ProjectTemplate({ project, nextProject }: { project: Pro
 
       {project.hero ? (
         <HeroLoop hero={project.hero} className={styles.heroLoop} />
+      ) : project.heroImage ? (
+        <Image
+          src={project.heroImage.src}
+          alt={project.heroImage.alt}
+          width={project.heroImage.width}
+          height={project.heroImage.height}
+          className={styles.heroImage}
+          sizes="100vw"
+          priority
+        />
       ) : (
         <PlaceholderImage ratio="16/9" label="Project hero" sublabel="landscape 16 : 9" className={styles.hero} />
       )}
 
       <section className={styles.overview}>
         <div className={styles.intro}>
-          <p className={styles.introP}>{content.intro}</p>
+          {content.intro.map((paragraph, i) => (
+            <p key={i} className={styles.introP}>
+              {paragraph}
+            </p>
+          ))}
         </div>
         <div className={styles.metaTable}>
           <div className={styles.metaRow}>
@@ -73,7 +88,13 @@ export default function ProjectTemplate({ project, nextProject }: { project: Pro
                     width={item.width}
                     height={item.height}
                     className={styles.galleryImage}
-                    sizes={row.length > 1 ? '(max-width: 700px) 100vw, 45vw' : '(max-width: 700px) 100vw, 90vw'}
+                    sizes={
+                      row.length === 1
+                        ? '(max-width: 700px) 100vw, 90vw'
+                        : row.length === 2
+                          ? '(max-width: 700px) 100vw, 45vw'
+                          : '(max-width: 700px) 100vw, 30vw'
+                    }
                   />
                 ),
               )}

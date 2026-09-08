@@ -37,6 +37,13 @@
   padding: 0;
 }
 
+/* A still hero, filling the same edge-to-edge banner slot. */
+.heroImage {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .overview {
   padding: clamp(28px, 3.6cqw, 56px) clamp(20px, 4.5cqw, 72px);
   display: grid;
@@ -60,6 +67,9 @@
   line-height: 1.55;
   max-width: 40em;
   text-wrap: pretty;
+}
+.introP + .introP {
+  margin-top: 1.1em;
 }
 
 .metaTable {
@@ -103,6 +113,10 @@
 
 .galleryRow[data-columns='2'] {
   grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+}
+
+.galleryRow[data-columns='3'] {
+  grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
 }
 
 .galleryImage {

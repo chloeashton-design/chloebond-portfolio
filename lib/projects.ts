@@ -24,7 +24,8 @@ export interface HeroLoop {
 
 /** Real copy for a project. Without an entry, the page keeps its placeholders. */
 export interface ProjectContent {
-  intro: string;
+  /** One entry per paragraph. */
+  intro: string[];
   client: string;
   year: string;
   role: string;
@@ -66,6 +67,11 @@ export interface Project {
    * its tile on the home work grid, and the banner inside the project page.
    */
   hero?: HeroLoop;
+  /**
+   * A still hero, for projects whose lead artwork isn't motion. Fills the same
+   * two slots as `hero`: the work-grid tile and the project page banner.
+   */
+  heroImage?: ProjectImage;
   /** When set, replaces the placeholder intro and metadata on the project page. */
   content?: ProjectContent;
   /** When set, replaces the placeholder image rows on the project page. */
@@ -77,22 +83,35 @@ const TOTAL_PROJECTS = 8;
 // Real project names. Anything unnamed falls back to "Project 0N".
 const names: Record<number, string> = {
   2: 'Proton.ai',
+  8: 'Hi. Society',
 };
 
 // URL slugs for named projects. Unlisted projects keep "project-0N".
 // next.config.ts redirects the old numbered path so shared links keep working.
 const slugs: Record<number, string> = {
   2: 'proton',
+  8: 'hi-society',
 };
 
 const content: Record<number, ProjectContent> = {
   2: {
-    intro:
+    intro: [
       'I’ve been a design partner to Proton.ai, an AI platform for distributors, since 2025. Working closely with their marketing team, I provide ongoing creative support across illustration, art direction and design consultation, website graphics, and employee merchandise for team offsites, celebrations, and everything in between.',
+    ],
     client: 'Proton.ai',
     year: '2025-2026',
     role: 'Freelance graphic designer',
     scope: 'Art direction, illustration, graphic design',
+  },
+  8: {
+    intro: [
+      'Hi. Society is a leading cannabis education community for retailers and budtenders across Canada. I was brought in to elevate an existing agency-created identity and reposition the brand around a more polished, exclusive experience, one that reflected the credibility of an accredited course designed to help budtenders build professional expertise.',
+      'I led the art direction and brand design, shaping the new visual direction and overall identity system, with illustration by my talented colleague Chelle Lorenzen.',
+    ],
+    client: 'Canopy Growth',
+    year: '2020',
+    role: 'Graphic Designer',
+    scope: 'Art Direction, Brand Design',
   },
 };
 
@@ -104,6 +123,18 @@ const heroes: Record<number, HeroLoop> = {
     // Mid-idle, truck parked at the bay. The loop's 0s frame is an empty street.
     posterTime: 3,
     tint: '#3736ff', // the plate's sky blue
+  },
+};
+
+// Still heroes, for projects whose lead artwork isn't motion.
+const heroImages: Record<number, ProjectImage> = {
+  8: {
+    src: '/media/project-08/hero-hands-16x9.webp',
+    alt: 'Three raised hands counting one, two, three against a black ground ringed with concentric circles, each hand printed in pink, teal and coral over a coloured disc.',
+    // Cropped to 16:9 from the 1200x897 original, keeping the top of the frame
+    // so the halo and fingertips stay clear and the forearms go instead.
+    width: 1200,
+    height: 675,
   },
 };
 
@@ -197,6 +228,85 @@ const galleries: Record<number, ProjectGallery> = {
       },
     ],
   ],
+  8: [
+    [
+      {
+        kind: 'video',
+        src: '/media/project-08/brandguidelines',
+        alt: 'The Hi. Society brand guidelines cycling through its pages, opening on a pink-to-teal gradient cover set beside a close-up of a mouth exhaling smoke.',
+        ratio: '16/9',
+        sources: ['mp4'],
+        gifFallback: false,
+        tint: '#0d0d0d', // the deck's near-black ground
+      },
+    ],
+    [
+      {
+        src: '/media/project-08/businesscards.webp',
+        alt: 'Black Hi. Society business cards laid out in a repeating diagonal grid, each carrying the wordmark and a pink-to-teal gradient sphere.',
+        width: 1920,
+        height: 813,
+      },
+    ],
+    [
+      {
+        src: '/media/project-08/graphic1.webp',
+        alt: 'Three raised hands counting one, two, three in pink, teal and coral, each over a coloured disc on a black ground ringed with concentric circles.',
+        width: 1200,
+        height: 897,
+      },
+      {
+        src: '/media/project-08/graphic2.webp',
+        alt: 'A teal glass pipe resting on a magenta halftone panel inside a black circle, over a repeating pattern of red lighters.',
+        width: 1200,
+        height: 890,
+      },
+      {
+        src: '/media/project-08/graphic3.webp',
+        alt: 'Pink and white cannabis leaves silhouetted against a black and teal sky with red suns and white sunbeams.',
+        width: 1200,
+        height: 901,
+      },
+    ],
+    [
+      {
+        src: '/media/project-08/pins.webp',
+        alt: 'Enamel pins on gradient Hi. Society backing cards — a cannabis leaf, a digital clock reading 4:20 and a bong — captioned "Passion comes in all vapes and sizes."',
+        width: 1180,
+        height: 1180,
+      },
+      {
+        src: '/media/project-08/poster.webp',
+        alt: 'A black poster pasted on a city wall reading WEED. KUSH. GANJA. BROCCOLI. CANNABIS. in teal, above the line "Whatever you call it, get to know it."',
+        width: 714,
+        height: 714,
+      },
+    ],
+    [
+      {
+        src: '/media/project-08/courses.webp',
+        alt: 'Three course cards from the Hi. Society learning platform — Cannabis around the world, Product training, and The fundamentals of recreational cannabis — each showing a duration and a start button.',
+        width: 2000,
+        height: 820,
+      },
+    ],
+    [
+      {
+        src: '/media/project-08/icons.webp',
+        alt: 'Eight Hi. Society icons in pink and teal on grey: an eye, two pills, a brain, a clock reading 4:20, a lighter, a cannabis leaf, a vape and a bong.',
+        width: 1920,
+        height: 1080,
+      },
+    ],
+    [
+      {
+        src: '/media/project-08/social.webp',
+        alt: 'The Hi. Society Instagram profile shown on a phone, its grid alternating brand graphics, illustrations and quote posts.',
+        width: 1920,
+        height: 1080,
+      },
+    ],
+  ],
 };
 
 const pattern: Array<{ tileRatio: '16/9' | '4/5'; tileFull: boolean }> = [
@@ -223,6 +333,7 @@ export const projects: Project[] = Array.from({ length: TOTAL_PROJECTS }, (_, i)
     tileRatio: slot.tileRatio,
     tileFull: slot.tileFull,
     hero: heroes[index],
+    heroImage: heroImages[index],
     content: content[index],
     gallery: galleries[index],
   };

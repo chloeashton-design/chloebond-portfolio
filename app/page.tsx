@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import PlaceholderImage from '../components/PlaceholderImage';
 import HeroLoop from '../components/HeroLoop';
 import HandNote from '../components/HandNote';
@@ -29,6 +30,15 @@ export default function HomePage() {
           >
             {project.hero ? (
               <HeroLoop hero={project.hero} ratio={project.tileRatio} />
+            ) : project.heroImage ? (
+              <Image
+                src={project.heroImage.src}
+                alt={project.heroImage.alt}
+                width={project.heroImage.width}
+                height={project.heroImage.height}
+                className={styles.tileImage}
+                sizes={project.tileFull ? '(max-width: 700px) 100vw, 90vw' : '(max-width: 700px) 100vw, 45vw'}
+              />
             ) : (
               <PlaceholderImage
                 ratio={project.tileRatio}
