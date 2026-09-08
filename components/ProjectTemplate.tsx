@@ -15,6 +15,7 @@ const placeholder: ProjectContent = {
   year: '2026',
   role: 'Placeholder',
   scope: 'Category 01, Category 02',
+  tools: 'Placeholder',
 };
 
 export default function ProjectTemplate({ project, nextProject }: { project: Project; nextProject: Project }) {
@@ -70,6 +71,12 @@ export default function ProjectTemplate({ project, nextProject }: { project: Pro
             <span className={styles.metaRowKey}>Scope</span>
             <span className={styles.metaRowVal}>{content.scope}</span>
           </div>
+          {content.tools ? (
+            <div className={styles.metaRow}>
+              <span className={styles.metaRowKey}>Tools</span>
+              <span className={styles.metaRowVal}>{content.tools}</span>
+            </div>
+          ) : null}
         </div>
       </section>
 

@@ -30,6 +30,8 @@ export interface ProjectContent {
   year: string;
   role: string;
   scope: string;
+  /** Omitted rather than guessed: the row only renders once a project has one. */
+  tools?: string;
 }
 
 /** One piece of project artwork, rendered at its own intrinsic ratio. */
