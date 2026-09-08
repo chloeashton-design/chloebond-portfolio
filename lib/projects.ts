@@ -107,8 +107,8 @@ const heroes: Record<number, HeroLoop> = {
   },
 };
 
-// Dimensions are the supplied artwork's own, scaled down for web but never
-// re-cropped, so each image keeps the ratio it was designed at.
+// Dimensions are the supplied artwork's own, scaled down for web. Ratios are
+// kept as designed except where a row needs matching shapes -- see the pin.
 const galleries: Record<number, ProjectGallery> = {
   2: [
     [
@@ -163,10 +163,13 @@ const galleries: Record<number, ProjectGallery> = {
     ],
     [
       {
-        src: '/media/project-02/proton-pin.webp',
+        src: '/media/project-02/proton-pin-square.webp',
         alt: 'Enamel pin on a navy backing card reading "Build the dream with Proton". The pin is a row of keycaps spelling out "Eat. Sleep. Vibe code. Repeat."',
+        // Squared off to match the mug beside it. Cropped from the 3262x3000
+        // source rather than padded, since its lime ground is a soft gradient
+        // that a flat fill would band against.
         width: 2000,
-        height: 1839,
+        height: 2000,
       },
       {
         src: '/media/project-02/proton-team-merch1.webp',
