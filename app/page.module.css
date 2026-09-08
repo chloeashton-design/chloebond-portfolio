@@ -55,13 +55,13 @@
   min-width: 0;
 }
 
-/* Eyebrow under each tile: index then project name, always visible rather
-   than hidden behind a hover state, so it reads on touch as well. */
+/* Eyebrow above each tile: index / project name. Always visible rather than
+   hidden behind a hover state, so it reads on touch as well. */
 .tileMeta {
   display: flex;
   align-items: baseline;
-  gap: clamp(8px, 1.1cqw, 15px);
-  margin-top: clamp(10px, 1.2cqw, 16px);
+  gap: clamp(6px, 0.8cqw, 11px);
+  margin-bottom: clamp(8px, 1cqw, 14px);
   font-family: var(--font-mono);
   font-weight: 500;
   font-size: clamp(9px, 0.95cqw, 10.5px);
@@ -69,7 +69,8 @@
   text-transform: uppercase;
 }
 
-.tileIndex {
+.tileIndex,
+.tileSlash {
   color: var(--ink-6);
 }
 
@@ -78,8 +79,22 @@
   transition: color 0.25s ease;
 }
 
-/* The only hover cue left: the name picks up the accent, matching how
-   links behave everywhere else on the site. */
+/* On hover the name gives way to the invitation. Both variants are rendered
+   and swapped in CSS so there's no flash of the wrong label on load. */
+.tileNameHover {
+  display: none;
+}
+
+.tile:hover .tileNameRest,
+.tile:focus-visible .tileNameRest {
+  display: none;
+}
+
+.tile:hover .tileNameHover,
+.tile:focus-visible .tileNameHover {
+  display: inline;
+}
+
 .tile:hover .tileName,
 .tile:focus-visible .tileName {
   color: var(--accent);

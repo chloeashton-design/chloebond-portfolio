@@ -28,6 +28,18 @@ export default function HomePage() {
             className={`${styles.tile} ${project.tileFull ? styles.tileFull : styles.tileHalf}`}
             aria-label={project.title}
           >
+            <span className={styles.tileMeta}>
+              <span className={styles.tileIndex}>{String(project.index).padStart(2, '0')}</span>
+              <span className={styles.tileSlash} aria-hidden="true">
+                /
+              </span>
+              <span className={styles.tileName}>
+                <span className={styles.tileNameRest}>{project.title}</span>
+                <span className={styles.tileNameHover} aria-hidden="true">
+                  View project
+                </span>
+              </span>
+            </span>
             {project.hero ? (
               <HeroLoop hero={project.hero} ratio={project.tileRatio} />
             ) : project.heroImage ? (
@@ -46,10 +58,6 @@ export default function HomePage() {
                 sublabel={project.tileRatio === '16/9' ? 'landscape 16 : 9' : 'portrait 4 : 5'}
               />
             )}
-            <span className={styles.tileMeta}>
-              <span className={styles.tileIndex}>{String(project.index).padStart(2, '0')}</span>
-              <span className={styles.tileName}>{project.title}</span>
-            </span>
           </Link>
         ))}
       </section>
