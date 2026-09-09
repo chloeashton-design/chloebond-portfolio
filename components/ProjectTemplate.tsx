@@ -18,7 +18,12 @@ const placeholder: ProjectContent = {
   tools: 'Placeholder',
 };
 
-const RATIO: Record<NonNullable<HeroLoopMeta['ratio']>, number> = { '16/9': 16 / 9, '4/5': 4 / 5, '1/1': 1 };
+const RATIO: Record<NonNullable<HeroLoopMeta['ratio']>, number> = {
+  '16/9': 16 / 9,
+  '5/4': 5 / 4,
+  '4/5': 4 / 5,
+  '1/1': 1,
+};
 
 export default function ProjectTemplate({ project, nextProject }: { project: Project; nextProject: Project }) {
   const content = project.content ?? placeholder;

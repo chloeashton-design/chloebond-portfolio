@@ -20,8 +20,8 @@ export interface HeroLoop {
   sources?: Array<'webm' | 'mp4'>;
   /** Whether a .gif sits alongside src, for browsers with no video at all. */
   gifFallback?: boolean;
-  /** The clip's own shape. Defaults to 16/9; a portrait loop is held rather than stretched. */
-  ratio?: '16/9' | '4/5' | '1/1';
+  /** The clip's own shape. Defaults to 16/9; anything squarer is held rather than stretched. */
+  ratio?: '16/9' | '5/4' | '4/5' | '1/1';
 }
 
 /** Real copy for a project. Without an entry, the page keeps its placeholders. */
@@ -48,7 +48,7 @@ export interface ProjectImage {
 /** A silent looping clip sitting in the gallery, played like the hero loop. */
 export interface ProjectVideo extends HeroLoop {
   kind: 'video';
-  ratio: '16/9' | '4/5' | '1/1';
+  ratio: '16/9' | '5/4' | '4/5' | '1/1';
 }
 
 export type GalleryItem = ProjectImage | ProjectVideo;
@@ -235,13 +235,13 @@ const heroes: Record<number, HeroLoop> = {
   },
   2: {
     src: '/media/project-02/rewind-mark',
-    alt: 'The Rewind mark — a chrome chevron of two curved blades — turning slowly on a dark navy ground and catching the light as it rotates.',
-    ratio: '4/5',
+    alt: 'The Rewind mark — a chrome chevron of two curved blades — turning slowly on a dark navy ground ruled with a faint grid, catching the light as it rotates.',
+    ratio: '5/4',
     // The loop opens on the mark face-on, so the poster is frame 0 and the
     // clip picks up exactly where the still leaves off.
     sources: ['mp4'], // encoded from a GIF; H.264 came in at an eighth of the size
     gifFallback: false,
-    tint: '#111927',
+    tint: '#1b2232', // the navy ground
   },
   4: {
     src: '/media/project-04/wild-fauna',

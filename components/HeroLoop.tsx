@@ -20,7 +20,7 @@ export default function HeroLoop({
   className,
 }: {
   hero: HeroLoopMeta;
-  ratio?: '16/9' | '4/5' | '1/1';
+  ratio?: '16/9' | '5/4' | '4/5' | '1/1';
   className?: string;
 }) {
   const frameRef = useRef<HTMLDivElement>(null);
