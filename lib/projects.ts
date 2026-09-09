@@ -84,7 +84,21 @@ export interface ProjectLottie {
   tint?: string;
 }
 
-export type GalleryItem = ProjectImage | ProjectVideo | ProjectLottie;
+/**
+ * A whole icon set, laid out as one field. Its own kind because the point of a
+ * set is its consistency, which only shows when every piece is on screen at
+ * once -- so it gets a full-bleed panel rather than a row of pictures.
+ */
+export interface ProjectIcons {
+  kind: 'icons';
+  /** What the set is, for anyone who can't see the field. */
+  label: string;
+  /** Ground behind the icons, which are drawn on transparency. */
+  background?: string;
+  items: Array<{ src: string; alt: string }>;
+}
+
+export type GalleryItem = ProjectImage | ProjectVideo | ProjectLottie | ProjectIcons;
 
 /** One row of the gallery: a single item runs full width, two sit side by side. */
 export type GalleryRow = GalleryItem[];
@@ -371,7 +385,118 @@ const heroImages: Record<number, ProjectImage> = {
 
 // The media sequence below each project's overview. Dimensions are the
 // supplied artwork's own, scaled down for web.
+/**
+ * The category set built for the marketplace: what could be rented, and the
+ * machinery around renting it. Listed as names rather than fifty objects, since
+ * every one resolves to the same shape of file.
+ */
+const RUCKIFY_ICONS = [
+  'Analytics', 'Availability', 'Backyard', 'Bike', 'Books', 'Cooking', 'Customer service',
+  'Damage protection', 'Delivery', 'Electronics', 'Equipment', 'Fashion', 'Fitness',
+  'Fraud detection', 'Handcraft', 'Happy', 'Heavy equipment', 'Invoice', 'Kids and baby',
+  'Marketing', 'Marketplace', 'Medical', 'Member', 'Movie', 'Moving and storage', 'Music',
+  'Office and house', 'Outdoors', 'Paddle board', 'Party and event', 'Payment', 'Pets',
+  'Phone', 'Photography', 'Protection', 'RuckBucks', 'Running and exercise', 'RV and towables',
+  'Secure payments', 'Security', 'Snowflake', 'Spaces', 'Sports', 'Theft protection', 'Tools',
+  'Toys and games', 'Travel', 'Vehicles', 'Video games', 'Watercraft',
+];
+
 const galleries: Record<number, ProjectGallery> = {
+  6: [
+    [
+      {
+        kind: 'video',
+        src: '/media/project-06/ruckify-guidelines-loop',
+        alt: 'The Rückify brand guidelines turning through their pages — logo construction, colour, typography, iconography and photography.',
+        ratio: '16/9',
+        // Filed as -loop so its poster can't collide with the guidelines still
+        // in the row below, which shares the name.
+        gifFallback: false,
+        tint: '#efefef',
+      },
+    ],
+    [
+      {
+        src: '/media/project-06/ruckify-brandguidelines.webp',
+        alt: 'Spreads from the guidelines laid out in a grid, covering layout, colour, iconography and photography.',
+        width: 1920,
+        height: 1399,
+      },
+    ],
+    [
+      {
+        src: '/media/project-06/ruckify-imagetreatment1.webp',
+        alt: 'A shop owner with a tablet outside a teal door, a Rückify listing card for a sewing machine overlaid on the photograph.',
+        width: 1200,
+        height: 1200,
+      },
+      {
+        src: '/media/project-06/ruckify-imagetreatment2.webp',
+        alt: 'The same owner holding a “Welcome, we are open” sign, framed by the coral U and teal dots of the brand’s image treatment.',
+        width: 1148,
+        height: 1148,
+      },
+      {
+        src: '/media/project-06/ruckify-imagetreatment3.webp',
+        alt: 'Two people looking at a phone, with rental request cards for weights, skates and an iPad floating alongside them.',
+        width: 1622,
+        height: 1178,
+      },
+    ],
+    [
+      {
+        src: '/media/project-06/ruckify-pin.webp',
+        alt: 'A white enamel pin of the Rückify ü smiley fastened to the pocket of a denim jacket.',
+        width: 1400,
+        height: 722,
+      },
+    ],
+    [
+      {
+        src: '/media/project-06/ruckify-emails.webp',
+        alt: 'Three email templates on phones: trending rentals, a welcome to the community, and a booking confirmation.',
+        width: 1920,
+        height: 1080,
+      },
+    ],
+    [
+      {
+        src: '/media/project-06/ruckify-businesscards.webp',
+        alt: 'Business cards scattered face up and face down, the wordmark and ü monogram in coral and teal on white.',
+        width: 2308,
+        height: 1188,
+      },
+    ],
+    [
+      {
+        src: '/media/project-06/ruckify-ad1.webp',
+        alt: 'Two member ads — “Meet Joseph.” and “Meet Sarah.” — each pairing a portrait with the coral U device.',
+        width: 2310,
+        height: 1188,
+      },
+      {
+        src: '/media/project-06/ruckify-ad2.webp',
+        alt: 'Two listing ads under “Rent anything from anyone.”, one for a ladder and one for a movie night bundle.',
+        width: 2314,
+        height: 1192,
+      },
+    ],
+    [
+      {
+        kind: 'icons',
+        label: `The Rückify icon set: ${RUCKIFY_ICONS.length} category and service icons drawn as one monoline system`,
+        background: '#efefec',
+        items: RUCKIFY_ICONS.map((name) => ({
+          src: `/media/project-06/icons/${name
+            .toLowerCase()
+            .replace(/ and /g, '-')
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/^-|-$/g, '')}.webp`,
+          alt: name,
+        })),
+      },
+    ],
+  ],
   // Three campaigns, ruled off from each other: Holiday, Valentine's, TerraCycle.
   7: [
     [
@@ -639,6 +764,12 @@ const pageHeroes: Record<number, HeroLoop> = {
   },
 };
 const pageHeroImages: Record<number, ProjectImage> = {
+  6: {
+    src: '/media/project-06/ruckify-hero.webp',
+    alt: 'A woodworker in his shop, with Rückify listing cards overlaid offering his workbench, mitre saw and garage space for rent.',
+    width: 1920,
+    height: 1080,
+  },
   7: {
     src: '/media/project-07/tweed-hero.webp',
     alt: 'The Tweed script wordmark in white over a close-up of a brown houndstooth jacket worn with a mustard tee.',

@@ -6,6 +6,7 @@ import HeroLoop from './HeroLoop';
 import Reveal from './Reveal';
 import SiteScroll from './SiteScroll';
 import LottieLoop from './LottieLoop';
+import IconGrid from './IconGrid';
 import type { GalleryItem, HeroLoop as HeroLoopMeta, Project, ProjectContent, ProjectImage } from '../lib/projects';
 import styles from './ProjectTemplate.module.css';
 
@@ -21,14 +22,19 @@ const placeholder: ProjectContent = {
   tools: 'Placeholder',
 };
 
-/** A gallery item's own width-to-height, whichever kind it is. */
-function itemRatio(item: GalleryItem): number {
-  return item.kind === 'video' ? RATIO[item.ratio] : item.width / item.height;
+/** A plain still, as opposed to a loop, a vector animation or a whole icon set. */
+function isStill(item: GalleryItem): item is ProjectImage {
+  return item.kind !== 'video' && item.kind !== 'lottie' && item.kind !== 'icons';
 }
 
-/** A plain still, as opposed to a loop or a vector animation. */
-function isStill(item: GalleryItem): item is ProjectImage {
-  return item.kind !== 'video' && item.kind !== 'lottie';
+/**
+ * A gallery item's own width-to-height, which is what weights its column so a
+ * row of mixed shapes finishes level. An icon set fills a row by itself and is
+ * never weighted against anything.
+ */
+function itemRatio(item: GalleryItem): number {
+  if (item.kind === 'video') return RATIO[item.ratio];
+  return isStill(item) || item.kind === 'lottie' ? item.width / item.height : 1;
 }
 
 const RATIO: Record<NonNullable<HeroLoopMeta['ratio']>, number> = {
@@ -124,6 +130,9 @@ export default function ProjectTemplate({ project, nextProject }: { project: Pro
         gallery.map((row, i) =>
           row === 'divider' ? (
             <hr key={i} className={styles.galleryDivider} />
+          ) : row.length === 1 && row[0].kind === 'icons' ? (
+            // Carries its own reveal, staggered across the set.
+            <IconGrid key={i} icons={row[0]} />
           ) : (
           <Reveal key={i}>
             <section
@@ -156,7 +165,7 @@ export default function ProjectTemplate({ project, nextProject }: { project: Pro
                   />
                 ) : item.kind === 'video' ? (
                   <HeroLoop key={item.src} hero={item} ratio={item.ratio} />
-                ) : (
+                ) : !isStill(item) ? null : (
                   <Image
                     key={item.src}
                     src={item.src}
