@@ -162,8 +162,8 @@ const content: Record<number, ProjectContent> = {
     client: 'Rückify',
     year: '2021',
     role: 'Senior Graphic Designer',
-    scope: 'Editorial, Layout',
-    tools: 'Adobe InDesign, Adobe Illustrator, Adobe Photoshop',
+    scope: 'Art direction, editorial, layout',
+    tools: 'InDesign, Illustrator, Photoshop',
   },
   6: {
     intro: [
