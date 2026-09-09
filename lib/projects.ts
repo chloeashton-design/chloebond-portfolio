@@ -341,6 +341,46 @@ const heroImages: Record<number, ProjectImage> = {
 // The media sequence below each project's overview. Dimensions are the
 // supplied artwork's own, scaled down for web.
 const galleries: Record<number, ProjectGallery> = {
+  8: [
+    [
+      {
+        src: '/media/project-08/ssc-logo.webp',
+        alt: 'The Sole Sneaker Club logo: bubble letters in cyan and pink on a cloud, crowned with a gold halo.',
+        width: 1920,
+        height: 812,
+      },
+    ],
+    [
+      {
+        src: '/media/project-08/ssc-hoodie1.webp',
+        alt: 'A grid of hoodies in black, orange, purple, mint, pink and green, each carrying a different Sole Sneaker Club graphic.',
+        width: 1080,
+        height: 1080,
+      },
+      {
+        src: '/media/project-08/ssc-hoodie2.webp',
+        alt: 'Two “Good Vibes Only” tees, white on cyan and black on pink, printed with the club mascot.',
+        width: 1080,
+        height: 1080,
+      },
+    ],
+    [
+      {
+        src: '/media/project-08/ssc-social.webp',
+        alt: 'The social grid: sneaker photography, mascot illustrations and quote posts in the club’s cyan, pink and yellow.',
+        width: 1920,
+        height: 1246,
+      },
+    ],
+    [
+      {
+        src: '/media/project-08/ssc-mascot.webp',
+        alt: 'The mascot — a pink unicorn with a blue mane, in sneakers and flashing a peace sign — surrounded by stars and rainbows.',
+        width: 1920,
+        height: 1080,
+      },
+    ],
+  ],
   3: [
     [
       {
@@ -404,6 +444,15 @@ const pageHeroes: Record<number, HeroLoop> = {
   // Rewind Website is the exception: it opens on the same loop its tile shows.
   // Referenced rather than restated, so the two can't drift apart.
   1: heroes[1],
+  8: {
+    src: '/media/project-08/ssc-guidelines',
+    alt: 'The Sole Sneaker Club brand guidelines flicking through their pages — cover, welcome, mood board, logo and mark, mascot, colour palette, typefaces, hoodies, tees, caps, social, and a closing thanks.',
+    // Thirteen slides at half a second each. Both formats are shipped here,
+    // unusually: hard cuts between flat, gradient-heavy pages are the one thing
+    // VP9 encodes smaller than H.264, by a quarter.
+    gifFallback: false,
+    tint: '#fb6195', // the hot pink the pages sit on
+  },
 };
 const pageHeroImages: Record<number, ProjectImage> = {
   3: {
