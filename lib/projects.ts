@@ -385,10 +385,23 @@ const siteScrolls: Record<number, SiteScroll> = {
         height: 3631,
       },
     ],
+    video: {
+      src: '/media/project-01/rewind-hero',
+      alt: 'The Rewind homepage cycling through its five audiences — all integrations, software development, eCommerce, accounting and productivity — the headline, theme and row of integration logos changing with each.',
+      // The recording carries its own navigation bar, which the slice directly
+      // above already shows, so the top 82px are cropped away and the loop
+      // begins at the hero itself.
+      sources: ['mp4'],
+      gifFallback: false,
+      tint: '#191d2a', // the dark hero ground the loop opens on
+    },
     // Measured off the export: the hero panel sits 80px in from each edge of a
-    // 3040px page, stands 2880x1528, and is rounded by 35px.
+    // 3040px page and is rounded by 35px. The slot takes the cropped
+    // recording's own 1440x812 rather than the placeholder's 2880x1528, which
+    // is fractionally wider -- a difference of 48px on screen, against losing
+    // 7% of the animation off the top and bottom.
     videoInset: '2.6316%',
-    videoRatio: '2880 / 1528',
+    videoRatio: '1440 / 812',
     videoRadius: '1.151%',
   },
 };
