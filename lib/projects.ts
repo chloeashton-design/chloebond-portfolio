@@ -295,9 +295,10 @@ const heroImages: Record<number, ProjectImage> = {
     height: 1118,
   },
   8: {
-    src: '/media/project-08/sole-sneaker-club.webp',
-    alt: 'A cartoon unicorn with a pink body and blue mane strides along in sneakers flashing a peace sign, beneath a Sole Sneaker Club logo topped with a halo, on a pale green ground scattered with star stickers.',
-    width: 864,
+    // Renamed rather than overwritten, so no CDN holds the portrait crop at the old URL.
+    src: '/media/project-08/sole-sneaker-club-5x4.webp',
+    alt: 'White high-top sneakers and cuffed jeans shot from below against a pale blue sky, the Sole Sneaker Club logo centred over them in cyan and pink bubble type on clouds, under a gold halo.',
+    width: 1350,
     height: 1080,
   },
 };
