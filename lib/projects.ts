@@ -109,9 +109,9 @@ const content: Record<number, ProjectContent> = {
     ],
     client: 'Rewind',
     year: '2026',
-    role: 'Senior Graphic Designer (design lead + project lead)',
-    scope: 'Web Design, UX',
-    tools: 'Figma, Claude',
+    role: 'Senior Graphic Designer',
+    scope: 'Art direction, web design, UX',
+    tools: 'Figma, Claude Code, Claude Design, ChatGPT',
   },
   2: {
     intro: [
@@ -122,9 +122,9 @@ const content: Record<number, ProjectContent> = {
     ],
     client: 'Rewind',
     year: '2026',
-    role: 'Senior Graphic Designer (brand lead)',
-    scope: 'Brand, Strategy',
-    tools: 'Figma, Adobe Illustrator, Adobe Photoshop, Claude, Claude Design',
+    role: 'Senior Graphic Designer',
+    scope: 'Art direction, brand, strategy',
+    tools: 'Figma, Illustrator, Photoshop, InDesign, Claude',
   },
   3: {
     intro: [
@@ -135,9 +135,9 @@ const content: Record<number, ProjectContent> = {
     ],
     client: 'Bonds Decor',
     year: '2026',
-    role: 'Freelance Graphic Designer (Chloe Bond Design)',
-    scope: 'Brand, Identity',
-    tools: 'Adobe Illustrator, Adobe InDesign, Adobe Photoshop, ChatGPT',
+    role: 'Freelance Graphic Designer',
+    scope: 'Art direction, brand, strategy',
+    tools: 'Illustrator, Photoshop, InDesign, Claude, ChatGPT',
   },
   4: {
     intro: [
@@ -148,9 +148,9 @@ const content: Record<number, ProjectContent> = {
     ],
     client: 'Wild Fauna',
     year: '2026',
-    role: 'Freelance Graphic Designer (Chloe Bond Design)',
-    scope: 'Brand, Identity',
-    tools: 'Adobe Illustrator, Adobe InDesign, Adobe Photoshop, ChatGPT',
+    role: 'Freelance Graphic Designer',
+    scope: 'Art direction, brand, strategy',
+    tools: 'Illustrator, Photoshop, InDesign, Claude, ChatGPT',
   },
   5: {
     intro: [
@@ -175,8 +175,8 @@ const content: Record<number, ProjectContent> = {
     client: 'Rückify',
     year: '2021',
     role: 'Senior Graphic Designer',
-    scope: 'Brand, In-house',
-    tools: 'Adobe Illustrator, Adobe Photoshop, Adobe InDesign, Adobe XD',
+    scope: 'Art direction, brand, strategy',
+    tools: 'Figma, Illustrator, Photoshop, InDesign',
   },
   7: {
     intro: [
@@ -187,8 +187,8 @@ const content: Record<number, ProjectContent> = {
     client: 'Rewind',
     year: '2023',
     role: 'Senior Graphic Designer',
-    scope: 'Animation, Illustration',
-    tools: 'Adobe Illustrator, Adobe After Effects',
+    scope: 'Art direction, animation, illustration',
+    tools: 'Illustrator, After Effects',
   },
   8: {
     intro: [
@@ -198,9 +198,9 @@ const content: Record<number, ProjectContent> = {
     ],
     client: 'Sole Sneaker Club',
     year: '2023',
-    role: 'Freelance Graphic Designer (Chloe Bond Design)',
-    scope: 'Brand, Identity',
-    tools: 'Adobe Creative Suite (Illustrator, InDesign, Photoshop)',
+    role: 'Freelance graphic designer',
+    scope: 'Art direction, brand, illustration',
+    tools: 'Illustrator, Photoshop, InDesign',
   },
   9: {
     intro: [
@@ -212,8 +212,8 @@ const content: Record<number, ProjectContent> = {
     client: 'Tweed (Canopy Growth)',
     year: '2019',
     role: 'Graphic Designer',
-    scope: 'Campaign, Retail',
-    tools: 'Adobe Photoshop, Adobe Illustrator, Adobe InDesign',
+    scope: 'Art direction, campaign, retail design, photo retouching',
+    tools: 'Illustrator, Photoshop, InDesign',
   },
 };
 
