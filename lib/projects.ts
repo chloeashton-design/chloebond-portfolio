@@ -104,7 +104,7 @@ const slugs: Record<number, string> = {};
 const content: Record<number, ProjectContent> = {
   1: {
     intro: [
-      'As Rewind evolved from a Shopify-focused backup tool into an enterprise business continuity platform, the website still reflected the company it had been. With four distinct audiences across eCommerce, DevOps, Accounting, and Productivity, the redesign needed to make Rewind’s new positioning feel clearer, more confident, and more relevant.',
+      'As Rewind evolved from a Shopify-focused backup tool into an enterprise business continuity platform, the website still reflected the company it had been. With four distinct audiences across eCommerce, Software Development, Accounting, and Productivity, the redesign needed to make Rewind’s new positioning feel clearer, more confident, and more relevant.',
       'I led the redesign end to end, owning both the design and the project plan behind it. I worked closely with our PMM and development agency, building the site as a flexible system rather than a collection of one-off pages.',
       'A key idea I proposed, and the executive team backed, was an adaptive homepage with five views: one general and one for each vertical. Visitors could switch audiences and see the messaging and featured tools update around their needs, making the experience immediately more relevant.',
       'The result was a more confident, scalable website that better matched Rewind’s enterprise positioning and gave each audience a clearer path into the product. The new system also made it easier for the team to evolve pages, messaging, and vertical-specific content over time.',
@@ -221,6 +221,15 @@ const content: Record<number, ProjectContent> = {
 
 // Projects whose hero slot has real motion rather than a placeholder.
 const heroes: Record<number, HeroLoop> = {
+  1: {
+    src: '/media/project-01/rewind-site',
+    alt: 'The redesigned Rewind homepage on a monitor in a warm orange-lit room — “Protecting the SaaS data your business runs on” — with a ticker of integration logos gliding along beneath the headline.',
+    // One pass of the ticker, its tail cross-faded into its head so the loop
+    // has no seam. Nothing else in the frame moves.
+    sources: ['mp4'],
+    gifFallback: false,
+    tint: '#c05a1d', // the wall's orange
+  },
   2: {
     src: '/media/project-02/rewind-mark',
     alt: 'The Rewind mark — a chrome chevron of two curved blades — turning slowly on a dark navy ground and catching the light as it rotates.',
