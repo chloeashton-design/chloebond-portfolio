@@ -402,6 +402,57 @@ const RUCKIFY_ICONS = [
 ];
 
 const galleries: Record<number, ProjectGallery> = {
+  // The guideline boards, stacked in the order they were built.
+  4: [
+    [
+      {
+        src: '/media/project-04/wild-fauna-doodles.webp',
+        alt: 'The doodles board: a sunflower, ladybird, bear, apple and snail drawn in loose crayon lines on deep teal, under the note that they were inspired by the spontaneity of children’s drawings.',
+        width: 2560,
+        height: 1440,
+      },
+    ],
+    [
+      {
+        src: '/media/project-04/wild-fauna-patterns.webp',
+        alt: 'Four seasonal pattern swatches on dark brown — rainbows and flowers, sprouting shoots, mushrooms and hands, and stars and hearts — built from the cut-paper nature motifs.',
+        width: 2560,
+        height: 1440,
+      },
+    ],
+    [
+      {
+        src: '/media/project-04/wild-fauna-icons.webp',
+        alt: 'Sixteen simplified nature icons on yellow — cactus, fern, star, palm, rainbow, snowflake, heart, hand, mushroom, flower, leaf, tent, hill, music, eye and tulip — drawn as cut-paper shapes.',
+        width: 2560,
+        height: 1440,
+      },
+    ],
+    [
+      {
+        src: '/media/project-04/wild-fauna-colours.webp',
+        alt: 'The palette in ten named swatches: Mud Pie, Fox Fur, Toad Moss, Moonlit Pine and Honey Hive above Pumpkin, Spring Bud, Dandelion, Frog Pond and Cloud Milk.',
+        width: 2560,
+        height: 1440,
+      },
+    ],
+    [
+      {
+        src: '/media/project-04/wild-fauna-fonts.webp',
+        alt: 'The two typefaces set as specimens: Gazpacho Regular in dark on cream, and Archer Book in cream on deep teal.',
+        width: 2560,
+        height: 1440,
+      },
+    ],
+    [
+      {
+        src: '/media/project-04/wild-fauna-mockups.webp',
+        alt: 'The identity in use: a children’s raglan tee reading “Busy collecting sunshine”, a patterned tote, a business card, and a sign reading “Sky above, earth below, peace within.”',
+        width: 2560,
+        height: 1440,
+      },
+    ],
+  ],
   // Every piece is 16:9, so the report reads as a straight stack: six spreads
   // of the document, the page grid flicking between its two halves, then five
   // pages pulled out onto their own grounds.
@@ -872,6 +923,12 @@ const pageHeroes: Record<number, HeroLoop> = {
   },
 };
 const pageHeroImages: Record<number, ProjectImage> = {
+  4: {
+    src: '/media/project-04/wild-fauna-hero.webp',
+    alt: 'The Wild Fauna wordmark hand-lettered in cream on deep brown, ringed with crayon doodles of flowers, a bear, a ladybird, an apple and a snail.',
+    width: 2560,
+    height: 1440,
+  },
   5: {
     src: '/media/project-05/ruckify-esg-hero.webp',
     alt: 'The report cover — “Creating a Sustainable Alternative to Buying” over an aerial photograph of forest — floating against a bright sky.',
