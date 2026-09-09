@@ -31,11 +31,6 @@ function isStill(item: GalleryItem): item is ProjectImage {
   return item.kind !== 'video' && item.kind !== 'lottie';
 }
 
-/** A row holding nothing but one vector animation. */
-function isLottieRow(row: GalleryItem[]): boolean {
-  return row.length === 1 && row[0].kind === 'lottie';
-}
-
 const RATIO: Record<NonNullable<HeroLoopMeta['ratio']>, number> = {
   '16/9': 16 / 9,
   '5/4': 5 / 4,
@@ -126,7 +121,10 @@ export default function ProjectTemplate({ project, nextProject }: { project: Pro
       {project.siteScroll ? <SiteScroll scroll={project.siteScroll} label={`${project.title}, full page`} /> : null}
 
       {gallery ? (
-        gallery.map((row, i) => (
+        gallery.map((row, i) =>
+          row === 'divider' ? (
+            <hr key={i} className={styles.galleryDivider} />
+          ) : (
           <Reveal key={i}>
             <section
               // A lone image can ask to run to the page edges instead of
@@ -134,9 +132,6 @@ export default function ProjectTemplate({ project, nextProject }: { project: Pro
               className={[
                 styles.galleryRow,
                 row.length === 1 && isStill(row[0]) && row[0].bleed ? styles.galleryRowBleed : '',
-                // A rule between one animation and the next, so a stack of them
-                // reads as separate pieces rather than one continuous run.
-                isLottieRow(row) && isLottieRow(gallery[i - 1] ?? []) ? styles.galleryRowRuled : '',
               ]
                 .filter(Boolean)
                 .join(' ')}
@@ -185,7 +180,8 @@ export default function ProjectTemplate({ project, nextProject }: { project: Pro
               )}
             </section>
           </Reveal>
-        ))
+          ),
+        )
       ) : project.siteScroll || project.comingSoon ? null : (
         <>
           <section className={styles.pairRow}>

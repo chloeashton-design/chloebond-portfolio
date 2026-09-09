@@ -86,11 +86,15 @@ export interface ProjectLottie {
 
 export type GalleryItem = ProjectImage | ProjectVideo | ProjectLottie;
 
+/** One row of the gallery: a single item runs full width, two sit side by side. */
+export type GalleryRow = GalleryItem[];
+
 /**
- * The media sequence below a project's overview. Each inner array is one row:
- * a single item runs full width, two sit side by side.
+ * The media sequence below a project's overview: rows, with 'divider' wherever
+ * a rule should separate one group of work from the next. A project covering
+ * several campaigns reads far better broken up than run together.
  */
-export type ProjectGallery = GalleryItem[][];
+export type ProjectGallery = Array<GalleryRow | 'divider'>;
 
 /**
  * A whole web page presented as one continuous scroll, with a live loop playing
@@ -368,8 +372,104 @@ const heroImages: Record<number, ProjectImage> = {
 // The media sequence below each project's overview. Dimensions are the
 // supplied artwork's own, scaled down for web.
 const galleries: Record<number, ProjectGallery> = {
-  // Four hero animations, one per row, stacked. Each runs 1200 frames at 60fps
-  // but has settled by about 700, so the still frame is taken from the end.
+  // Three campaigns, ruled off from each other: Holiday, Valentine's, TerraCycle.
+  7: [
+    [
+      {
+        src: '/media/project-07/tweed-holiday-retail.webp',
+        alt: 'A Tweed storefront at dusk, its windows lit and dressed with the Tweed the Season campaign in pale green.',
+        width: 2000,
+        height: 1333,
+      },
+    ],
+    [
+      {
+        src: '/media/project-07/tweed-holiday-gift.webp',
+        alt: 'A gift wrapped in sage paper, tied with ribbon and finished with a cannabis bud in place of a bow, its tag reading “Hi.”',
+        width: 1122,
+        height: 1112,
+      },
+      {
+        src: '/media/project-07/tweed-holiday-mistletoe.webp',
+        alt: 'A cannabis bud hung on a ribbon like mistletoe against a sage ground.',
+        width: 860,
+        height: 1110,
+      },
+      {
+        src: '/media/project-07/tweed-holiday-pipe.webp',
+        alt: 'A repeating pattern of pale ceramic pipes laid out in rows on sage.',
+        width: 844,
+        height: 564,
+      },
+    ],
+    [
+      {
+        src: '/media/project-07/tweed-holiday-banner.webp',
+        alt: 'The campaign banner: “’Tweed the Season.” set beside the bud-topped gift on a sage ground.',
+        width: 1840,
+        height: 612,
+      },
+    ],
+    'divider',
+    [
+      {
+        src: '/media/project-07/tweed-valentines-chocolate.webp',
+        alt: 'A box of Tweed cannabis-infused milk chocolate standing on a wooden table against a pink curtain.',
+        width: 1080,
+        height: 1080,
+      },
+      {
+        src: '/media/project-07/tweed-valentines-flowers.webp',
+        alt: 'A bouquet of cannabis buds and leaves arranged like flowers on the same wooden table.',
+        width: 1080,
+        height: 1080,
+      },
+    ],
+    [
+      {
+        src: '/media/project-07/tweed-valentines-combo.webp',
+        alt: 'The pairing shot: the bud bouquet beside the chocolate carton, lit against the pink curtain.',
+        width: 1080,
+        height: 1620,
+      },
+      {
+        kind: 'video',
+        src: '/media/project-07/tweed-valentines-loop',
+        alt: 'The Valentine’s campaign animating — the bud bouquet and the box of infused chocolate coming together on the pink set.',
+        ratio: '5/4',
+        sources: ['mp4'],
+        gifFallback: false,
+        tint: '#fbb3c2',
+      },
+    ],
+    'divider',
+    [
+      {
+        src: '/media/project-07/tweed-terracycle-poster.webp',
+        alt: 'The TerraCycle poster: “1,000,000. Big number. Bigger impact.” in white over hands cradling packaging, under a recycling mark.',
+        width: 1080,
+        height: 1669,
+      },
+      {
+        src: '/media/project-07/tweed-terracycle-retail.webp',
+        alt: 'The same milestone artwork installed full height in a Tweed store, beside the counter and product wall.',
+        width: 2000,
+        height: 1333,
+      },
+    ],
+    [
+      {
+        kind: 'video',
+        src: '/media/project-07/tweed-terracycle-loop',
+        alt: 'The TerraCycle milestone animating, the one-million count building on an olive ground.',
+        ratio: '5/4',
+        sources: ['mp4'],
+        gifFallback: false,
+        tint: '#c9cb9f',
+      },
+    ],
+  ],
+  // Four hero animations, one per row, ruled off from each other.
   9: [
     [
       {
@@ -383,6 +483,7 @@ const galleries: Record<number, ProjectGallery> = {
         tint: '#f4f1fb',
       },
     ],
+    'divider',
     [
       {
         kind: 'lottie',
@@ -395,6 +496,7 @@ const galleries: Record<number, ProjectGallery> = {
         tint: '#f4f1fb',
       },
     ],
+    'divider',
     [
       {
         kind: 'lottie',
@@ -407,6 +509,7 @@ const galleries: Record<number, ProjectGallery> = {
         tint: '#f4f1fb',
       },
     ],
+    'divider',
     [
       {
         kind: 'lottie',
@@ -536,6 +639,12 @@ const pageHeroes: Record<number, HeroLoop> = {
   },
 };
 const pageHeroImages: Record<number, ProjectImage> = {
+  7: {
+    src: '/media/project-07/tweed-hero.webp',
+    alt: 'The Tweed script wordmark in white over a close-up of a brown houndstooth jacket worn with a mustard tee.',
+    width: 1920,
+    height: 1080,
+  },
   3: {
     src: '/media/project-03/bonds-logo.webp',
     alt: 'The Bonds Decor logo on deep navy: “Bonds” in cream script above a paintbrush trailing yellow, blue and red stripes into the word DECOR.',
