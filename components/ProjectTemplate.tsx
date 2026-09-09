@@ -156,6 +156,7 @@ export default function ProjectTemplate({ project, nextProject }: { project: Pro
                     width={item.width}
                     height={item.height}
                     stillFrame={item.stillFrame}
+                    loopEnd={item.loopEnd}
                     tint={item.tint}
                   />
                 ) : item.kind === 'video' ? (

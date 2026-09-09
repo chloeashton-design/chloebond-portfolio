@@ -72,6 +72,14 @@ export interface ProjectLottie {
   height: number;
   /** Frame shown under reduced motion. Pick one where the story has landed. */
   stillFrame: number;
+  /**
+   * The frame the loop restarts at. These exports all declare 1200 frames but
+   * stop moving long before that, so left to run their full length they sit
+   * motionless for most of every cycle and read as broken. Set this a beat
+   * past the last keyframe: long enough to take in the finished state, short
+   * enough that the restart still feels like a loop.
+   */
+  loopEnd?: number;
   /** Holding colour until the animation paints. */
   tint?: string;
 }
@@ -370,7 +378,8 @@ const galleries: Record<number, ProjectGallery> = {
         alt: 'A GitHub repository throws a 404 critical error, then the Vault restores it: the code file returns and repositories, issues and projects each tick green under “GitHub data has been restored”.',
         width: 632,
         height: 356,
-        stillFrame: 1000,
+        stillFrame: 880,
+        loopEnd: 896,
         tint: '#f4f1fb',
       },
     ],
@@ -381,7 +390,8 @@ const galleries: Record<number, ProjectGallery> = {
         alt: 'A Microsoft 365 file list sits empty until the Vault restores it, folders filling back in as SharePoint, OneDrive and Teams tick green under “Your Microsoft 365 data is restored”.',
         width: 632,
         height: 356,
-        stillFrame: 1000,
+        stillFrame: 510,
+        loopEnd: 524,
         tint: '#f4f1fb',
       },
     ],
@@ -392,7 +402,8 @@ const galleries: Record<number, ProjectGallery> = {
         alt: 'QuickBooks reports “Oops! We can’t seem to locate those files”, then the Vault restores them: charts and tables redraw and reports, expenses and attachments tick green.',
         width: 632,
         height: 356,
-        stillFrame: 1000,
+        stillFrame: 880,
+        loopEnd: 896,
         tint: '#f4f1fb',
       },
     ],
@@ -403,7 +414,8 @@ const galleries: Record<number, ProjectGallery> = {
         alt: 'A Trello board full of warning triangles is restored by the Vault, its cards returning as boards, cards and attachments tick green under “Your Trello data is restored”.',
         width: 632,
         height: 356,
-        stillFrame: 1000,
+        stillFrame: 510,
+        loopEnd: 524,
         tint: '#f4f1fb',
       },
     ],

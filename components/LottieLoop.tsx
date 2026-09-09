@@ -23,6 +23,7 @@ export default function LottieLoop({
   width,
   height,
   stillFrame,
+  loopEnd,
   tint,
 }: {
   src: string;
@@ -31,6 +32,8 @@ export default function LottieLoop({
   height: number;
   /** The frame shown under reduced motion. Pick one where the story has landed. */
   stillFrame: number;
+  /** Restart here rather than at the export's declared end. */
+  loopEnd?: number;
   tint?: string;
 }) {
   const hostRef = useRef<HTMLDivElement>(null);
@@ -62,6 +65,9 @@ export default function LottieLoop({
         autoplay: false,
         animationData: data,
         rendererSettings: { progressiveLoad: true },
+        // These exports declare far more frames than they animate for, so the
+        // loop is cut to the part that moves.
+        ...(loopEnd ? { initialSegment: [0, loopEnd] as [number, number] } : {}),
       });
       animRef.current = anim;
       anim.addEventListener('DOMLoaded', () => {
@@ -103,7 +109,7 @@ export default function LottieLoop({
       animRef.current?.destroy();
       animRef.current = null;
     };
-  }, [src, stillFrame]);
+  }, [src, stillFrame, loopEnd]);
 
   return (
     <div
