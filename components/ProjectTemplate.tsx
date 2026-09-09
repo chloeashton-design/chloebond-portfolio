@@ -47,7 +47,11 @@ export default function ProjectTemplate({ project, nextProject }: { project: Pro
         <h1 className={styles.title}>{project.title}</h1>
       </section>
 
-      {project.pageHero ? (
+      {project.comingSoon ? (
+        <section className={styles.comingSoon}>
+          <p className={styles.comingSoonLabel}>Coming soon</p>
+        </section>
+      ) : project.pageHero ? (
         <div className={heldHero ? styles.heroHeld : undefined}>
           <HeroLoop hero={project.pageHero} ratio={project.pageHero.ratio} className={styles.heroLoop} />
         </div>
@@ -140,7 +144,7 @@ export default function ProjectTemplate({ project, nextProject }: { project: Pro
             </section>
           </Reveal>
         ))
-      ) : project.siteScroll ? null : (
+      ) : project.siteScroll || project.comingSoon ? null : (
         <>
           <section className={styles.pairRow}>
             <PlaceholderImage ratio="4/5" label="Project image" sublabel="portrait 4 : 5" />

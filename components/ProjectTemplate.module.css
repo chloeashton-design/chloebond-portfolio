@@ -37,6 +37,27 @@
   padding: 0;
 }
 
+/* Stands in the banner slot for work that exists but can't be shown yet.
+   Deliberately not the hatched placeholder: this is withheld, not missing. */
+.comingSoon {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 9;
+  background: var(--paper-2);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.comingSoonLabel {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(30px, 5.4cqw, 82px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 0;
+}
+
 /* A still hero, filling the same edge-to-edge banner slot. */
 .heroImage {
   display: block;

@@ -114,6 +114,12 @@ export interface Project {
   gallery?: ProjectGallery;
   /** A full page shown as one continuous scroll, above any gallery rows. */
   siteScroll?: SiteScroll;
+  /**
+   * Work that exists but can't be published yet. The banner says so and the
+   * page carries no imagery at all -- placeholder rows would suggest artwork
+   * is merely outstanding, when it is being deliberately withheld.
+   */
+  comingSoon?: boolean;
 }
 
 const TOTAL_PROJECTS = 9;
@@ -346,6 +352,10 @@ const pageHeroes: Record<number, HeroLoop> = {
 };
 const pageHeroImages: Record<number, ProjectImage> = {};
 
+// Projects whose work can't be shown yet. Rewind Brand stays under wraps until
+// the brand itself launches.
+const COMING_SOON = new Set([2]);
+
 // Full pages shown as one continuous scroll below the overview.
 const siteScrolls: Record<number, SiteScroll> = {
   1: {
@@ -427,6 +437,7 @@ export const projects: Project[] = Array.from({ length: TOTAL_PROJECTS }, (_, i)
     content: content[index],
     gallery: galleries[index],
     siteScroll: siteScrolls[index],
+    comingSoon: COMING_SOON.has(index) || undefined,
   };
 });
 
