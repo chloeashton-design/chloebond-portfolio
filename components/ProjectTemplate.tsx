@@ -3,6 +3,7 @@ import Image from 'next/image';
 import PlaceholderImage from './PlaceholderImage';
 import HeroLoop from './HeroLoop';
 import Reveal from './Reveal';
+import SiteScroll from './SiteScroll';
 import type { HeroLoop as HeroLoopMeta, Project, ProjectContent } from '../lib/projects';
 import styles from './ProjectTemplate.module.css';
 
@@ -100,6 +101,8 @@ export default function ProjectTemplate({ project, nextProject }: { project: Pro
         </div>
       </section>
 
+      {project.siteScroll ? <SiteScroll scroll={project.siteScroll} label={`${project.title}, full page`} /> : null}
+
       {project.gallery ? (
         project.gallery.map((row, i) => (
           <Reveal key={i}>
@@ -137,7 +140,7 @@ export default function ProjectTemplate({ project, nextProject }: { project: Pro
             </section>
           </Reveal>
         ))
-      ) : (
+      ) : project.siteScroll ? null : (
         <>
           <section className={styles.pairRow}>
             <PlaceholderImage ratio="4/5" label="Project image" sublabel="portrait 4 : 5" />

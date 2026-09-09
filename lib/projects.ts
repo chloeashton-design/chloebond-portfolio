@@ -65,6 +65,30 @@ export type GalleryItem = ProjectImage | ProjectVideo;
  */
 export type ProjectGallery = GalleryItem[][];
 
+/**
+ * A whole web page presented as one continuous scroll, with a live loop playing
+ * in place of one of its sections.
+ *
+ * The slices are contiguous pieces of a single tall export, cut on rows of flat
+ * background colour and stacked flush; `above` runs before the loop's slot and
+ * `below` after it. The slot's geometry is expressed relative to the page width
+ * so it stays locked to the artwork at every screen size.
+ */
+export interface SiteScroll {
+  /** The page's own background, filling the slot's margin and any seam. */
+  background: string;
+  above: ProjectImage[];
+  below: ProjectImage[];
+  /** Without one, the slot shows a placeholder. */
+  video?: HeroLoop;
+  /** Side margin of the slot, as a percentage of the page width. */
+  videoInset: string;
+  /** The slot's shape, as a CSS aspect-ratio. */
+  videoRatio: string;
+  /** Corner radius of the slot, as a percentage of the page width. */
+  videoRadius: string;
+}
+
 export interface Project {
   slug: string;
   index: number;
@@ -88,6 +112,8 @@ export interface Project {
   content?: ProjectContent;
   /** When set, replaces the placeholder image rows on the project page. */
   gallery?: ProjectGallery;
+  /** A full page shown as one continuous scroll, above any gallery rows. */
+  siteScroll?: SiteScroll;
 }
 
 const TOTAL_PROJECTS = 9;
@@ -320,6 +346,53 @@ const pageHeroes: Record<number, HeroLoop> = {
 };
 const pageHeroImages: Record<number, ProjectImage> = {};
 
+// Full pages shown as one continuous scroll below the overview.
+const siteScrolls: Record<number, SiteScroll> = {
+  1: {
+    // The Rewind homepage's own ground, #DEDED4.
+    background: '#dedad4',
+    above: [
+      {
+        src: '/media/project-01/rewind-site-top.webp',
+        alt: 'The top of the redesigned Rewind homepage: a dark navigation bar carrying the logo, menus for integrations, solutions, resources, company and pricing, and buttons to book a demo or start a free trial.',
+        width: 2880,
+        height: 347,
+      },
+    ],
+    below: [
+      {
+        src: '/media/project-01/rewind-site-body-1.webp',
+        alt: 'Statistics and positioning down the page: 86TB recovered, 7.1PB stored, 112B files protected and 25,000+ organisations, then “The platform is protected. Your data is not.” over cards explaining the shared responsibility model and proof of recovery.',
+        width: 2880,
+        height: 4499,
+      },
+      {
+        src: '/media/project-01/rewind-site-body-2.webp',
+        alt: 'The vertical switcher in use — software development, eCommerce, accounting and productivity — over a product screen, followed by a grid of integrations including Jira, Confluence, GitLab, Shopify and Mailchimp.',
+        width: 2880,
+        height: 4496,
+      },
+      {
+        src: '/media/project-01/rewind-site-body-3.webp',
+        alt: 'A comparison table setting Rewind against native tools, DIY scripts and other vendors across recovery, retention and compliance, above a row of security certifications.',
+        width: 2880,
+        height: 2634,
+      },
+      {
+        src: '/media/project-01/rewind-site-body-4.webp',
+        alt: 'Per-app pricing cards, a row of resource articles on SaaS resilience, and a closing panel reading “Deploy AI boldly. Recover fast.” above the site footer.',
+        width: 2880,
+        height: 3631,
+      },
+    ],
+    // Measured off the export: the hero panel sits 80px in from each edge of a
+    // 3040px page, stands 2880x1528, and is rounded by 35px.
+    videoInset: '2.6316%',
+    videoRatio: '2880 / 1528',
+    videoRadius: '1.151%',
+  },
+};
+
 /**
  * Three projects per row, one of them wide. The wide slot walks across the
  * grid — first in row one, middle in row two, last in row three — so the
@@ -340,6 +413,7 @@ export const projects: Project[] = Array.from({ length: TOTAL_PROJECTS }, (_, i)
     pageHeroImage: pageHeroImages[index],
     content: content[index],
     gallery: galleries[index],
+    siteScroll: siteScrolls[index],
   };
 });
 

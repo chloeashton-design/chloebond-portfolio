@@ -1,0 +1,44 @@
+/* Runs to the edges of the screen, like the hero banner above it. */
+.scroll {
+  display: block;
+  width: 100%;
+  margin-bottom: clamp(10px, 1.6cqw, 22px);
+}
+
+/* Flush: no gaps, no baseline gap under the images, so consecutive slices of
+   the same page read as one continuous surface. */
+.slice {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Sits in the gap left between two slices, inset to line up with the panel it
+   replaces. The inline padding is set from the artwork's own measurements. */
+.videoSlot {
+  display: block;
+}
+
+.videoFrame {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+/* Whatever goes in the frame -- a loop or a placeholder -- fills it exactly
+   rather than imposing its own shape on the page. */
+.videoFrame > * {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto !important;
+  padding: 0;
+}
+
+.videoFrame video,
+.videoFrame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
