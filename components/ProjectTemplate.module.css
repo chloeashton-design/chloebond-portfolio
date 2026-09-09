@@ -53,10 +53,15 @@
   padding: 0 clamp(20px, 4.5cqw, 72px);
 }
 
+/* An explicit height, not a max: the browser reads the image's intrinsic size
+   from its srcset density, which for a small source comes out at a fraction of
+   the real pixels. Pinning the height (the same one the loop uses) sidesteps
+   that and keeps every held hero the same size. */
 .heroHeld .heroImage {
   width: auto;
   max-width: 100%;
-  max-height: min(82vh, 920px);
+  height: min(82vh, 920px);
+  object-fit: contain;
 }
 
 .heroHeld .heroLoop {

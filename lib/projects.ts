@@ -240,6 +240,17 @@ const heroes: Record<number, HeroLoop> = {
     gifFallback: false,
     tint: '#111927',
   },
+  9: {
+    src: '/media/project-09/shopify-backups',
+    alt: 'An animated Rewind hero for Shopify: a product card flashes “Oops! It looks like this product was deleted,” then the Vault restores it and a checklist of products, themes and collections ticks green.',
+    // The action is over by 10 s and the source then holds for another 16, so
+    // the loop is cut at 13 with its tail faded to the lavender ground: the
+    // wrap reads as the animation starting over, not a jump.
+    posterTime: 12, // the restored state, everything ticked
+    sources: ['mp4'],
+    gifFallback: false,
+    tint: '#e5e9fa',
+  },
 };
 
 // Still heroes, for projects whose lead artwork isn't motion.
@@ -254,6 +265,24 @@ const heroImages: Record<number, ProjectImage> = {
     src: '/media/project-05/ruckify-esg-cover.webp',
     alt: 'The cover of the Rückify 2020 Sustainability Impact Report: “Creating a Sustainable Alternative to Buying” in coral type on a white panel, over a photograph of an evergreen forest under a cloudy sky.',
     width: 1920,
+    height: 1080,
+  },
+  6: {
+    src: '/media/project-06/ruckify-brand.webp',
+    alt: 'A smiling shop owner in an apron holds up a wooden “Welcome, we are open” sign in front of a weathered blue-green door, framed by a coral U and two teal dots from the Rückify brand.',
+    width: 918,
+    height: 1148,
+  },
+  7: {
+    src: '/media/project-07/tweed-campaigns.webp',
+    alt: 'The Tweed script wordmark in white, set over a close-up of a brown tweed jacket worn with a mustard tee.',
+    width: 894,
+    height: 1118,
+  },
+  8: {
+    src: '/media/project-08/sole-sneaker-club.webp',
+    alt: 'A cartoon unicorn with a pink body and blue mane strides along in sneakers flashing a peace sign, beneath a Sole Sneaker Club logo topped with a halo, on a pale green ground scattered with star stickers.',
+    width: 864,
     height: 1080,
   },
 };
