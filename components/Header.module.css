@@ -7,11 +7,26 @@
   position: sticky;
   top: 0;
   z-index: 40;
-  /* Tinted to the page ground rather than white, so the blurred bar reads as
-     the page itself dimming instead of a pale wash laid over it. */
-  background: rgba(245, 240, 232, 0.28);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  /* The page ground itself, fully opaque: content passes behind the bar rather
+     than showing through it. */
+  background: #f5f0e8;
+  /* Rolls up out of the way on the way down the page and drops back on the way
+     up -- see Header.tsx. Sticky keeps it in flow, so the transform only moves
+     the painted bar, never the space it occupies. */
+  transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header[data-hidden] {
+  transform: translateY(-100%);
+}
+
+/* Whatever the script decides, a visitor who asked for reduced motion keeps a
+   bar that neither slides nor vanishes. */
+@media (prefers-reduced-motion: reduce) {
+  .header {
+    transition: none;
+    transform: none;
+  }
 }
 
 .logo {
