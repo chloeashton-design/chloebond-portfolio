@@ -402,6 +402,110 @@ const RUCKIFY_ICONS = [
 ];
 
 const galleries: Record<number, ProjectGallery> = {
+  // Every piece is 16:9, so the report reads as a straight stack: six spreads
+  // of the document, the page grid flicking between its two halves, then five
+  // pages pulled out onto their own grounds.
+  5: [
+    [
+      {
+        src: '/media/project-05/ruckify-report-1.webp',
+        alt: 'The report opening: the cover beside spreads introducing the sharing economy, with statistics on waste and consumption.',
+        width: 2560,
+        height: 1440,
+      },
+    ],
+    [
+      {
+        src: '/media/project-05/ruckify-report-2.webp',
+        alt: 'The renters section — who they are and why they rent — with portraits, listing cards and a set of impact charts.',
+        width: 2560,
+        height: 1440,
+      },
+    ],
+    [
+      {
+        src: '/media/project-05/ruckify-report-3.webp',
+        alt: 'The sustainable impact strategy laid out across four coloured pillars: community, environment, trust and waste.',
+        width: 2560,
+        height: 1440,
+      },
+    ],
+    [
+      {
+        src: '/media/project-05/ruckify-report-4.webp',
+        alt: 'The climate change section, photography of soil and seedlings set against columns of body copy and data.',
+        width: 2560,
+        height: 1440,
+      },
+    ],
+    [
+      {
+        src: '/media/project-05/ruckify-report-5.webp',
+        alt: 'Talent development spreads in coral, pairing portraits with commitments and a table of targets.',
+        width: 2560,
+        height: 1440,
+      },
+    ],
+    [
+      {
+        src: '/media/project-05/ruckify-report-6.webp',
+        alt: 'Member safeguards in teal: verification, insurance and dispute resolution set out across the closing spreads.',
+        width: 2560,
+        height: 1440,
+      },
+    ],
+    [
+      {
+        kind: 'video',
+        src: '/media/project-05/ruckify-esg-loop',
+        alt: 'Every page of the report shown as a grid, flicking between the first half of the document and the second.',
+        ratio: '16/9',
+        sources: ['mp4'],
+        gifFallback: false,
+        tint: '#f2f2f3',
+      },
+    ],
+    [
+      {
+        src: '/media/project-05/ruckify-esg-1.webp',
+        alt: 'The growth loop page on orange: supply and demand drawn as a four-stage cycle beside rental request cards.',
+        width: 1920,
+        height: 1080,
+      },
+    ],
+    [
+      {
+        src: '/media/project-05/ruckify-esg-2.webp',
+        alt: 'The 2025 strategic goals page, its commitments to environment, community and trust listed in three columns above a rising curve.',
+        width: 1920,
+        height: 1080,
+      },
+    ],
+    [
+      {
+        src: '/media/project-05/ruckify-esg-3.webp',
+        alt: 'The renters page on orange, a fireside portrait beside a listing card and a column of rental motivations.',
+        width: 1920,
+        height: 1080,
+      },
+    ],
+    [
+      {
+        src: '/media/project-05/ruckify-esg-4.webp',
+        alt: 'Asset utilisation and sustainable consumption, illustrated with paddle board and ladder listings and the hours they sit idle.',
+        width: 1920,
+        height: 1080,
+      },
+    ],
+    [
+      {
+        src: '/media/project-05/ruckify-esg-5.webp',
+        alt: 'The responsible marketing and use page, a stack of member reviews and ratings running down one side.',
+        width: 1920,
+        height: 1080,
+      },
+    ],
+  ],
   6: [
     [
       {
@@ -768,6 +872,12 @@ const pageHeroes: Record<number, HeroLoop> = {
   },
 };
 const pageHeroImages: Record<number, ProjectImage> = {
+  5: {
+    src: '/media/project-05/ruckify-esg-hero.webp',
+    alt: 'The report cover — “Creating a Sustainable Alternative to Buying” over an aerial photograph of forest — floating against a bright sky.',
+    width: 1920,
+    height: 1080,
+  },
   6: {
     src: '/media/project-06/ruckify-hero.webp',
     alt: 'A woodworker in his shop, with Rückify listing cards overlaid offering his workbench, mitre saw and garage space for rent.',
