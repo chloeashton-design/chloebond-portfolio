@@ -5,7 +5,8 @@ import PlaceholderImage from './PlaceholderImage';
 import HeroLoop from './HeroLoop';
 import Reveal from './Reveal';
 import SiteScroll from './SiteScroll';
-import type { GalleryItem, HeroLoop as HeroLoopMeta, Project, ProjectContent } from '../lib/projects';
+import LottieLoop from './LottieLoop';
+import type { GalleryItem, HeroLoop as HeroLoopMeta, Project, ProjectContent, ProjectImage } from '../lib/projects';
 import styles from './ProjectTemplate.module.css';
 
 /** Shown by any project that doesn't have real copy yet. */
@@ -25,6 +26,16 @@ function itemRatio(item: GalleryItem): number {
   return item.kind === 'video' ? RATIO[item.ratio] : item.width / item.height;
 }
 
+/** A plain still, as opposed to a loop or a vector animation. */
+function isStill(item: GalleryItem): item is ProjectImage {
+  return item.kind !== 'video' && item.kind !== 'lottie';
+}
+
+/** A row holding nothing but one vector animation. */
+function isLottieRow(row: GalleryItem[]): boolean {
+  return row.length === 1 && row[0].kind === 'lottie';
+}
+
 const RATIO: Record<NonNullable<HeroLoopMeta['ratio']>, number> = {
   '16/9': 16 / 9,
   '5/4': 5 / 4,
@@ -34,6 +45,7 @@ const RATIO: Record<NonNullable<HeroLoopMeta['ratio']>, number> = {
 
 export default function ProjectTemplate({ project, nextProject }: { project: Project; nextProject: Project }) {
   const content = project.content ?? placeholder;
+  const gallery = project.gallery;
 
   // Anything squarer than 3:2 can't run edge to edge -- at full viewport width
   // it would stand taller than the screen -- so it's held centred instead.
@@ -113,15 +125,21 @@ export default function ProjectTemplate({ project, nextProject }: { project: Pro
 
       {project.siteScroll ? <SiteScroll scroll={project.siteScroll} label={`${project.title}, full page`} /> : null}
 
-      {project.gallery ? (
-        project.gallery.map((row, i) => (
+      {gallery ? (
+        gallery.map((row, i) => (
           <Reveal key={i}>
             <section
               // A lone image can ask to run to the page edges instead of
               // sitting inside the gallery's margin.
-              className={`${styles.galleryRow} ${
-                row.length === 1 && row[0].kind !== 'video' && row[0].bleed ? styles.galleryRowBleed : ''
-              }`}
+              className={[
+                styles.galleryRow,
+                row.length === 1 && isStill(row[0]) && row[0].bleed ? styles.galleryRowBleed : '',
+                // A rule between one animation and the next, so a stack of them
+                // reads as separate pieces rather than one continuous run.
+                isLottieRow(row) && isLottieRow(gallery[i - 1] ?? []) ? styles.galleryRowRuled : '',
+              ]
+                .filter(Boolean)
+                .join(' ')}
               data-columns={row.length}
               style={
                 row.length > 1
@@ -130,7 +148,17 @@ export default function ProjectTemplate({ project, nextProject }: { project: Pro
               }
             >
               {row.map((item) =>
-                item.kind === 'video' ? (
+                item.kind === 'lottie' ? (
+                  <LottieLoop
+                    key={item.src}
+                    src={item.src}
+                    alt={item.alt}
+                    width={item.width}
+                    height={item.height}
+                    stillFrame={item.stillFrame}
+                    tint={item.tint}
+                  />
+                ) : item.kind === 'video' ? (
                   <HeroLoop key={item.src} hero={item} ratio={item.ratio} />
                 ) : (
                   <Image

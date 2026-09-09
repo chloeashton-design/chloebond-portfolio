@@ -179,6 +179,13 @@
   padding-right: 0;
 }
 
+/* Separates one stacked animation from the next. */
+.galleryRowRuled {
+  border-top: 1px solid var(--line);
+  margin-top: clamp(10px, 1.6cqw, 22px);
+  padding-top: clamp(22px, 3.2cqw, 48px);
+}
+
 /* Columns weighted by each image's own shape, so a row of mixed ratios finishes
    level instead of leaving a tall picture towering over a wide one. Equal
    ratios fall out as equal columns. --cols comes from the artwork's own

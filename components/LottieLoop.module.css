@@ -1,0 +1,20 @@
+/* Holds the animation's shape from the first paint, so nothing below it shifts
+   while the player and its JSON are still on the way. */
+.frame {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  transition: background 0.4s ease;
+}
+
+.host {
+  position: absolute;
+  inset: 0;
+}
+
+/* lottie-web sizes its own svg to the container it is given. */
+.host > svg {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}

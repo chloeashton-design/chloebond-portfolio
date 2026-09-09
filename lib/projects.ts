@@ -57,7 +57,26 @@ export interface ProjectVideo extends HeroLoop {
   ratio: '16/9' | '5/4' | '4/5' | '1/1';
 }
 
-export type GalleryItem = ProjectImage | ProjectVideo;
+/**
+ * A vector animation played from its own JSON export. Worth the separate kind:
+ * the artwork is drawn as shapes, so it stays sharp at any width, and it weighs
+ * a fraction of the same footage as video.
+ */
+export interface ProjectLottie {
+  kind: 'lottie';
+  /** Path to the animation JSON. */
+  src: string;
+  alt: string;
+  /** The export's own dimensions, which set the frame's shape. */
+  width: number;
+  height: number;
+  /** Frame shown under reduced motion. Pick one where the story has landed. */
+  stillFrame: number;
+  /** Holding colour until the animation paints. */
+  tint?: string;
+}
+
+export type GalleryItem = ProjectImage | ProjectVideo | ProjectLottie;
 
 /**
  * The media sequence below a project's overview. Each inner array is one row:
@@ -341,6 +360,54 @@ const heroImages: Record<number, ProjectImage> = {
 // The media sequence below each project's overview. Dimensions are the
 // supplied artwork's own, scaled down for web.
 const galleries: Record<number, ProjectGallery> = {
+  // Four hero animations, one per row, stacked. Each runs 1200 frames at 60fps
+  // but has settled by about 700, so the still frame is taken from the end.
+  9: [
+    [
+      {
+        kind: 'lottie',
+        src: '/media/project-09/github.json',
+        alt: 'A GitHub repository throws a 404 critical error, then the Vault restores it: the code file returns and repositories, issues and projects each tick green under “GitHub data has been restored”.',
+        width: 632,
+        height: 356,
+        stillFrame: 1000,
+        tint: '#f4f1fb',
+      },
+    ],
+    [
+      {
+        kind: 'lottie',
+        src: '/media/project-09/microsoft.json',
+        alt: 'A Microsoft 365 file list sits empty until the Vault restores it, folders filling back in as SharePoint, OneDrive and Teams tick green under “Your Microsoft 365 data is restored”.',
+        width: 632,
+        height: 356,
+        stillFrame: 1000,
+        tint: '#f4f1fb',
+      },
+    ],
+    [
+      {
+        kind: 'lottie',
+        src: '/media/project-09/quickbooks.json',
+        alt: 'QuickBooks reports “Oops! We can’t seem to locate those files”, then the Vault restores them: charts and tables redraw and reports, expenses and attachments tick green.',
+        width: 632,
+        height: 356,
+        stillFrame: 1000,
+        tint: '#f4f1fb',
+      },
+    ],
+    [
+      {
+        kind: 'lottie',
+        src: '/media/project-09/trello.json',
+        alt: 'A Trello board full of warning triangles is restored by the Vault, its cards returning as boards, cards and attachments tick green under “Your Trello data is restored”.',
+        width: 632,
+        height: 356,
+        stillFrame: 1000,
+        tint: '#f4f1fb',
+      },
+    ],
+  ],
   8: [
     [
       {
@@ -444,6 +511,8 @@ const pageHeroes: Record<number, HeroLoop> = {
   // Rewind Website is the exception: it opens on the same loop its tile shows.
   // Referenced rather than restated, so the two can't drift apart.
   1: heroes[1],
+  // Rewind Hero Animations opens on its tile's loop too, for the same reason.
+  9: heroes[9],
   8: {
     src: '/media/project-08/ssc-guidelines',
     alt: 'The Sole Sneaker Club brand guidelines flicking through their pages — cover, welcome, mood board, logo and mark, mascot, colour palette, typefaces, hoodies, tees, caps, social, and a closing thanks.',
