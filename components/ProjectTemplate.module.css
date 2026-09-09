@@ -44,6 +44,42 @@
   height: auto;
 }
 
+/* A hero that isn't wide -- anything squarer than 3:2 -- is held centred at a
+   height that fits the screen, with the page gutters either side, rather than
+   stretched across the viewport and off the bottom of it. */
+.heroHeld {
+  display: flex;
+  justify-content: center;
+  padding: 0 clamp(20px, 4.5cqw, 72px);
+}
+
+.heroHeld .heroImage {
+  width: auto;
+  max-width: 100%;
+  max-height: min(82vh, 920px);
+}
+
+.heroHeld .heroLoop {
+  width: auto;
+  max-width: 100%;
+  height: min(82vh, 920px);
+}
+
+/* On a phone the held hero simply fills the width at its own ratio: there's no
+   room for gutters, and a portrait image is the natural shape of the screen. */
+@container (max-width: 700px) {
+  .heroHeld {
+    padding: 0;
+  }
+
+  .heroHeld .heroImage,
+  .heroHeld .heroLoop {
+    width: 100%;
+    height: auto;
+    max-height: none;
+  }
+}
+
 .overview {
   padding: clamp(28px, 3.6cqw, 56px) clamp(20px, 4.5cqw, 72px);
   display: grid;

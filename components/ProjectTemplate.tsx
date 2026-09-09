@@ -3,7 +3,7 @@ import Image from 'next/image';
 import PlaceholderImage from './PlaceholderImage';
 import HeroLoop from './HeroLoop';
 import Reveal from './Reveal';
-import type { Project, ProjectContent } from '../lib/projects';
+import type { HeroLoop as HeroLoopMeta, Project, ProjectContent } from '../lib/projects';
 import styles from './ProjectTemplate.module.css';
 
 /** Shown by any project that doesn't have real copy yet. */
@@ -18,8 +18,19 @@ const placeholder: ProjectContent = {
   tools: 'Placeholder',
 };
 
+const RATIO: Record<NonNullable<HeroLoopMeta['ratio']>, number> = { '16/9': 16 / 9, '4/5': 4 / 5, '1/1': 1 };
+
 export default function ProjectTemplate({ project, nextProject }: { project: Project; nextProject: Project }) {
   const content = project.content ?? placeholder;
+
+  // Anything squarer than 3:2 can't run edge to edge -- at full viewport width
+  // it would stand taller than the screen -- so it's held centred instead.
+  const heroShape = project.hero
+    ? RATIO[project.hero.ratio ?? '16/9']
+    : project.heroImage
+      ? project.heroImage.width / project.heroImage.height
+      : 16 / 9;
+  const heldHero = heroShape < 1.5;
 
   return (
     <main className="page-enter">
@@ -31,17 +42,21 @@ export default function ProjectTemplate({ project, nextProject }: { project: Pro
       </section>
 
       {project.hero ? (
-        <HeroLoop hero={project.hero} className={styles.heroLoop} />
+        <div className={heldHero ? styles.heroHeld : undefined}>
+          <HeroLoop hero={project.hero} ratio={project.hero.ratio} className={styles.heroLoop} />
+        </div>
       ) : project.heroImage ? (
-        <Image
-          src={project.heroImage.src}
-          alt={project.heroImage.alt}
-          width={project.heroImage.width}
-          height={project.heroImage.height}
-          className={styles.heroImage}
-          sizes="100vw"
-          priority
-        />
+        <div className={heldHero ? styles.heroHeld : undefined}>
+          <Image
+            src={project.heroImage.src}
+            alt={project.heroImage.alt}
+            width={project.heroImage.width}
+            height={project.heroImage.height}
+            className={styles.heroImage}
+            sizes={heldHero ? '(max-width: 700px) 100vw, 60vw' : '100vw'}
+            priority
+          />
+        </div>
       ) : (
         <PlaceholderImage ratio="16/9" label="Project hero" sublabel="landscape 16 : 9" className={styles.hero} />
       )}

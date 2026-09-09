@@ -20,6 +20,8 @@ export interface HeroLoop {
   sources?: Array<'webm' | 'mp4'>;
   /** Whether a .gif sits alongside src, for browsers with no video at all. */
   gifFallback?: boolean;
+  /** The clip's own shape. Defaults to 16/9; a portrait loop is held rather than stretched. */
+  ratio?: '16/9' | '4/5' | '1/1';
 }
 
 /** Real copy for a project. Without an entry, the page keeps its placeholders. */
@@ -218,10 +220,34 @@ const content: Record<number, ProjectContent> = {
 };
 
 // Projects whose hero slot has real motion rather than a placeholder.
-const heroes: Record<number, HeroLoop> = {};
+const heroes: Record<number, HeroLoop> = {
+  2: {
+    src: '/media/project-02/rewind-mark',
+    alt: 'The Rewind mark — a chrome chevron of two curved blades — turning slowly on a dark navy ground and catching the light as it rotates.',
+    ratio: '4/5',
+    // The loop opens on the mark face-on, so the poster is frame 0 and the
+    // clip picks up exactly where the still leaves off.
+    sources: ['mp4'], // encoded from a GIF; H.264 came in at an eighth of the size
+    gifFallback: false,
+    tint: '#111927',
+  },
+};
 
 // Still heroes, for projects whose lead artwork isn't motion.
-const heroImages: Record<number, ProjectImage> = {};
+const heroImages: Record<number, ProjectImage> = {
+  3: {
+    src: '/media/project-03/bonds-decor-tee.webp',
+    alt: 'A navy pocket tee, the Bonds Decor script logo printed on the pocket in cream above a paintbrush trailing yellow, blue and red stripes.',
+    width: 1174,
+    height: 1328,
+  },
+  5: {
+    src: '/media/project-05/ruckify-esg-cover.webp',
+    alt: 'The cover of the Rückify 2020 Sustainability Impact Report: “Creating a Sustainable Alternative to Buying” in coral type on a white panel, over a photograph of an evergreen forest under a cloudy sky.',
+    width: 1920,
+    height: 1080,
+  },
+};
 
 // The media sequence below each project's overview. Dimensions are the
 // supplied artwork's own, scaled down for web.
