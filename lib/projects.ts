@@ -474,6 +474,8 @@ const galleries: Record<number, ProjectGallery> = {
         width: 2310,
         height: 1188,
       },
+    ],
+    [
       {
         src: '/media/project-06/ruckify-ad2.webp',
         alt: 'Two listing ads under “Rent anything from anyone.”, one for a ladder and one for a movie night bundle.',
