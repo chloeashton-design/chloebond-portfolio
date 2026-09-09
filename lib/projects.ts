@@ -436,6 +436,8 @@ const galleries: Record<number, ProjectGallery> = {
         width: 1148,
         height: 1148,
       },
+    ],
+    [
       {
         src: '/media/project-06/ruckify-imagetreatment3.webp',
         alt: 'Two people looking at a phone, with rental request cards for weights, skates and an iPad floating alongside them.',
