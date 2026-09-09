@@ -240,6 +240,18 @@ const heroes: Record<number, HeroLoop> = {
     gifFallback: false,
     tint: '#111927',
   },
+  4: {
+    src: '/media/project-04/wild-fauna',
+    alt: 'Tall grasses sway against a dusk sky while the handwritten Wild Fauna wordmark hangs steady in the middle of the frame.',
+    ratio: '4/5',
+    // Eight seconds of continuous footage, tail cross-faded into head. Grass
+    // is costly to encode, so the loop is kept short and at 816px -- the
+    // most its tile ever draws -- rather than the source's 1080.
+    posterTime: 4,
+    sources: ['mp4'],
+    gifFallback: false,
+    tint: '#385f6c', // the dusk sky
+  },
   9: {
     src: '/media/project-09/shopify-backups',
     alt: 'An animated Rewind hero for Shopify: a product card flashes “Oops! It looks like this product was deleted,” then the Vault restores it and a checklist of products, themes and collections ticks green.',
