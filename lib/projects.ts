@@ -243,18 +243,6 @@ const heroes: Record<number, HeroLoop> = {
     gifFallback: false,
     tint: '#1b2232', // the navy ground
   },
-  4: {
-    src: '/media/project-04/wild-fauna',
-    alt: 'Tall grasses sway against a dusk sky while the handwritten Wild Fauna wordmark hangs steady in the middle of the frame.',
-    ratio: '4/5',
-    // Eight seconds of continuous footage, tail cross-faded into head. Grass
-    // is costly to encode, so the loop is kept short and at 816px -- the
-    // most its tile ever draws -- rather than the source's 1080.
-    posterTime: 4,
-    sources: ['mp4'],
-    gifFallback: false,
-    tint: '#385f6c', // the dusk sky
-  },
   9: {
     src: '/media/project-09/shopify-backups',
     alt: 'An animated Rewind hero for Shopify: a product card flashes “Oops! It looks like this product was deleted,” then the Vault restores it and a checklist of products, themes and collections ticks green.',
@@ -270,6 +258,12 @@ const heroes: Record<number, HeroLoop> = {
 
 // Still heroes, for projects whose lead artwork isn't motion.
 const heroImages: Record<number, ProjectImage> = {
+  4: {
+    src: '/media/project-04/wild-fauna-5x4.webp',
+    alt: 'Three young children and an adult tend a vegetable garden thick with tomatoes and greens, the photograph set on a lime ground beside the Wild Fauna monogram and hand-drawn flower and butterfly doodles.',
+    width: 1080,
+    height: 864,
+  },
   3: {
     src: '/media/project-03/bonds-decor-tee.webp',
     alt: 'A navy pocket tee, the Bonds Decor script logo printed on the pocket in cream above a paintbrush trailing yellow, blue and red stripes.',
@@ -283,10 +277,13 @@ const heroImages: Record<number, ProjectImage> = {
     height: 1080,
   },
   6: {
-    src: '/media/project-06/ruckify-brand.webp',
-    alt: 'A smiling shop owner in an apron holds up a wooden “Welcome, we are open” sign in front of a weathered blue-green door, framed by a coral U and two teal dots from the Rückify brand.',
-    width: 918,
-    height: 1148,
+    // Renamed rather than overwritten, so no CDN holds the portrait crop at the old URL.
+    src: '/media/project-06/ruckify-brand-5x4.webp',
+    alt: 'A white enamel pin of the Rückify ü smiley, its orange letter between two teal dots, fastened to the chest pocket of a light denim jacket.',
+    // Held at 1080 rather than the source's 1238: the tile never draws wider
+    // than 846, and the denim weave makes every extra pixel expensive.
+    width: 1080,
+    height: 864,
   },
   7: {
     src: '/media/project-07/tweed-campaigns.webp',
