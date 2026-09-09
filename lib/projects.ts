@@ -65,16 +65,19 @@ export interface Project {
   title: string;
   /** The wide tile in its row of three. Its ratio sets that row's height. */
   tileLarge: boolean;
-  /**
-   * When set, this loop replaces the placeholder in both of the project's slots:
-   * its tile on the home work grid, and the banner inside the project page.
-   */
+  /** The loop in this project's tile on the home work grid. */
   hero?: HeroLoop;
-  /**
-   * A still hero, for projects whose lead artwork isn't motion. Fills the same
-   * two slots as `hero`: the work-grid tile and the project page banner.
-   */
+  /** A still tile, for a project whose lead artwork isn't motion. */
   heroImage?: ProjectImage;
+  /**
+   * The banner inside the project page. Deliberately a separate slot from the
+   * grid tile above, so a project can lead with one image on the work grid and
+   * a different one on its own page. With neither set, the page keeps its
+   * placeholder banner.
+   */
+  pageHero?: HeroLoop;
+  /** A still page banner, the counterpart to `pageHero`. */
+  pageHeroImage?: ProjectImage;
   /** When set, replaces the placeholder intro and metadata on the project page. */
   content?: ProjectContent;
   /** When set, replaces the placeholder image rows on the project page. */
@@ -303,6 +306,12 @@ const heroImages: Record<number, ProjectImage> = {
 // supplied artwork's own, scaled down for web.
 const galleries: Record<number, ProjectGallery> = {};
 
+// Banners inside the project pages. Separate from the work-grid tiles above:
+// each project leads with different artwork on its own page. Empty for now, so
+// every page shows its placeholder banner.
+const pageHeroes: Record<number, HeroLoop> = {};
+const pageHeroImages: Record<number, ProjectImage> = {};
+
 /**
  * Three projects per row, one of them wide. The wide slot walks across the
  * grid — first in row one, middle in row two, last in row three — so the
@@ -319,6 +328,8 @@ export const projects: Project[] = Array.from({ length: TOTAL_PROJECTS }, (_, i)
     tileLarge: LARGE_TILES.has(index),
     hero: heroes[index],
     heroImage: heroImages[index],
+    pageHero: pageHeroes[index],
+    pageHeroImage: pageHeroImages[index],
     content: content[index],
     gallery: galleries[index],
   };

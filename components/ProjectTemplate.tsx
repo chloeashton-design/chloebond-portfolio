@@ -25,10 +25,10 @@ export default function ProjectTemplate({ project, nextProject }: { project: Pro
 
   // Anything squarer than 3:2 can't run edge to edge -- at full viewport width
   // it would stand taller than the screen -- so it's held centred instead.
-  const heroShape = project.hero
-    ? RATIO[project.hero.ratio ?? '16/9']
-    : project.heroImage
-      ? project.heroImage.width / project.heroImage.height
+  const heroShape = project.pageHero
+    ? RATIO[project.pageHero.ratio ?? '16/9']
+    : project.pageHeroImage
+      ? project.pageHeroImage.width / project.pageHeroImage.height
       : 16 / 9;
   const heldHero = heroShape < 1.5;
 
@@ -41,17 +41,17 @@ export default function ProjectTemplate({ project, nextProject }: { project: Pro
         <h1 className={styles.title}>{project.title}</h1>
       </section>
 
-      {project.hero ? (
+      {project.pageHero ? (
         <div className={heldHero ? styles.heroHeld : undefined}>
-          <HeroLoop hero={project.hero} ratio={project.hero.ratio} className={styles.heroLoop} />
+          <HeroLoop hero={project.pageHero} ratio={project.pageHero.ratio} className={styles.heroLoop} />
         </div>
-      ) : project.heroImage ? (
+      ) : project.pageHeroImage ? (
         <div className={heldHero ? styles.heroHeld : undefined}>
           <Image
-            src={project.heroImage.src}
-            alt={project.heroImage.alt}
-            width={project.heroImage.width}
-            height={project.heroImage.height}
+            src={project.pageHeroImage.src}
+            alt={project.pageHeroImage.alt}
+            width={project.pageHeroImage.width}
+            height={project.pageHeroImage.height}
             className={styles.heroImage}
             sizes={heldHero ? '(max-width: 700px) 100vw, 60vw' : '100vw'}
             priority
