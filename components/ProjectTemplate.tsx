@@ -103,7 +103,14 @@ export default function ProjectTemplate({ project, nextProject }: { project: Pro
       {project.gallery ? (
         project.gallery.map((row, i) => (
           <Reveal key={i}>
-            <section className={styles.galleryRow} data-columns={row.length}>
+            <section
+              // A lone image can ask to run to the page edges instead of
+              // sitting inside the gallery's margin.
+              className={`${styles.galleryRow} ${
+                row.length === 1 && row[0].kind !== 'video' && row[0].bleed ? styles.galleryRowBleed : ''
+              }`}
+              data-columns={row.length}
+            >
               {row.map((item) =>
                 item.kind === 'video' ? (
                   <HeroLoop key={item.src} hero={item} ratio={item.ratio} />
@@ -117,7 +124,9 @@ export default function ProjectTemplate({ project, nextProject }: { project: Pro
                     className={styles.galleryImage}
                     sizes={
                       row.length === 1
-                        ? '(max-width: 700px) 100vw, 90vw'
+                        ? item.bleed
+                          ? '100vw'
+                          : '(max-width: 700px) 100vw, 90vw'
                         : row.length === 2
                           ? '(max-width: 700px) 100vw, 45vw'
                           : '(max-width: 700px) 100vw, 30vw'

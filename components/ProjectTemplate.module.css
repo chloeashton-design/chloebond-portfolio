@@ -152,6 +152,12 @@
   align-items: start;
 }
 
+/* Drops the side margin so the artwork spans the page like the hero banner. */
+.galleryRowBleed {
+  padding-left: 0;
+  padding-right: 0;
+}
+
 .galleryRow[data-columns='2'] {
   grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
 }

@@ -43,6 +43,12 @@ export interface ProjectImage {
   alt: string;
   width: number;
   height: number;
+  /**
+   * Runs to the edges of the page rather than sitting inside the gallery's
+   * side margin, matching the hero banner's width. For a full-page screenshot
+   * that wants every pixel of width. Only meaningful on a row of its own.
+   */
+  bleed?: boolean;
 }
 
 /** A silent looping clip sitting in the gallery, played like the hero loop. */
