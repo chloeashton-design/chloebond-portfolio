@@ -6,6 +6,11 @@ import HandNote from '../components/HandNote';
 import { projects } from '../lib/projects';
 import styles from './page.module.css';
 
+/** Three to a row, so each row can size its own columns around its wide tile. */
+const rows = Array.from({ length: Math.ceil(projects.length / 3) }, (_, i) =>
+  projects.slice(i * 3, i * 3 + 3),
+);
+
 export default function HomePage() {
   return (
     <main className="page-enter">
@@ -21,44 +26,54 @@ export default function HomePage() {
       </section>
 
       <section id="work" className={styles.grid}>
-        {projects.map((project) => (
-          <Link
-            key={project.slug}
-            href={`/work/${project.slug}`}
-            className={`${styles.tile} ${project.tileLarge ? styles.tileLarge : styles.tileSmall}`}
-            aria-label={project.title}
+        {rows.map((row, i) => (
+          // Which slot holds this row's wide tile, 1-indexed, so the CSS can
+          // widen that column. Absent if the row is all one size.
+          <div
+            key={i}
+            className={styles.row}
+            data-large={row.findIndex((p) => p.tileLarge) + 1 || undefined}
           >
-            <span className={styles.tileMeta}>
-              <span className={styles.tileIndex}>{String(project.index).padStart(2, '0')}</span>
-              <span className={styles.tileSlash} aria-hidden="true">
-                /
-              </span>
-              <span className={styles.tileName}>
-                <span className={styles.tileNameRest}>{project.title}</span>
-                <span className={styles.tileNameHover} aria-hidden="true">
-                  View project
+            {row.map((project) => (
+              <Link
+                key={project.slug}
+                href={`/work/${project.slug}`}
+                className={`${styles.tile} ${project.tileLarge ? styles.tileLarge : styles.tileSmall}`}
+                aria-label={project.title}
+              >
+                <span className={styles.tileMeta}>
+                  <span className={styles.tileIndex}>{String(project.index).padStart(2, '0')}</span>
+                  <span className={styles.tileSlash} aria-hidden="true">
+                    /
+                  </span>
+                  <span className={styles.tileName}>
+                    <span className={styles.tileNameRest}>{project.title}</span>
+                    <span className={styles.tileNameHover} aria-hidden="true">
+                      View project
+                    </span>
+                  </span>
                 </span>
-              </span>
-            </span>
-            {/* The media is stretched to its row's height and cropped to fill,
-                so all three tiles in a row line up regardless of the artwork's
-                own ratio. */}
-            <span className={styles.tileMedia}>
-              {project.hero ? (
-                <HeroLoop hero={project.hero} />
-              ) : project.heroImage ? (
-                <Image
-                  src={project.heroImage.src}
-                  alt={project.heroImage.alt}
-                  width={project.heroImage.width}
-                  height={project.heroImage.height}
-                  sizes={project.tileLarge ? '(max-width: 700px) 100vw, 50vw' : '(max-width: 700px) 100vw, 25vw'}
-                />
-              ) : (
-                <PlaceholderImage ratio="16/9" label={project.title} />
-              )}
-            </span>
-          </Link>
+                {/* Each tile keeps its own ratio -- 16:9 wide, 5:4 narrow --
+                    and the column widths are set so the three still finish
+                    level. Artwork fills its slot and crops. */}
+                <span className={styles.tileMedia}>
+                  {project.hero ? (
+                    <HeroLoop hero={project.hero} />
+                  ) : project.heroImage ? (
+                    <Image
+                      src={project.heroImage.src}
+                      alt={project.heroImage.alt}
+                      width={project.heroImage.width}
+                      height={project.heroImage.height}
+                      sizes={project.tileLarge ? '(max-width: 700px) 100vw, 42vw' : '(max-width: 700px) 100vw, 30vw'}
+                    />
+                  ) : (
+                    <PlaceholderImage ratio="16/9" label={project.title} />
+                  )}
+                </span>
+              </Link>
+            ))}
+          </div>
         ))}
       </section>
     </main>

@@ -36,14 +36,35 @@
   }
 }
 
-/* Three projects to a row: one wide tile spanning two of four columns, and
-   two narrow ones. Which slot is wide walks across the rows -- see
-   LARGE_TILES in lib/projects.ts. */
+/* Three projects to a row: one wide 16:9 tile and two 5:4 ones. Which slot is
+   wide walks across the rows -- see LARGE_TILES in lib/projects.ts. */
 .grid {
+  --tile-gap: clamp(14px, 2.6cqw, 42px);
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: clamp(14px, 2.6cqw, 42px);
+  gap: var(--tile-gap);
   padding: 0 clamp(20px, 4.5cqw, 72px) clamp(44px, 7cqw, 110px);
+}
+
+/* A 16:9 tile and a 5:4 tile only finish level if the wide one is
+   (16/9) / (5/4) = 64/45 times the width, so that's the column it gets.
+   Each row is its own grid because the wide slot moves down the page. */
+.row {
+  --wide: 1.42222fr;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--tile-gap);
+}
+
+.row[data-large='1'] {
+  grid-template-columns: var(--wide) 1fr 1fr;
+}
+
+.row[data-large='2'] {
+  grid-template-columns: 1fr var(--wide) 1fr;
+}
+
+.row[data-large='3'] {
+  grid-template-columns: 1fr 1fr var(--wide);
 }
 
 .tile {
@@ -106,15 +127,8 @@
   color: var(--accent);
 }
 
-.tileLarge {
-  grid-column: span 2;
-}
-
-.tileSmall {
-  grid-column: span 1;
-}
-
-/* The wide tile's ratio sets the row height; the narrow ones stretch to it. */
+/* Both ratios resolve to the same height at the column widths above, so the
+   row needs no reconciling: each tile simply takes its own shape. */
 .tileMedia {
   position: relative;
   flex: 1;
@@ -124,6 +138,10 @@
 
 .tileLarge .tileMedia {
   aspect-ratio: 16 / 9;
+}
+
+.tileSmall .tileMedia {
+  aspect-ratio: 5 / 4;
 }
 
 /* Whatever sits inside -- a still, a looping video or a placeholder -- fills
@@ -143,20 +161,19 @@
   object-fit: cover;
 }
 
-/* Four columns is unreadable on a phone, so tiles stack and take a
-   consistent landscape ratio of their own. */
+/* Three to a row is unreadable on a phone, so tiles stack full width and take
+   a consistent landscape ratio of their own. */
 @container (max-width: 700px) {
-  .grid {
+  /* The [data-large] variants above outrank a bare .row, so match their
+     specificity to undo them here. */
+  .row,
+  .row[data-large] {
     grid-template-columns: 1fr;
   }
 
-  .tileLarge,
-  .tileSmall {
-    grid-column: span 1;
-  }
-
   .tileMedia,
-  .tileLarge .tileMedia {
+  .tileLarge .tileMedia,
+  .tileSmall .tileMedia {
     aspect-ratio: 16 / 9;
   }
 }
