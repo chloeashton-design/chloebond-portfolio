@@ -304,10 +304,14 @@ const heroImages: Record<number, ProjectImage> = {
 // supplied artwork's own, scaled down for web.
 const galleries: Record<number, ProjectGallery> = {};
 
-// Banners inside the project pages. Separate from the work-grid tiles above:
-// each project leads with different artwork on its own page. Empty for now, so
-// every page shows its placeholder banner.
-const pageHeroes: Record<number, HeroLoop> = {};
+// Banners inside the project pages, a separate slot from the work-grid tiles
+// above so a project can lead with different artwork in each place. A project
+// with no entry here keeps its placeholder banner.
+const pageHeroes: Record<number, HeroLoop> = {
+  // Rewind Website is the exception: it opens on the same loop its tile shows.
+  // Referenced rather than restated, so the two can't drift apart.
+  1: heroes[1],
+};
 const pageHeroImages: Record<number, ProjectImage> = {};
 
 /**
