@@ -89,9 +89,9 @@ const names: Record<number, string> = {
   4: 'Wild Fauna',
   5: 'Rückify ESG Report',
   6: 'Rückify Brand',
-  7: 'Rewind Hero Animations',
+  7: 'Tweed Campaigns',
   8: 'Sole Sneaker Club',
-  9: 'Tweed Campaigns',
+  9: 'Rewind Hero Animations',
 };
 
 // URL slugs for named projects. Unlisted projects keep "project-0N".
@@ -180,15 +180,16 @@ const content: Record<number, ProjectContent> = {
   },
   7: {
     intro: [
-      'Rewind’s hero graphics were static product UI screenshots, which didn’t land well with our less technical audiences, like Shopify store owners and accountants using QuickBooks Online. The product itself felt complex, and I proposed we create graphics that actually showed what Rewind does instead of just showing the interface.',
-      'I took the initiative to move to an animated approach, since it let us visualize the real value simply: Rewind takes your data, backs it up, and makes it recoverable. I designed the animations and storyboarded how the movement needed to work, then partnered with our in-house motion designer, Felix Pennell, to bring them to life.',
-      'The result was a consistent hero animation treatment that made Rewind’s capabilities easy to understand at a glance. We A/B tested the new animations against the old static graphics, and the animations won.',
+      'Tweed needed a series of retail campaigns that could work across both digital and print, from social content to in-store signage across Canada. I worked on three: Holiday, Valentine’s Day, and a campaign celebrating Tweed’s TerraCycle partnership reaching one million pieces of packaging recycled. Each needed to feel approachable, celebratory, and distinctly Tweed while holding together across a wide range of formats.',
+      'I worked closely with our art director and photography studio across all three campaigns, helping develop concepts, style props, support the shoots, and retouch the final imagery. From there, I designed the full campaign systems across social, retail signage, and in-store applications.',
+      'For Holiday, cannabis became part of the seasonal visual language, appearing as a gift bow and mistletoe across store windows nationwide. Valentine’s Day paired Tweed’s cannabis-infused milk chocolate with a bud bouquet, while the TerraCycle campaign used the one-million-piece milestone as the creative centrepiece to spotlight the brand’s environmental commitment.',
+      'The campaigns rolled out across retail and digital channels, supporting product launches, seasonal moments, and brand initiatives at a national scale. They also gave me hands-on experience carrying a campaign from concept and shoot through to final execution across print and digital, a foundation that shaped how I approached campaign work from then on.',
     ],
-    client: 'Rewind',
-    year: '2023',
-    role: 'Senior Graphic Designer',
-    scope: 'Art direction, animation, illustration',
-    tools: 'Illustrator, After Effects',
+    client: 'Tweed (Canopy Growth)',
+    year: '2019',
+    role: 'Graphic Designer',
+    scope: 'Art direction, campaign, retail design, photo retouching',
+    tools: 'Illustrator, Photoshop, InDesign',
   },
   8: {
     intro: [
@@ -204,16 +205,15 @@ const content: Record<number, ProjectContent> = {
   },
   9: {
     intro: [
-      'Tweed needed a series of retail campaigns that could work across both digital and print, from social content to in-store signage across Canada. I worked on three: Holiday, Valentine’s Day, and a campaign celebrating Tweed’s TerraCycle partnership reaching one million pieces of packaging recycled. Each needed to feel approachable, celebratory, and distinctly Tweed while holding together across a wide range of formats.',
-      'I worked closely with our art director and photography studio across all three campaigns, helping develop concepts, style props, support the shoots, and retouch the final imagery. From there, I designed the full campaign systems across social, retail signage, and in-store applications.',
-      'For Holiday, cannabis became part of the seasonal visual language, appearing as a gift bow and mistletoe across store windows nationwide. Valentine’s Day paired Tweed’s cannabis-infused milk chocolate with a bud bouquet, while the TerraCycle campaign used the one-million-piece milestone as the creative centrepiece to spotlight the brand’s environmental commitment.',
-      'The campaigns rolled out across retail and digital channels, supporting product launches, seasonal moments, and brand initiatives at a national scale. They also gave me hands-on experience carrying a campaign from concept and shoot through to final execution across print and digital, a foundation that shaped how I approached campaign work from then on.',
+      'Rewind’s hero graphics were static product UI screenshots, which didn’t land well with our less technical audiences, like Shopify store owners and accountants using QuickBooks Online. The product itself felt complex, and I proposed we create graphics that actually showed what Rewind does instead of just showing the interface.',
+      'I took the initiative to move to an animated approach, since it let us visualize the real value simply: Rewind takes your data, backs it up, and makes it recoverable. I designed the animations and storyboarded how the movement needed to work, then partnered with our in-house motion designer, Felix Pennell, to bring them to life.',
+      'The result was a consistent hero animation treatment that made Rewind’s capabilities easy to understand at a glance. We A/B tested the new animations against the old static graphics, and the animations won.',
     ],
-    client: 'Tweed (Canopy Growth)',
-    year: '2019',
-    role: 'Graphic Designer',
-    scope: 'Art direction, campaign, retail design, photo retouching',
-    tools: 'Illustrator, Photoshop, InDesign',
+    client: 'Rewind',
+    year: '2023',
+    role: 'Senior Graphic Designer',
+    scope: 'Art direction, animation, illustration',
+    tools: 'Illustrator, After Effects',
   },
 };
 
