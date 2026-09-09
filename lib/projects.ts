@@ -340,7 +340,62 @@ const heroImages: Record<number, ProjectImage> = {
 
 // The media sequence below each project's overview. Dimensions are the
 // supplied artwork's own, scaled down for web.
-const galleries: Record<number, ProjectGallery> = {};
+const galleries: Record<number, ProjectGallery> = {
+  3: [
+    [
+      {
+        src: '/media/project-03/bonds-tee.webp',
+        alt: 'A navy pocket tee with the Bonds Decor script logo printed on the pocket in cream above a paintbrush trailing yellow, blue and red stripes.',
+        width: 901,
+        height: 1126,
+      },
+      {
+        src: '/media/project-03/bonds-loyaltycard.webp',
+        alt: 'Bonds Decor loyalty cards on navy: one illustrated with nine paint cans reading “Grab eight paint cans and get the ninth paint can free”, the other carrying the logo and the words Loyalty Program.',
+        width: 896,
+        height: 1120,
+      },
+    ],
+    [
+      {
+        src: '/media/project-03/bonds-centennial-logo.webp',
+        alt: 'The centennial lockup on cream: the Bonds script above the paintbrush and its three stripes, set beside “100 Years of Business”.',
+        width: 1920,
+        height: 1080,
+      },
+    ],
+    [
+      {
+        src: '/media/project-03/bonds-store.webp',
+        alt: 'The new store interior, the Bonds Decor logo painted large in cream across a deep navy wall above the polished concrete floor.',
+        width: 1448,
+        height: 814,
+      },
+    ],
+    [
+      {
+        src: '/media/project-03/bonds-mascot.webp',
+        alt: 'A line-drawn mascot in navy on cream: a smiling driver in a flat cap at the wheel of a pickup loaded with a wooden chair and open paint cans.',
+        width: 1920,
+        height: 1080,
+      },
+    ],
+    [
+      {
+        src: '/media/project-03/bonds-paint.webp',
+        alt: 'Six paintbrushes on navy, each loaded with a different colour — green, teal, orange, red, blue and yellow — over swatch cards of the same shades.',
+        width: 735,
+        height: 1102,
+      },
+      {
+        src: '/media/project-03/bonds-truck.webp',
+        alt: 'The delivery truck wrapped in navy, its box panel carrying the Bonds Decor logo under the line “Making houses into homes, since 1927”.',
+        width: 1774,
+        height: 887,
+      },
+    ],
+  ],
+};
 
 // Banners inside the project pages, a separate slot from the work-grid tiles
 // above so a project can lead with different artwork in each place. A project
@@ -350,7 +405,14 @@ const pageHeroes: Record<number, HeroLoop> = {
   // Referenced rather than restated, so the two can't drift apart.
   1: heroes[1],
 };
-const pageHeroImages: Record<number, ProjectImage> = {};
+const pageHeroImages: Record<number, ProjectImage> = {
+  3: {
+    src: '/media/project-03/bonds-logo.webp',
+    alt: 'The Bonds Decor logo on deep navy: “Bonds” in cream script above a paintbrush trailing yellow, blue and red stripes into the word DECOR.',
+    width: 1920,
+    height: 1080,
+  },
+};
 
 // Projects whose work can't be shown yet. Rewind Brand stays under wraps until
 // the brand itself launches.

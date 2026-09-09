@@ -179,12 +179,24 @@
   padding-right: 0;
 }
 
+/* Columns weighted by each image's own shape, so a row of mixed ratios finishes
+   level instead of leaving a tall picture towering over a wide one. Equal
+   ratios fall out as equal columns. --cols comes from the artwork's own
+   dimensions; the repeat() is the fallback if it is ever missing. */
 .galleryRow[data-columns='2'] {
-  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+  grid-template-columns: var(--cols, repeat(auto-fit, minmax(min(240px, 100%), 1fr)));
 }
 
 .galleryRow[data-columns='3'] {
-  grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+  grid-template-columns: var(--cols, repeat(auto-fit, minmax(min(200px, 100%), 1fr)));
+}
+
+/* Too narrow to sit anything side by side. Matches the specificity of the
+   rules above and comes after them, so it wins. */
+@container (max-width: 700px) {
+  .galleryRow[data-columns] {
+    grid-template-columns: 1fr;
+  }
 }
 
 .galleryImage {

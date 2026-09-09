@@ -1,10 +1,11 @@
+import type { CSSProperties } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import PlaceholderImage from './PlaceholderImage';
 import HeroLoop from './HeroLoop';
 import Reveal from './Reveal';
 import SiteScroll from './SiteScroll';
-import type { HeroLoop as HeroLoopMeta, Project, ProjectContent } from '../lib/projects';
+import type { GalleryItem, HeroLoop as HeroLoopMeta, Project, ProjectContent } from '../lib/projects';
 import styles from './ProjectTemplate.module.css';
 
 /** Shown by any project that doesn't have real copy yet. */
@@ -18,6 +19,11 @@ const placeholder: ProjectContent = {
   scope: 'Category 01, Category 02',
   tools: 'Placeholder',
 };
+
+/** A gallery item's own width-to-height, whichever kind it is. */
+function itemRatio(item: GalleryItem): number {
+  return item.kind === 'video' ? RATIO[item.ratio] : item.width / item.height;
+}
 
 const RATIO: Record<NonNullable<HeroLoopMeta['ratio']>, number> = {
   '16/9': 16 / 9,
@@ -117,6 +123,11 @@ export default function ProjectTemplate({ project, nextProject }: { project: Pro
                 row.length === 1 && row[0].kind !== 'video' && row[0].bleed ? styles.galleryRowBleed : ''
               }`}
               data-columns={row.length}
+              style={
+                row.length > 1
+                  ? ({ '--cols': row.map((it) => `${itemRatio(it).toFixed(4)}fr`).join(' ') } as CSSProperties)
+                  : undefined
+              }
             >
               {row.map((item) =>
                 item.kind === 'video' ? (
@@ -134,9 +145,11 @@ export default function ProjectTemplate({ project, nextProject }: { project: Pro
                         ? item.bleed
                           ? '100vw'
                           : '(max-width: 700px) 100vw, 90vw'
-                        : row.length === 2
-                          ? '(max-width: 700px) 100vw, 45vw'
-                          : '(max-width: 700px) 100vw, 30vw'
+                        : // Its share of the row, which the weighted columns
+                          // make proportional to its own ratio.
+                          `(max-width: 700px) 100vw, ${Math.ceil(
+                            (itemRatio(item) / row.reduce((sum, it) => sum + itemRatio(it), 0)) * 90,
+                          )}vw`
                     }
                   />
                 ),
