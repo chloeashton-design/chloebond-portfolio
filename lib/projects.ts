@@ -83,12 +83,12 @@ const TOTAL_PROJECTS = 9;
 
 // Real project names. Anything unnamed falls back to "Project 0N".
 const names: Record<number, string> = {
-  1: 'Rewind Website Redesign',
-  2: 'Rewind Brand Refresh',
-  3: 'Bonds Decor Rebrand',
+  1: 'Rewind Website',
+  2: 'Rewind Brand',
+  3: 'Bonds Decor',
   4: 'Wild Fauna',
   5: 'Rückify ESG Report',
-  6: 'Rückify Brand Evolution',
+  6: 'Rückify Brand',
   7: 'Rewind Hero Animations',
   8: 'Sole Sneaker Club',
   9: 'Tweed Campaigns',
