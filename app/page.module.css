@@ -45,14 +45,17 @@
   padding: 0 clamp(20px, 4.5cqw, 72px) clamp(44px, 7cqw, 110px);
 }
 
-/* A 16:9 tile and a 5:4 tile only finish level if the wide one is
-   (16/9) / (5/4) = 64/45 times the width, so that's the column it gets.
-   Each row is its own grid because the wide slot moves down the page. */
+/* The wide tile takes twice the width of a narrow one, so the 16:9 piece
+   dominates its row -- roughly half the page across. Tiles top-align at their
+   own natural heights rather than being levelled off at the bottom, which is
+   what lets the wide one stand taller as well as broader. Each row is its own
+   grid because the wide slot moves down the page. */
 .row {
-  --wide: 1.42222fr;
+  --wide: 2fr;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: var(--tile-gap);
+  align-items: start;
 }
 
 .row[data-large='1'] {
