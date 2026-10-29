@@ -220,7 +220,7 @@ const content: Record<number, ProjectContent> = {
     year: '2026',
     role: 'Senior Graphic Designer',
     scope: 'Art direction, brand strategy, AI brand systems, brand governance',
-    tools: 'Figma, Illustrator, Photoshop, InDesign, Claude Code, Claude Design',
+    tools: 'Figma, Adobe Creative Suite, Claude Code, Claude Design',
   },
   3: {
     intro: [
@@ -233,7 +233,7 @@ const content: Record<number, ProjectContent> = {
     year: '2026',
     role: 'Freelance Graphic Designer',
     scope: 'Art direction, brand, strategy',
-    tools: 'Illustrator, Photoshop, InDesign, Claude, ChatGPT',
+    tools: 'Adobe Creative Suite, Claude, ChatGPT',
   },
   4: {
     intro: [
@@ -246,7 +246,7 @@ const content: Record<number, ProjectContent> = {
     year: '2026',
     role: 'Freelance Graphic Designer',
     scope: 'Art direction, brand, strategy',
-    tools: 'Illustrator, Photoshop, InDesign, Claude, ChatGPT',
+    tools: 'Adobe Creative Suite, Claude, ChatGPT',
   },
   5: {
     intro: [
@@ -259,7 +259,7 @@ const content: Record<number, ProjectContent> = {
     year: '2021',
     role: 'Senior Graphic Designer',
     scope: 'Art direction, editorial, layout',
-    tools: 'InDesign, Illustrator, Photoshop',
+    tools: 'Adobe Creative Suite',
   },
   6: {
     intro: [
@@ -272,7 +272,7 @@ const content: Record<number, ProjectContent> = {
     year: '2021',
     role: 'Senior Graphic Designer',
     scope: 'Art direction, brand, strategy',
-    tools: 'Figma, Illustrator, Photoshop, InDesign',
+    tools: 'Figma, Adobe Creative Suite',
   },
   7: {
     intro: [
@@ -285,7 +285,7 @@ const content: Record<number, ProjectContent> = {
     year: '2019',
     role: 'Graphic Designer',
     scope: 'Art direction, campaign, retail design, photo retouching',
-    tools: 'Illustrator, Photoshop, InDesign',
+    tools: 'Adobe Creative Suite',
   },
   8: {
     intro: [
@@ -297,7 +297,7 @@ const content: Record<number, ProjectContent> = {
     year: '2023',
     role: 'Freelance graphic designer',
     scope: 'Art direction, brand, illustration',
-    tools: 'Illustrator, Photoshop, InDesign',
+    tools: 'Adobe Creative Suite',
   },
   9: {
     intro: [
