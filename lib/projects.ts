@@ -219,7 +219,7 @@ const content: Record<number, ProjectContent> = {
     client: 'Rewind',
     year: '2026',
     role: 'Senior Graphic Designer',
-    scope: 'Art direction, brand strategy, AI brand systems, brand governance',
+    scope: 'Art direction, AI brand systems, brand governance',
     tools: 'Figma, Adobe Creative Suite, Claude Code, Claude Design',
   },
   3: {
