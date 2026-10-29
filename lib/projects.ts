@@ -24,10 +24,13 @@ export interface HeroLoop {
   ratio?: '16/9' | '5/4' | '4/5' | '1/1';
 }
 
+/** A run of paragraph text, or a phrase within it that links out. */
+export type IntroSegment = string | { text: string; href: string };
+
 /** Real copy for a project. Without an entry, the page keeps its placeholders. */
 export interface ProjectContent {
-  /** One entry per paragraph. */
-  intro: string[];
+  /** One entry per paragraph. A paragraph that carries a link is split into segments. */
+  intro: Array<string | IntroSegment[]>;
   client: string;
   year: string;
   role: string;
@@ -205,14 +208,18 @@ const content: Record<number, ProjectContent> = {
     intro: [
       'Rewind’s market had shifted. AI-driven workflows and automation made protecting business-critical SaaS apps a top priority for prospects, and we were no longer just a backup tool. We needed to become the SaaS resilience platform for enterprise companies, but our startup-era look and feel didn’t match the size of deals we wanted to close.',
       'I advocated for the redesign and gathered input from every essential stakeholder, including executives, on what the new Rewind should look like. From that input, I developed the creative direction: a darker palette, cleaner typography, and an ownable photography direction that moved away from playful startup illustrations toward something confident and polished, while staying true to Rewind’s essence. I pitched the direction to the executive team and got 100% alignment.',
-      'To help the team adopt the new brand quickly, I built the brand guidelines as a live microsite in Claude instead of a static PDF, so internal and external partners could reference it directly. I also built a full design system in Claude Design that let the team self-serve slide decks, social content, and other production work without design input on every asset, freeing design time for creative thinking and strategy.',
-      'The rebrand landed with full executive alignment and minimal rounds of revisions, which mattered given how many senior stakeholders had a stake in it. The live guidelines microsite and self-serve design system let the new brand scale across the org, internally and externally, without design becoming a bottleneck. It gave Rewind the confident, enterprise-ready look the business needed to compete for larger deals.',
+      [
+        'A new brand is only as strong as its adoption, so I made AI the engine of the rollout. Instead of a static PDF, I used Claude Code and Claude Design to build the guidelines as a ',
+        { text: 'fully interactive brand portal', href: 'https://rewind.com/brand/external.html#logo' },
+        ' that internal and external partners can explore and reference directly. Alongside it, I built an AI brand system in Claude Design that puts the brand in everyone’s hands, letting teams across the company self-serve slide decks, social content, and other production work that stays on brand without design input on every asset.',
+      ],
+      'Pairing the new identity with AI tools changed how far and how fast the brand could travel. The rebrand landed with full executive alignment and minimal rounds of revisions, then scaled across the company, internally and externally, without design becoming a bottleneck. Design time shifted from producing every asset to creative thinking and strategy, and Rewind gained the confident, enterprise-ready brand it needed to compete for larger deals.',
     ],
     client: 'Rewind',
     year: '2026',
     role: 'Senior Graphic Designer',
-    scope: 'Art direction, brand, strategy',
-    tools: 'Figma, Illustrator, Photoshop, InDesign, Claude',
+    scope: 'Art direction, brand, AI brand systems, strategy',
+    tools: 'Figma, Illustrator, Photoshop, InDesign, Claude Code, Claude Design',
   },
   3: {
     intro: [

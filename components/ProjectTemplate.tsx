@@ -94,7 +94,17 @@ export default function ProjectTemplate({ project, nextProject }: { project: Pro
         <div className={styles.intro}>
           {content.intro.map((paragraph, i) => (
             <p key={i} className={styles.introP}>
-              {paragraph}
+              {typeof paragraph === 'string'
+                ? paragraph
+                : paragraph.map((segment, j) =>
+                    typeof segment === 'string' ? (
+                      segment
+                    ) : (
+                      <a key={j} href={segment.href} target="_blank" rel="noopener noreferrer">
+                        {segment.text}
+                      </a>
+                    ),
+                  )}
             </p>
           ))}
         </div>
