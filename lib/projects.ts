@@ -206,19 +206,20 @@ const content: Record<number, ProjectContent> = {
   },
   2: {
     intro: [
-      'Rewind’s market had shifted. AI-driven workflows and automation made protecting business-critical SaaS apps a top priority for prospects, and we were no longer just a backup tool. We needed to become the SaaS resilience platform for enterprise companies, but our startup-era look and feel didn’t match the size of deals we wanted to close.',
-      'I advocated for the redesign and gathered input from every essential stakeholder, including executives, on what the new Rewind should look like. From that input, I developed the creative direction: a darker palette, cleaner typography, and an ownable photography direction that moved away from playful startup illustrations toward something confident and polished, while staying true to Rewind’s essence. I pitched the direction to the executive team and got 100% alignment.',
+      'Rewind’s market had shifted. AI-driven workflows and automation made protecting business-critical SaaS apps a top priority for prospects, and we were no longer just a backup tool. We needed to become the SaaS resilience platform for enterprise companies, but our startup-era look and feel didn’t match the size of deals we wanted to close. A new identity alone wouldn’t close that gap: it had to scale across the entire company from day one. So I made AI the engine of the rebrand, pairing a new brand with an AI-powered brand system built to drive adoption at scale.',
+      'I championed the redesign and gathered input from every essential stakeholder, including executives, on what the new Rewind should look like. From that input, I developed the creative direction: a darker palette, cleaner typography, and an ownable photography direction that moved away from playful startup illustrations toward something confident and polished, while staying true to Rewind’s essence. I pitched the direction to the executive team and secured 100% alignment.',
       [
-        'A new brand is only as strong as its adoption, so I made AI the engine of the rollout. Instead of a static PDF, I used Claude Code and Claude Design to build the guidelines as a ',
+        'To accelerate brand adoption, I used Claude Code and Claude Design to turn the guidelines into a ',
         { text: 'fully interactive brand portal', href: 'https://rewind.com/brand/external.html#logo' },
-        ' that internal and external partners can explore and reference directly. Alongside it, I built an AI brand system in Claude Design that puts the brand in everyone’s hands, letting teams across the company self-serve slide decks, social content, and other production work that stays on brand without design input on every asset.',
+        ' instead of a static PDF: a single source of truth that internal teams and external partners can explore and reference on demand.',
       ],
-      'Pairing the new identity with AI tools changed how far and how fast the brand could travel. The rebrand landed with full executive alignment and minimal rounds of revisions, then scaled across the company, internally and externally, without design becoming a bottleneck. Design time shifted from producing every asset to creative thinking and strategy, and Rewind gained the confident, enterprise-ready brand it needed to compete for larger deals.',
+      'At the heart of the rollout is the AI brand system I architected in Claude Design. The internal version gives the team a self-serve template library of presentation decks, social media templates, and one-pagers, each one designed and vetted by me. Every template carries built-in constraints that act as brand guardrails, so the output stays consistent and on brand, and even the most inexperienced designer can create design-worthy assets. It democratizes design across the company without sacrificing quality.',
+      'The result is brand governance that scales. The rebrand landed with full executive alignment and minimal rounds of revisions, and the AI brand system carried the new identity across the company, internally and externally, without design becoming a bottleneck. My role shifted from producing every asset to setting the standard the AI works within, freeing design time for creative direction and strategy, and Rewind gained the confident, enterprise-ready brand it needed to compete for larger deals.',
     ],
     client: 'Rewind',
     year: '2026',
     role: 'Senior Graphic Designer',
-    scope: 'Art direction, brand, AI brand systems, strategy',
+    scope: 'Art direction, brand strategy, AI brand systems, brand governance',
     tools: 'Figma, Illustrator, Photoshop, InDesign, Claude Code, Claude Design',
   },
   3: {
