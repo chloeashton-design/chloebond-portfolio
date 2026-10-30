@@ -11,6 +11,7 @@ import IconGrid from './IconGrid';
 import type {
   GalleryItem,
   HeroLoop as HeroLoopMeta,
+  Paragraph,
   Project,
   ProjectContent,
   ProjectGallery,
@@ -128,6 +129,25 @@ function GalleryRows({ rows }: { rows: ProjectGallery }) {
   );
 }
 
+/** One paragraph of project copy, with any links in it opening in a new tab. */
+function Copy({ paragraph }: { paragraph: Paragraph }) {
+  return (
+    <p className={styles.introP}>
+      {typeof paragraph === 'string'
+        ? paragraph
+        : paragraph.map((segment, i) =>
+            typeof segment === 'string' ? (
+              segment
+            ) : (
+              <a key={i} href={segment.href} target="_blank" rel="noopener noreferrer">
+                {segment.text}
+              </a>
+            ),
+          )}
+    </p>
+  );
+}
+
 /** A case study's run of artwork, with the caption that says what it is. */
 function SectionMediaBlock({ media, className }: { media: SectionMedia; className?: string }) {
   return (
@@ -192,19 +212,7 @@ export default function ProjectTemplate({ project, nextProject }: { project: Pro
       <section className={styles.overview}>
         <div className={styles.intro}>
           {content.intro.map((paragraph, i) => (
-            <p key={i} className={styles.introP}>
-              {typeof paragraph === 'string'
-                ? paragraph
-                : paragraph.map((segment, j) =>
-                    typeof segment === 'string' ? (
-                      segment
-                    ) : (
-                      <a key={j} href={segment.href} target="_blank" rel="noopener noreferrer">
-                        {segment.text}
-                      </a>
-                    ),
-                  )}
-            </p>
+            <Copy key={i} paragraph={paragraph} />
           ))}
         </div>
         <div className={styles.metaTable}>
@@ -247,9 +255,7 @@ export default function ProjectTemplate({ project, nextProject }: { project: Pro
           <section className={styles.section}>
             <h2 className={styles.sectionHeading}>{section.heading}</h2>
             {section.body.map((paragraph, i) => (
-              <p key={i} className={styles.introP}>
-                {paragraph}
-              </p>
+              <Copy key={i} paragraph={paragraph} />
             ))}
           </section>
           {section.after?.map((media, i) => (

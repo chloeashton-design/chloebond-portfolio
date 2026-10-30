@@ -27,10 +27,13 @@ export interface HeroLoop {
 /** A run of paragraph text, or a phrase within it that links out. */
 export type IntroSegment = string | { text: string; href: string };
 
+/** A paragraph of copy. One that carries a link is split into segments. */
+export type Paragraph = string | IntroSegment[];
+
 /** Real copy for a project. Without an entry, the page keeps its placeholders. */
 export interface ProjectContent {
-  /** One entry per paragraph. A paragraph that carries a link is split into segments. */
-  intro: Array<string | IntroSegment[]>;
+  /** One entry per paragraph. */
+  intro: Paragraph[];
   client: string;
   year: string;
   role: string;
@@ -45,7 +48,7 @@ export interface ProjectContent {
 export interface ProjectSection {
   heading: string;
   /** One entry per paragraph. */
-  body: string[];
+  body: Paragraph[];
   /** The artwork above the heading, or a placeholder holding the slot until it arrives. */
   media?: SectionMedia | 'placeholder';
   /** Deliverables that follow the text, each set apart with its own caption. */
@@ -228,19 +231,53 @@ const content: Record<number, ProjectContent> = {
     intro: [
       'Rewind’s market had shifted. AI-driven workflows and automation made protecting business-critical SaaS apps a top priority for prospects, and we were no longer just a backup tool. We needed to become the SaaS resilience platform for enterprise companies, but our startup-era look and feel didn’t match the size of deals we wanted to close. A new identity was only half the work. It also had to scale across the whole company from day one, and AI became how we made that happen.',
       'I advocated for the redesign and gathered input from every essential stakeholder, including executives, on what the new Rewind should look like. From that input, I developed the creative direction: a darker palette, cleaner typography, and an ownable photography direction that moved away from playful startup illustrations toward something confident and polished, while staying true to Rewind’s essence. I pitched the direction to the executive team and got 100% alignment.',
-      [
-        'To help everyone adopt the new brand, I used Claude Code and Claude Design to build the guidelines as a ',
-        { text: 'fully interactive brand portal', href: 'https://rewind.com/brand/external.html#logo' },
-        ' rather than a static PDF. Internal teams and external partners can explore and reference it directly, giving the brand a single source of truth.',
-      ],
-      'I also built an AI brand system in Claude Design. The internal version gives the team a library of templates for presentation decks, social media, and one-pagers, each one designed and vetted by me. Set constraints are built into every template, so the work stays consistent and on brand. Even the most inexperienced designer can create design-worthy assets.',
-      'The rebrand landed with full executive alignment and minimal rounds of revisions. With AI doing the heavy lifting on adoption, the new brand scaled across the company, internally and externally, without design becoming a bottleneck. Teams could create what they needed on their own, and design time went back to creative thinking and strategy. Rewind gained the confident, enterprise-ready brand it needed to compete for larger deals.',
     ],
     client: 'Rewind',
     year: '2026',
     role: 'Senior Graphic Designer',
     scope: 'Art direction, AI brand systems, brand governance',
     tools: 'Figma, Adobe Creative Suite, Claude Code, Claude Design',
+    sections: [
+      {
+        heading: 'A live brand portal',
+        media: {
+          rows: [
+            [
+              {
+                kind: 'video',
+                src: '/media/project-02/rewind-guidelines-scroll',
+                alt: 'A scroll through the Rewind brand guidelines microsite: sections on the Rewind name, logo, colour, typography, accessibility, iconography, photography, gradients and downloads, with a sidebar to jump between them.',
+                ratio: '16/9',
+                sources: ['mp4'],
+                gifFallback: false,
+                tint: '#ffffff', // the site's own white ground
+              },
+            ],
+          ],
+        },
+        body: [
+          [
+            'Brand guidelines usually end up as a static file in Google Drive that everyone asks where to find. I took a different route. I used Claude Design and Claude Code to build a ',
+            { text: 'live brand portal', href: 'https://rewind.com/brand/external.html#logo' },
+            '. Internal teams and external partners can navigate it on their own, so the new brand has a single source of truth and is quicker to adopt.',
+          ],
+          'I built tools into the portal around the questions our team heard most. A logo downloader lets people choose the format, colour, and size they need, so no one has to ask where the files live.',
+          'A templates section gives everyone a way into the decks, social media graphics, and other templates I built, each marked as brand-safe. People can create on-brand assets on their own, without design becoming a bottleneck.',
+        ],
+      },
+      {
+        heading: 'An AI brand system',
+        body: [
+          'I also built an AI brand system in Claude Design. The internal version gives the team a library of templates for presentation decks, social media, and one-pagers, each one designed and vetted by me. Set constraints are built into every template, so the work stays consistent and on brand. Even the most inexperienced designer can create design-worthy assets.',
+        ],
+      },
+      {
+        heading: 'The result',
+        body: [
+          'The rebrand landed with full executive alignment and minimal rounds of revisions. With AI doing the heavy lifting on adoption, the new brand scaled across the company, internally and externally, without design becoming a bottleneck. Teams could create what they needed on their own, and design time went back to creative thinking and strategy. Rewind gained the confident, enterprise-ready brand it needed to compete for larger deals.',
+        ],
+      },
+    ],
   },
   3: {
     intro: [
