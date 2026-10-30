@@ -41,15 +41,25 @@ export interface ProjectContent {
   sections?: ProjectSection[];
 }
 
-/** One chapter of a case study, introduced by the artwork above it. */
+/** One chapter of a case study, with artwork before its heading, after its text, or both. */
 export interface ProjectSection {
   heading: string;
   /** One entry per paragraph. */
   body: string[];
-  /** The rows above the heading. Without them the slot shows a placeholder. */
-  media?: ProjectGallery;
-  /** A line under the media, for artwork that needs framing -- an abandoned direction, say. */
-  mediaCaption?: { label: string; text: string };
+  /**
+   * The artwork above the heading. A section with no artwork anywhere shows a
+   * placeholder here instead.
+   */
+  media?: SectionMedia;
+  /** Deliverables that follow the text, each set apart with its own caption. */
+  after?: SectionMedia[];
+}
+
+/** A run of artwork inside a case study, optionally captioned. */
+export interface SectionMedia {
+  rows: ProjectGallery;
+  /** Names what the artwork is -- a deliverable, or an abandoned direction. */
+  caption?: { label: string; text: string };
 }
 
 /** One piece of project artwork, rendered at its own intrinsic ratio. */
@@ -256,95 +266,185 @@ const content: Record<number, ProjectContent> = {
       {
         heading: 'Finding the right expression',
         // The first direction: illustrated character archetypes, set aside
-        // for trophies. Labelled as such so they don't read as the final work.
-        media: [
-          [
-            {
-              src: '/media/project-03/proton-archetype-globe.webp',
-              alt: 'An archetype character in a teal blazer, waving with one hand and cradling a glowing globe of connected nodes in the other.',
-              width: 800,
-              height: 1000,
-            },
-            {
-              src: '/media/project-03/proton-archetype-tablet.webp',
-              alt: 'An archetype character in a light blue blazer, adjusting her glasses while holding a tablet showing chat bubbles, with more speech bubbles rising beside her.',
-              width: 800,
-              height: 1000,
-            },
-            {
-              src: '/media/project-03/proton-archetype-laurel.webp',
-              alt: 'An archetype character in a gold blazer, hands on hips and smiling, wearing a gold laurel crown with sparkles either side.',
-              width: 800,
-              height: 1000,
-            },
-            {
-              src: '/media/project-03/proton-archetype-pen.webp',
-              alt: 'A grey-haired archetype character in a red vest and tie, raising a fountain pen and holding a folder marked with a forward arrow.',
-              width: 800,
-              height: 1000,
-            },
+        // for trophies. Captioned as such so they don't read as the final work.
+        media: {
+          rows: [
+            [
+              {
+                src: '/media/project-03/proton-archetype-globe.webp',
+                alt: 'An archetype character in a teal blazer, waving with one hand and cradling a glowing globe of connected nodes in the other.',
+                width: 800,
+                height: 1000,
+              },
+              {
+                src: '/media/project-03/proton-archetype-tablet.webp',
+                alt: 'An archetype character in a light blue blazer, adjusting her glasses while holding a tablet showing chat bubbles, with more speech bubbles rising beside her.',
+                width: 800,
+                height: 1000,
+              },
+              {
+                src: '/media/project-03/proton-archetype-laurel.webp',
+                alt: 'An archetype character in a gold blazer, hands on hips and smiling, wearing a gold laurel crown with sparkles either side.',
+                width: 800,
+                height: 1000,
+              },
+              {
+                src: '/media/project-03/proton-archetype-pen.webp',
+                alt: 'A grey-haired archetype character in a red vest and tie, raising a fountain pen and holding a folder marked with a forward arrow.',
+                width: 800,
+                height: 1000,
+              },
+            ],
+            [
+              {
+                src: '/media/project-03/proton-archetype-coffee.webp',
+                alt: 'An archetype character in a beanie and orange check jacket, holding a steaming mug, both marked with a rising sun.',
+                width: 800,
+                height: 1000,
+              },
+              {
+                src: '/media/project-03/proton-archetype-rope.webp',
+                alt: 'An archetype character with goggles pushed up into curly white hair, in a green jacket and harness, holding a coiled rope.',
+                width: 800,
+                height: 1000,
+              },
+              {
+                src: '/media/project-03/proton-archetype-clipboard.webp',
+                alt: 'An archetype character with her hair in a bun, in a mint jacket, raising a rubber stamp and holding a clipboard of ticked items.',
+                width: 800,
+                height: 1000,
+              },
+              {
+                src: '/media/project-03/proton-archetype-handshake.webp',
+                alt: 'An archetype character in an orange open-collared shirt, smiling and reaching out a hand to shake.',
+                width: 800,
+                height: 1000,
+              },
+            ],
+            [
+              {
+                src: '/media/project-03/proton-archetype-crystal-ball.webp',
+                alt: 'An archetype character in a purple headscarf and robe, holding a crystal ball with a rising bar chart and a sparkle inside.',
+                width: 800,
+                height: 1000,
+              },
+              {
+                src: '/media/project-03/proton-archetype-cap.webp',
+                alt: 'An archetype character in a lime cap and work jacket with overall straps, arms crossed and smiling.',
+                width: 800,
+                height: 1000,
+              },
+              {
+                src: '/media/project-03/proton-archetype-rocket.webp',
+                alt: 'An archetype character with a blonde ponytail tied in a pink bow, in a pink jacket and neckerchief, holding a paper rocket.',
+                width: 800,
+                height: 1000,
+              },
+              {
+                src: '/media/project-03/proton-archetype-chain.webp',
+                alt: 'An archetype character in a headband and periwinkle track jacket, smiling and holding up a chain of linked rings.',
+                width: 800,
+                height: 1000,
+              },
+            ],
           ],
-          [
-            {
-              src: '/media/project-03/proton-archetype-coffee.webp',
-              alt: 'An archetype character in a beanie and orange check jacket, holding a steaming mug, both marked with a rising sun.',
-              width: 800,
-              height: 1000,
-            },
-            {
-              src: '/media/project-03/proton-archetype-rope.webp',
-              alt: 'An archetype character with goggles pushed up into curly white hair, in a green jacket and harness, holding a coiled rope.',
-              width: 800,
-              height: 1000,
-            },
-            {
-              src: '/media/project-03/proton-archetype-clipboard.webp',
-              alt: 'An archetype character with her hair in a bun, in a mint jacket, raising a rubber stamp and holding a clipboard of ticked items.',
-              width: 800,
-              height: 1000,
-            },
-            {
-              src: '/media/project-03/proton-archetype-handshake.webp',
-              alt: 'An archetype character in an orange open-collared shirt, smiling and reaching out a hand to shake.',
-              width: 800,
-              height: 1000,
-            },
-          ],
-          [
-            {
-              src: '/media/project-03/proton-archetype-crystal-ball.webp',
-              alt: 'An archetype character in a purple headscarf and robe, holding a crystal ball with a rising bar chart and a sparkle inside.',
-              width: 800,
-              height: 1000,
-            },
-            {
-              src: '/media/project-03/proton-archetype-cap.webp',
-              alt: 'An archetype character in a lime cap and work jacket with overall straps, arms crossed and smiling.',
-              width: 800,
-              height: 1000,
-            },
-            {
-              src: '/media/project-03/proton-archetype-rocket.webp',
-              alt: 'An archetype character with a blonde ponytail tied in a pink bow, in a pink jacket and neckerchief, holding a paper rocket.',
-              width: 800,
-              height: 1000,
-            },
-            {
-              src: '/media/project-03/proton-archetype-chain.webp',
-              alt: 'An archetype character in a headband and periwinkle track jacket, smiling and holding up a chain of linked rings.',
-              width: 800,
-              height: 1000,
-            },
-          ],
-        ],
-        mediaCaption: {
-          label: 'Initial direction',
-          text: 'Twelve illustrated archetypes, later set aside in favour of custom trophies.',
+          caption: {
+            label: 'Initial direction',
+            text: 'Twelve illustrated archetypes, later set aside in favour of custom trophies.',
+          },
         },
         body: [
           'The project evolved through several rounds of exploration and client feedback. Early concepts paired layered packaging-inspired compositions with illustrated character archetypes. As the campaign developed, we realized the characters couldn’t represent everyone. Each customer would receive just one archetype, and we didn’t want a single person to stand in for a whole group.',
           'The direction ultimately shifted to custom trophies. Each design represented the behaviour behind its award, rather than simply illustrating its name: a robot for AI adoption, a signed contract for closing deals, and a coffee cup with a sun motif for early starts.',
           'A shared pedestal, cohesive colour treatment, and consistent illustration style connected the collection, while distinct sculptural tops gave each award its own identity. And the most coveted: The Proton Legend.',
+        ],
+        after: [
+          {
+            rows: [
+              [
+                {
+                  src: '/media/project-03/proton-share-augmented.webp',
+                  alt: 'The Augmented share card: a gold trophy topped with a robot head, on a blue pedestal, beside “[Name], you’re the Augmented” and the line “If Pronto had a best friend, it’d be you!”',
+                  width: 800,
+                  height: 1000,
+                },
+                {
+                  src: '/media/project-03/proton-share-closer.webp',
+                  alt: 'The Closer share card: a gold trophy topped with a signed contract with a fountain pen, on a blue pedestal, beside “[Name], you’re the Closer” and the line “Deals are boxed, taped, and shipped thanks to you!”',
+                  width: 800,
+                  height: 1000,
+                },
+                {
+                  src: '/media/project-03/proton-share-daily-driver.webp',
+                  alt: 'The Daily Driver share card: a gold trophy topped with a calendar page with a row of ticks, on a blue pedestal, beside “[Name], you’re the Daily Driver” and the line “Like boxes in a warehouse, your call logs stack up!”',
+                  width: 800,
+                  height: 1000,
+                },
+                {
+                  src: '/media/project-03/proton-share-extra-mile.webp',
+                  alt: 'The Extra Mile share card: a gold trophy topped with two facing heads sharing a speech bubble, on a blue pedestal, beside “[Name], you’re the Extra Mile” and the line “For your customers, you would walk 500 miles…”',
+                  width: 800,
+                  height: 1000,
+                },
+              ],
+              [
+                {
+                  src: '/media/project-03/proton-share-fast-mover.webp',
+                  alt: 'The Fast Mover share card: a gold trophy topped with a lightning bolt, on a blue pedestal, beside “[Name], you’re the Fast Mover” and the line “The headlines are in, your legend status is rising!”',
+                  width: 800,
+                  height: 1000,
+                },
+                {
+                  src: '/media/project-03/proton-share-fixer.webp',
+                  alt: 'The Fixer share card: a gold trophy topped with a clipboard of ticked tasks, on a blue pedestal, beside “[Name], you’re the Fixer” and the line “Your to-do list is more like an all-done list!”',
+                  width: 800,
+                  height: 1000,
+                },
+                {
+                  src: '/media/project-03/proton-share-full-package.webp',
+                  alt: 'The Full Package share card: a gold trophy topped with a shipping box with the Proton icon rising out of it, on a blue pedestal, beside “[Name], you’re the Full Package” and the line “You distribute success wherever you go!”',
+                  width: 800,
+                  height: 1000,
+                },
+                {
+                  src: '/media/project-03/proton-share-go-to.webp',
+                  alt: 'The Go-To share card: a gold trophy topped with a hub of connected contacts, on a blue pedestal, beside “[Name], you’re the Go-To” and the line “You’re in so many places at once, you need a clone!”',
+                  width: 800,
+                  height: 1000,
+                },
+              ],
+              [
+                {
+                  src: '/media/project-03/proton-share-problem-solver.webp',
+                  alt: 'The Problem Solver share card: a gold trophy topped with a report under a magnifying glass, on a blue pedestal, beside “[Name], you’re the Problem Solver” and the line “A rare breed, backed by data!”',
+                  width: 800,
+                  height: 1000,
+                },
+                {
+                  src: '/media/project-03/proton-share-proton-legend.webp',
+                  alt: 'The Proton Legend share card: a gold trophy topped with a figure holding the Proton icon overhead, on a blue pedestal, beside “[Name], you’re the Proton Legend” and the line “They’ll be telling stories about your year for a while!”',
+                  width: 800,
+                  height: 1000,
+                },
+                {
+                  src: '/media/project-03/proton-share-real-deal.webp',
+                  alt: 'The Real Deal share card: a gold trophy topped with a handshake, on a blue pedestal, beside “[Name], you’re the Real Deal” and the line “To your customers, you’re like family!”',
+                  width: 800,
+                  height: 1000,
+                },
+                {
+                  src: '/media/project-03/proton-share-self-starter.webp',
+                  alt: 'The Self-Starter share card: a gold trophy topped with a steaming mug with a sun motif, on a blue pedestal, beside “[Name], you’re the Self-Starter” and the line “The rooster wakes up because it hears you working!”',
+                  width: 800,
+                  height: 1000,
+                },
+              ],
+            ],
+            caption: {
+              label: 'Trophy collection',
+              text: 'Twelve archetype awards, each with a share card customers could post to social.',
+            },
+          },
         ],
       },
       {
@@ -354,159 +454,104 @@ const content: Record<number, ProjectContent> = {
           'I simplified the layouts and decorative elements as the project progressed, giving the numbers more space and reducing the complexity of the reusable assets.',
           'The resulting system brought together expressive typography, repeatable patterns, illustrative details, and clear information hierarchy. Reveal cards and social share cards extended that same visual language across different moments in the customer experience.',
         ],
+        after: [
+          {
+            rows: [
+              [
+                {
+                  src: '/media/project-03/proton-story-01.webp',
+                  alt: 'The opening story card: “Michael, here’s your 2026 so far on Proton,” on a navy card over a bright blue pattern of Proton icons.',
+                  width: 720,
+                  height: 1280,
+                },
+                {
+                  src: '/media/project-03/proton-story-02.webp',
+                  alt: 'A story card reading “4,612 conversations. All written down.” on a blue card over a navy speech-bubble pattern.',
+                  width: 720,
+                  height: 1280,
+                },
+                {
+                  src: '/media/project-03/proton-story-03.webp',
+                  alt: 'A story card reading “2,021 conversations with Pronto AI agent,” with 984 hours back and 123 workdays saved, on a white card over a lime sparkle pattern.',
+                  width: 720,
+                  height: 1280,
+                },
+                {
+                  src: '/media/project-03/proton-story-04.webp',
+                  alt: 'A story card reading “9:46AM is your power hour” on a navy card over a blue clock pattern.',
+                  width: 720,
+                  height: 1280,
+                },
+              ],
+              [
+                {
+                  src: '/media/project-03/proton-story-05.webp',
+                  alt: 'A story card reading “43 workdays in a row” on a white card over a coral ground of handwritten to-dos.',
+                  width: 720,
+                  height: 1280,
+                },
+                {
+                  src: '/media/project-03/proton-story-06.webp',
+                  alt: 'A story card reading “1,060 tasks closed out” on a blue card over a navy checkmark pattern.',
+                  width: 720,
+                  height: 1280,
+                },
+                {
+                  src: '/media/project-03/proton-story-07.webp',
+                  alt: 'A story card reading “Where you stand at Company X: top 3%” on a white card over a lime rosette pattern.',
+                  width: 720,
+                  height: 1280,
+                },
+                {
+                  src: '/media/project-03/proton-story-10.webp',
+                  alt: 'The closing story card: “That’s your 2026 so far,” with a Share my Wrapped button, over the blue Proton icon pattern.',
+                  width: 720,
+                  height: 1280,
+                },
+              ],
+            ],
+            caption: {
+              label: 'Story cards',
+              text: 'The data-led cards customers tap through, from the opening welcome to the closing sign-off.',
+            },
+          },
+        ],
       },
       {
         heading: 'The result',
-        // The campaign in order: the story cards a customer taps through,
-        // then the share cards, one per archetype trophy, they post at the end.
-        media: [
-          [
-            {
-              src: '/media/project-03/proton-story-01.webp',
-              alt: 'The opening story card: “Michael, here’s your 2026 so far on Proton,” on a navy card over a bright blue pattern of Proton icons.',
-              width: 720,
-              height: 1280,
-            },
-            {
-              src: '/media/project-03/proton-story-02.webp',
-              alt: 'A story card reading “4,612 conversations. All written down.” on a blue card over a navy speech-bubble pattern.',
-              width: 720,
-              height: 1280,
-            },
-            {
-              src: '/media/project-03/proton-story-03.webp',
-              alt: 'A story card reading “2,021 conversations with Pronto AI agent,” with 984 hours back and 123 workdays saved, on a white card over a lime sparkle pattern.',
-              width: 720,
-              height: 1280,
-            },
-            {
-              src: '/media/project-03/proton-story-04.webp',
-              alt: 'A story card reading “9:46AM is your power hour” on a navy card over a blue clock pattern.',
-              width: 720,
-              height: 1280,
-            },
-            {
-              src: '/media/project-03/proton-story-05.webp',
-              alt: 'A story card reading “43 workdays in a row” on a white card over a coral ground of handwritten to-dos.',
-              width: 720,
-              height: 1280,
-            },
-          ],
-          [
-            {
-              src: '/media/project-03/proton-story-06.webp',
-              alt: 'A story card reading “1,060 tasks closed out” on a blue card over a navy checkmark pattern.',
-              width: 720,
-              height: 1280,
-            },
-            {
-              src: '/media/project-03/proton-story-07.webp',
-              alt: 'A story card reading “Where you stand at Company X: top 3%” on a white card over a lime rosette pattern.',
-              width: 720,
-              height: 1280,
-            },
-            {
-              src: '/media/project-03/proton-story-08.webp',
-              alt: 'The reveal teaser: “Something about how you worked this year stood out. We gave it a name…” on a navy grid.',
-              width: 720,
-              height: 1280,
-            },
-            {
-              src: '/media/project-03/proton-story-09.webp',
-              alt: 'The reveal: “Michael is the Proton Legend,” with the gold Proton Legend trophy, 4,612 actions in 2026 so far.',
-              width: 720,
-              height: 1280,
-            },
-            {
-              src: '/media/project-03/proton-story-10.webp',
-              alt: 'The closing story card: “That’s your 2026 so far,” with a Share my Wrapped button, over the blue Proton icon pattern.',
-              width: 720,
-              height: 1280,
-            },
-          ],
-          'divider',
-          [
-            {
-              src: '/media/project-03/proton-share-augmented.webp',
-              alt: 'The Augmented share card: a gold trophy topped with a robot head, on a blue pedestal, beside “[Name], you’re the Augmented” and the line “If Pronto had a best friend, it’d be you!”',
-              width: 800,
-              height: 1000,
-            },
-            {
-              src: '/media/project-03/proton-share-closer.webp',
-              alt: 'The Closer share card: a gold trophy topped with a signed contract with a fountain pen, on a blue pedestal, beside “[Name], you’re the Closer” and the line “Deals are boxed, taped, and shipped thanks to you!”',
-              width: 800,
-              height: 1000,
-            },
-            {
-              src: '/media/project-03/proton-share-daily-driver.webp',
-              alt: 'The Daily Driver share card: a gold trophy topped with a calendar page with a row of ticks, on a blue pedestal, beside “[Name], you’re the Daily Driver” and the line “Like boxes in a warehouse, your call logs stack up!”',
-              width: 800,
-              height: 1000,
-            },
-            {
-              src: '/media/project-03/proton-share-extra-mile.webp',
-              alt: 'The Extra Mile share card: a gold trophy topped with two facing heads sharing a speech bubble, on a blue pedestal, beside “[Name], you’re the Extra Mile” and the line “For your customers, you would walk 500 miles…”',
-              width: 800,
-              height: 1000,
-            },
-          ],
-          [
-            {
-              src: '/media/project-03/proton-share-fast-mover.webp',
-              alt: 'The Fast Mover share card: a gold trophy topped with a lightning bolt, on a blue pedestal, beside “[Name], you’re the Fast Mover” and the line “The headlines are in, your legend status is rising!”',
-              width: 800,
-              height: 1000,
-            },
-            {
-              src: '/media/project-03/proton-share-fixer.webp',
-              alt: 'The Fixer share card: a gold trophy topped with a clipboard of ticked tasks, on a blue pedestal, beside “[Name], you’re the Fixer” and the line “Your to-do list is more like an all-done list!”',
-              width: 800,
-              height: 1000,
-            },
-            {
-              src: '/media/project-03/proton-share-full-package.webp',
-              alt: 'The Full Package share card: a gold trophy topped with a shipping box with the Proton icon rising out of it, on a blue pedestal, beside “[Name], you’re the Full Package” and the line “You distribute success wherever you go!”',
-              width: 800,
-              height: 1000,
-            },
-            {
-              src: '/media/project-03/proton-share-go-to.webp',
-              alt: 'The Go-To share card: a gold trophy topped with a hub of connected contacts, on a blue pedestal, beside “[Name], you’re the Go-To” and the line “You’re in so many places at once, you need a clone!”',
-              width: 800,
-              height: 1000,
-            },
-          ],
-          [
-            {
-              src: '/media/project-03/proton-share-problem-solver.webp',
-              alt: 'The Problem Solver share card: a gold trophy topped with a report under a magnifying glass, on a blue pedestal, beside “[Name], you’re the Problem Solver” and the line “A rare breed, backed by data!”',
-              width: 800,
-              height: 1000,
-            },
-            {
-              src: '/media/project-03/proton-share-proton-legend.webp',
-              alt: 'The Proton Legend share card: a gold trophy topped with a figure holding the Proton icon overhead, on a blue pedestal, beside “[Name], you’re the Proton Legend” and the line “They’ll be telling stories about your year for a while!”',
-              width: 800,
-              height: 1000,
-            },
-            {
-              src: '/media/project-03/proton-share-real-deal.webp',
-              alt: 'The Real Deal share card: a gold trophy topped with a handshake, on a blue pedestal, beside “[Name], you’re the Real Deal” and the line “To your customers, you’re like family!”',
-              width: 800,
-              height: 1000,
-            },
-            {
-              src: '/media/project-03/proton-share-self-starter.webp',
-              alt: 'The Self-Starter share card: a gold trophy topped with a steaming mug with a sun motif, on a blue pedestal, beside “[Name], you’re the Self-Starter” and the line “The rooster wakes up because it hears you working!”',
-              width: 800,
-              height: 1000,
-            },
-          ],
-        ],
         body: [
           'The final design collection included data-led story cards, a reveal teaser, a complete suite of custom archetype trophies, and coordinated reveal and share graphics, organized in Figma for review and handoff. Collaboration across design, marketing, and engineering brought these elements together into the full campaign experience.',
           'Proton Wrapped became a celebration of the different ways people contribute: through consistency, curiosity, connection, initiative, and follow-through. The project was an exercise in adapting a creative vision through collaboration, preserving its personality while making it clearer, more cohesive, and practical to produce.',
+        ],
+        after: [
+          {
+            rows: [
+              [
+                {
+                  src: '/media/project-03/proton-story-08.webp',
+                  alt: 'The reveal teaser: “Something about how you worked this year stood out. We gave it a name…” on a navy grid.',
+                  width: 720,
+                  height: 1280,
+                },
+                {
+                  src: '/media/project-03/proton-story-09.webp',
+                  alt: 'The reveal: “Michael is the Proton Legend,” with the gold Proton Legend trophy, 4,612 actions in 2026 so far.',
+                  width: 720,
+                  height: 1280,
+                },
+                {
+                  src: '/media/project-03/proton-share-proton-legend.webp',
+                  alt: 'The Proton Legend share card: a gold trophy topped with a figure holding the Proton icon overhead, on a blue pedestal, beside “[Name], you’re the Proton Legend” and the line “They’ll be telling stories about your year for a while!”',
+                  width: 800,
+                  height: 1000,
+                },
+              ],
+            ],
+            caption: {
+              label: 'The reveal',
+              text: 'A teaser builds the moment before each customer meets their archetype, ready to share.',
+            },
+          },
         ],
       },
     ],

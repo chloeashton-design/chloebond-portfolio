@@ -15,6 +15,7 @@ import type {
   ProjectContent,
   ProjectGallery,
   ProjectImage,
+  SectionMedia,
 } from '../lib/projects';
 import styles from './ProjectTemplate.module.css';
 
@@ -127,6 +128,21 @@ function GalleryRows({ rows }: { rows: ProjectGallery }) {
   );
 }
 
+/** A case study's run of artwork, with the caption that says what it is. */
+function SectionMediaBlock({ media, className }: { media: SectionMedia; className?: string }) {
+  return (
+    <div className={className}>
+      <GalleryRows rows={media.rows} />
+      {media.caption ? (
+        <p className={styles.mediaCaption}>
+          <span className={styles.mediaCaptionLabel}>{media.caption.label}</span>
+          {media.caption.text}
+        </p>
+      ) : null}
+    </div>
+  );
+}
+
 export default function ProjectTemplate({ project, nextProject }: { project: Project; nextProject: Project }) {
   const content = project.content ?? placeholder;
   const gallery = project.gallery;
@@ -222,16 +238,8 @@ export default function ProjectTemplate({ project, nextProject }: { project: Pro
       {content.sections?.map((section) => (
         <Fragment key={section.heading}>
           {section.media ? (
-            <>
-              <GalleryRows rows={section.media} />
-              {section.mediaCaption ? (
-                <p className={styles.mediaCaption}>
-                  <span className={styles.mediaCaptionLabel}>{section.mediaCaption.label}</span>
-                  {section.mediaCaption.text}
-                </p>
-              ) : null}
-            </>
-          ) : (
+            <SectionMediaBlock media={section.media} />
+          ) : section.after ? null : (
             <section className={styles.wideRow}>
               <PlaceholderImage ratio="16/9" label="Section image" sublabel="landscape 16 : 9" />
             </section>
@@ -244,6 +252,9 @@ export default function ProjectTemplate({ project, nextProject }: { project: Pro
               </p>
             ))}
           </section>
+          {section.after?.map((media, i) => (
+            <SectionMediaBlock key={i} media={media} className={styles.deliverable} />
+          ))}
         </Fragment>
       ))}
 

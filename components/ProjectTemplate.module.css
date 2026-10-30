@@ -180,6 +180,12 @@
   }
 }
 
+/* A deliverable after a section's text: room below so each one reads as its
+   own piece of work rather than running into the next. */
+.deliverable {
+  margin-bottom: clamp(40px, 5.4cqw, 84px);
+}
+
 /* Frames the artwork above it, sitting in the gallery's margin. */
 .mediaCaption {
   margin: clamp(4px, 0.6cqw, 8px) clamp(20px, 4.5cqw, 72px) 0;
