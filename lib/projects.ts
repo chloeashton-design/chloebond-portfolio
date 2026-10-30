@@ -375,15 +375,6 @@ const heroes: Record<number, HeroLoop> = {
     gifFallback: false,
     tint: '#1b2232', // the navy ground
   },
-  3: {
-    src: '/media/project-03/proton-wrapped',
-    alt: 'Proton Wrapped 2026 playing on a phone against a bright blue ground: a personalized year-in-review that flips through story cards of a customer’s stats, from conversations logged and their power hour to tasks closed and where they rank, before revealing their archetype trophy, The Proton Legend.',
-    // The opening card, “Michael, here’s your 2026 so far”, so the still
-    // matches where the loop begins.
-    sources: ['mp4'],
-    gifFallback: false,
-    tint: '#1c55ff', // the blue ground
-  },
   9: {
     src: '/media/project-09/shopify-backups',
     alt: 'An animated Rewind hero for Shopify: a product card flashes “Oops! It looks like this product was deleted,” then the Vault restores it and a checklist of products, themes and collections ticks green.',
@@ -404,6 +395,12 @@ const heroImages: Record<number, ProjectImage> = {
     alt: 'Three young children and an adult tend a vegetable garden thick with tomatoes and greens, the photograph set on a lime ground beside the Wild Fauna monogram and hand-drawn flower and butterfly doodles.',
     width: 1080,
     height: 864,
+  },
+  3: {
+    src: '/media/project-03/proton-legend-trophy.webp',
+    alt: 'The Proton Legend trophy: a gold figure holding the Proton app icon overhead, standing on a blue pedestal labelled Proton Legend, with white sparkles and lime bursts against a navy circle on a bright blue patterned ground.',
+    width: 1920,
+    height: 1600,
   },
   5: {
     src: '/media/project-05/ruckify-esg-cover.webp',
@@ -910,8 +907,15 @@ const pageHeroes: Record<number, HeroLoop> = {
   1: heroes[1],
   // Rewind Hero Animations opens on its tile's loop too, for the same reason.
   9: heroes[9],
-  // As does Proton Wrapped.
-  3: heroes[3],
+  3: {
+    src: '/media/project-03/proton-wrapped',
+    alt: 'Proton Wrapped 2026 playing on a phone against a bright blue ground: a personalized year-in-review that flips through story cards of a customer’s stats, from conversations logged and their power hour to tasks closed and where they rank, before revealing their archetype trophy, The Proton Legend.',
+    // The opening card, “Michael, here’s your 2026 so far”, so the still
+    // matches where the loop begins.
+    sources: ['mp4'],
+    gifFallback: false,
+    tint: '#1c55ff', // the blue ground
+  },
   8: {
     src: '/media/project-08/ssc-guidelines',
     alt: 'The Sole Sneaker Club brand guidelines flicking through their pages — cover, welcome, mood board, logo and mark, mascot, colour palette, typefaces, hoodies, tees, caps, social, and a closing thanks.',
