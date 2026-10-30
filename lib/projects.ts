@@ -244,7 +244,7 @@ const content: Record<number, ProjectContent> = {
     tools: 'Figma, Adobe Creative Suite, Claude Code, Claude Design',
     sections: [
       {
-        heading: 'A live brand portal',
+        heading: 'An AI brand system',
         media: {
           rows: [
             [
@@ -269,12 +269,7 @@ const content: Record<number, ProjectContent> = {
           ],
           'I built tools into the portal around the questions our team heard most. A logo downloader lets people choose the format, colour, and size they need, so no one has to ask where the files live.',
           'A templates section gives everyone a way into the decks, social media graphics, and other templates I built, each marked as brand-safe. People can create on-brand assets on their own, without design becoming a bottleneck.',
-        ],
-      },
-      {
-        heading: 'An AI brand system',
-        body: [
-          'I also built an AI brand system in Claude Design. The internal version gives the team a library of templates for presentation decks, social media, and one-pagers, each one designed and vetted by me. Set constraints are built into every template, so the work stays consistent and on brand. Even the most inexperienced designer can create design-worthy assets.',
+          'The templates run on an AI brand system I built in Claude Design. Each one is designed and vetted by me, with set constraints built in, so the work stays consistent and on brand. Even the most inexperienced designer can create design-worthy assets.',
         ],
         after: [
           {
