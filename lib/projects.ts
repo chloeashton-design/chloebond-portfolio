@@ -290,6 +290,38 @@ const content: Record<number, ProjectContent> = {
               height: 1000,
             },
           ],
+          [
+            {
+              src: '/media/project-03/proton-archetype-rope.webp',
+              alt: 'An archetype character with goggles pushed up into curly white hair, in a green jacket and harness, holding a coiled rope.',
+              width: 800,
+              height: 1000,
+            },
+            {
+              src: '/media/project-03/proton-archetype-clipboard.webp',
+              alt: 'An archetype character with her hair in a bun, in a mint jacket, raising a rubber stamp and holding a clipboard of ticked items.',
+              width: 800,
+              height: 1000,
+            },
+            {
+              src: '/media/project-03/proton-archetype-handshake.webp',
+              alt: 'An archetype character in an orange open-collared shirt, smiling and reaching out a hand to shake.',
+              width: 800,
+              height: 1000,
+            },
+            {
+              src: '/media/project-03/proton-archetype-crystal-ball.webp',
+              alt: 'An archetype character in a purple headscarf and robe, holding a crystal ball with a rising bar chart and a sparkle inside.',
+              width: 800,
+              height: 1000,
+            },
+            {
+              src: '/media/project-03/proton-archetype-cap.webp',
+              alt: 'An archetype character in a lime cap and work jacket with overall straps, arms crossed and smiling.',
+              width: 800,
+              height: 1000,
+            },
+          ],
         ],
         mediaCaption: {
           label: 'Initial direction',
