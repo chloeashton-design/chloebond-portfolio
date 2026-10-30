@@ -237,13 +237,13 @@ export default function ProjectTemplate({ project, nextProject }: { project: Pro
 
       {content.sections?.map((section) => (
         <Fragment key={section.heading}>
-          {section.media ? (
-            <SectionMediaBlock media={section.media} />
-          ) : section.after ? null : (
+          {section.media === 'placeholder' ? (
             <section className={styles.wideRow}>
               <PlaceholderImage ratio="16/9" label="Section image" sublabel="landscape 16 : 9" />
             </section>
-          )}
+          ) : section.media ? (
+            <SectionMediaBlock media={section.media} />
+          ) : null}
           <section className={styles.section}>
             <h2 className={styles.sectionHeading}>{section.heading}</h2>
             {section.body.map((paragraph, i) => (

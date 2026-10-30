@@ -46,11 +46,8 @@ export interface ProjectSection {
   heading: string;
   /** One entry per paragraph. */
   body: string[];
-  /**
-   * The artwork above the heading. A section with no artwork anywhere shows a
-   * placeholder here instead.
-   */
-  media?: SectionMedia;
+  /** The artwork above the heading, or a placeholder holding the slot until it arrives. */
+  media?: SectionMedia | 'placeholder';
   /** Deliverables that follow the text, each set apart with its own caption. */
   after?: SectionMedia[];
 }
@@ -258,6 +255,7 @@ const content: Record<number, ProjectContent> = {
     sections: [
       {
         heading: 'The concept',
+        media: 'placeholder',
         body: [
           'Inspired by the tradition of annual Wrapped-style recaps, this campaign celebrates each customer’s achievements through a modern, polished visual language. The concept turns personal milestones, standout moments, and meaningful data into trophies worth recognizing.',
           'Bold typography, vibrant colours, and refined graphic details give the campaign a playful, contemporary personality, while keeping each customer’s achievements at the centre of the experience.',
@@ -485,20 +483,14 @@ const content: Record<number, ProjectContent> = {
               ],
               [
                 {
-                  src: '/media/project-03/proton-story-05.webp',
-                  alt: 'A story card reading “43 workdays in a row” on a white card over a coral ground of handwritten to-dos.',
-                  width: 720,
-                  height: 1280,
-                },
-                {
                   src: '/media/project-03/proton-story-06.webp',
                   alt: 'A story card reading “1,060 tasks closed out” on a blue card over a navy checkmark pattern.',
                   width: 720,
                   height: 1280,
                 },
                 {
-                  src: '/media/project-03/proton-story-07.webp',
-                  alt: 'A story card reading “Where you stand at Company X: top 3%” on a white card over a lime rosette pattern.',
+                  src: '/media/project-03/proton-story-05.webp',
+                  alt: 'A story card reading “43 workdays in a row” on a white card over a coral ground of handwritten to-dos.',
                   width: 720,
                   height: 1280,
                 },
@@ -508,11 +500,17 @@ const content: Record<number, ProjectContent> = {
                   width: 720,
                   height: 1280,
                 },
+                {
+                  src: '/media/project-03/proton-story-09.webp',
+                  alt: 'The reveal: “Michael is the Proton Legend,” with the gold Proton Legend trophy, 4,612 actions in 2026 so far.',
+                  width: 720,
+                  height: 1280,
+                },
               ],
             ],
             caption: {
               label: 'Story cards',
-              text: 'The data-led cards customers tap through, from the opening welcome to the closing sign-off.',
+              text: 'The data-led cards customers tap through, from the opening welcome to their archetype reveal.',
             },
           },
         ],
@@ -522,36 +520,6 @@ const content: Record<number, ProjectContent> = {
         body: [
           'The final design collection included data-led story cards, a reveal teaser, a complete suite of custom archetype trophies, and coordinated reveal and share graphics, organized in Figma for review and handoff. Collaboration across design, marketing, and engineering brought these elements together into the full campaign experience.',
           'Proton Wrapped became a celebration of the different ways people contribute: through consistency, curiosity, connection, initiative, and follow-through. The project was an exercise in adapting a creative vision through collaboration, preserving its personality while making it clearer, more cohesive, and practical to produce.',
-        ],
-        after: [
-          {
-            rows: [
-              [
-                {
-                  src: '/media/project-03/proton-story-08.webp',
-                  alt: 'The reveal teaser: “Something about how you worked this year stood out. We gave it a name…” on a navy grid.',
-                  width: 720,
-                  height: 1280,
-                },
-                {
-                  src: '/media/project-03/proton-story-09.webp',
-                  alt: 'The reveal: “Michael is the Proton Legend,” with the gold Proton Legend trophy, 4,612 actions in 2026 so far.',
-                  width: 720,
-                  height: 1280,
-                },
-                {
-                  src: '/media/project-03/proton-share-proton-legend.webp',
-                  alt: 'The Proton Legend share card: a gold trophy topped with a figure holding the Proton icon overhead, on a blue pedestal, beside “[Name], you’re the Proton Legend” and the line “They’ll be telling stories about your year for a while!”',
-                  width: 800,
-                  height: 1000,
-                },
-              ],
-            ],
-            caption: {
-              label: 'The reveal',
-              text: 'A teaser builds the moment before each customer meets their archetype, ready to share.',
-            },
-          },
         ],
       },
     ],
