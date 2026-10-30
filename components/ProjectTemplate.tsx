@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import type { CSSProperties } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -7,7 +8,14 @@ import Reveal from './Reveal';
 import SiteScroll from './SiteScroll';
 import LottieLoop from './LottieLoop';
 import IconGrid from './IconGrid';
-import type { GalleryItem, HeroLoop as HeroLoopMeta, Project, ProjectContent, ProjectImage } from '../lib/projects';
+import type {
+  GalleryItem,
+  HeroLoop as HeroLoopMeta,
+  Project,
+  ProjectContent,
+  ProjectGallery,
+  ProjectImage,
+} from '../lib/projects';
 import styles from './ProjectTemplate.module.css';
 
 /** Shown by any project that doesn't have real copy yet. */
@@ -43,6 +51,81 @@ const RATIO: Record<NonNullable<HeroLoopMeta['ratio']>, number> = {
   '4/5': 4 / 5,
   '1/1': 1,
 };
+
+/**
+ * Rows of artwork: the gallery below the overview, and the media above each
+ * case-study section.
+ */
+function GalleryRows({ rows }: { rows: ProjectGallery }) {
+  return (
+    <>
+      {rows.map((row, i) =>
+        row === 'divider' ? (
+          <hr key={i} className={styles.galleryDivider} />
+        ) : row.length === 1 && row[0].kind === 'icons' ? (
+          // Carries its own reveal, staggered across the set.
+          <IconGrid key={i} icons={row[0]} />
+        ) : (
+        <Reveal key={i}>
+          <section
+            // A lone image can ask to run to the page edges instead of
+            // sitting inside the gallery's margin.
+            className={[
+              styles.galleryRow,
+              row.length === 1 && isStill(row[0]) && row[0].bleed ? styles.galleryRowBleed : '',
+            ]
+              .filter(Boolean)
+              .join(' ')}
+            data-columns={row.length}
+            style={
+              row.length > 1
+                ? ({ '--cols': row.map((it) => `${itemRatio(it).toFixed(4)}fr`).join(' ') } as CSSProperties)
+                : undefined
+            }
+          >
+            {row.map((item) =>
+              item.kind === 'lottie' ? (
+                <LottieLoop
+                  key={item.src}
+                  src={item.src}
+                  alt={item.alt}
+                  width={item.width}
+                  height={item.height}
+                  stillFrame={item.stillFrame}
+                  loopEnd={item.loopEnd}
+                  tint={item.tint}
+                />
+              ) : item.kind === 'video' ? (
+                <HeroLoop key={item.src} hero={item} ratio={item.ratio} />
+              ) : !isStill(item) ? null : (
+                <Image
+                  key={item.src}
+                  src={item.src}
+                  alt={item.alt}
+                  width={item.width}
+                  height={item.height}
+                  className={styles.galleryImage}
+                  sizes={
+                    row.length === 1
+                      ? item.bleed
+                        ? '100vw'
+                        : '(max-width: 700px) 100vw, 90vw'
+                      : // Its share of the row, which the weighted columns
+                        // make proportional to its own ratio.
+                        `(max-width: 700px) 100vw, ${Math.ceil(
+                          (itemRatio(item) / row.reduce((sum, it) => sum + itemRatio(it), 0)) * 90,
+                        )}vw`
+                  }
+                />
+              ),
+            )}
+          </section>
+        </Reveal>
+        ),
+      )}
+    </>
+  );
+}
 
 export default function ProjectTemplate({ project, nextProject }: { project: Project; nextProject: Project }) {
   const content = project.content ?? placeholder;
@@ -136,72 +219,29 @@ export default function ProjectTemplate({ project, nextProject }: { project: Pro
 
       {project.siteScroll ? <SiteScroll scroll={project.siteScroll} label={`${project.title}, full page`} /> : null}
 
-      {gallery ? (
-        gallery.map((row, i) =>
-          row === 'divider' ? (
-            <hr key={i} className={styles.galleryDivider} />
-          ) : row.length === 1 && row[0].kind === 'icons' ? (
-            // Carries its own reveal, staggered across the set.
-            <IconGrid key={i} icons={row[0]} />
+      {content.sections?.map((section) => (
+        <Fragment key={section.heading}>
+          {section.media ? (
+            <GalleryRows rows={section.media} />
           ) : (
-          <Reveal key={i}>
-            <section
-              // A lone image can ask to run to the page edges instead of
-              // sitting inside the gallery's margin.
-              className={[
-                styles.galleryRow,
-                row.length === 1 && isStill(row[0]) && row[0].bleed ? styles.galleryRowBleed : '',
-              ]
-                .filter(Boolean)
-                .join(' ')}
-              data-columns={row.length}
-              style={
-                row.length > 1
-                  ? ({ '--cols': row.map((it) => `${itemRatio(it).toFixed(4)}fr`).join(' ') } as CSSProperties)
-                  : undefined
-              }
-            >
-              {row.map((item) =>
-                item.kind === 'lottie' ? (
-                  <LottieLoop
-                    key={item.src}
-                    src={item.src}
-                    alt={item.alt}
-                    width={item.width}
-                    height={item.height}
-                    stillFrame={item.stillFrame}
-                    loopEnd={item.loopEnd}
-                    tint={item.tint}
-                  />
-                ) : item.kind === 'video' ? (
-                  <HeroLoop key={item.src} hero={item} ratio={item.ratio} />
-                ) : !isStill(item) ? null : (
-                  <Image
-                    key={item.src}
-                    src={item.src}
-                    alt={item.alt}
-                    width={item.width}
-                    height={item.height}
-                    className={styles.galleryImage}
-                    sizes={
-                      row.length === 1
-                        ? item.bleed
-                          ? '100vw'
-                          : '(max-width: 700px) 100vw, 90vw'
-                        : // Its share of the row, which the weighted columns
-                          // make proportional to its own ratio.
-                          `(max-width: 700px) 100vw, ${Math.ceil(
-                            (itemRatio(item) / row.reduce((sum, it) => sum + itemRatio(it), 0)) * 90,
-                          )}vw`
-                    }
-                  />
-                ),
-              )}
+            <section className={styles.wideRow}>
+              <PlaceholderImage ratio="16/9" label="Section image" sublabel="landscape 16 : 9" />
             </section>
-          </Reveal>
-          ),
-        )
-      ) : project.siteScroll || project.comingSoon ? null : (
+          )}
+          <section className={styles.section}>
+            <h2 className={styles.sectionHeading}>{section.heading}</h2>
+            {section.body.map((paragraph, i) => (
+              <p key={i} className={styles.introP}>
+                {paragraph}
+              </p>
+            ))}
+          </section>
+        </Fragment>
+      ))}
+
+      {gallery ? (
+        <GalleryRows rows={gallery} />
+      ) : project.siteScroll || project.comingSoon || content.sections ? null : (
         <>
           <section className={styles.pairRow}>
             <PlaceholderImage ratio="4/5" label="Project image" sublabel="portrait 4 : 5" />

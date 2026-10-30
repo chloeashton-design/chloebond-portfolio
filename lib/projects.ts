@@ -37,6 +37,17 @@ export interface ProjectContent {
   scope: string;
   /** Omitted rather than guessed: the row only renders once a project has one. */
   tools?: string;
+  /** Case-study chapters below the overview, for a project that tells its process in stages. */
+  sections?: ProjectSection[];
+}
+
+/** One chapter of a case study, introduced by the artwork above it. */
+export interface ProjectSection {
+  heading: string;
+  /** One entry per paragraph. */
+  body: string[];
+  /** The rows above the heading. Without them the slot shows a placeholder. */
+  media?: ProjectGallery;
 }
 
 /** One piece of project artwork, rendered at its own intrinsic ratio. */
@@ -176,7 +187,7 @@ const TOTAL_PROJECTS = 9;
 const names: Record<number, string> = {
   1: 'Rewind Website',
   2: 'Rewind Brand',
-  3: 'Bonds Decor',
+  3: 'Proton Wrapped 2026',
   4: 'Wild Fauna',
   5: 'Rückify ESG Report',
   6: 'Rückify Brand',
@@ -224,16 +235,46 @@ const content: Record<number, ProjectContent> = {
   },
   3: {
     intro: [
-      'Bonds Decor is a local, family-owned home decor and paint retailer heading into their 100th anniversary in 2027. Their existing brand felt generic and modern, nothing like a business with a century of history behind it. They brought me in to rebuild it from the ground up ahead of their centennial celebration.',
-      'I stripped back the modern look and rebuilt the identity around nostalgia and heritage: a new logo, colour palette, and typography grounded in a warm, vintage-inspired aesthetic. The direction draws on a century of craftsmanship and connection, aiming for something that feels established and enduring rather than trendy.',
-      'Since paint is their primary product, I built the logo around a paintbrush with three strokes representing red, blue, and yellow, the three primary colours behind every other colour. I also designed a dedicated lockup for their 100th anniversary to show the flexibility of the new mark.',
-      'The client loved the direction enough to build the rest of the business around it. The new identity now extends to a store sign, a truck wrap, and the design of their new store opening, all built around the art direction I set. I’m continuing on as an ongoing design consultant for their marketing team, rolling the brand out across their website, ad campaigns, email signatures, and signage.',
+      'For people working in distribution, progress happens through everyday actions: a customer call, an in-person visit, a completed task, a relationship strengthened over time. Proton Wrapped was designed to turn those individual moments into a personalized year-in-review, celebrating the people behind the numbers.',
+      'In partnership with Bryan Nakata, Proton’s Senior Demand Generation Manager, and engineer Benny Joseph Perepogu, I helped bring the full campaign to life. I led the creative direction and visual design, from initial concepts through to data-driven cards, custom illustrations, archetype reveals, and shareable graphics, collaborating with Bryan on campaign direction and Benny on translating the designs into the interactive experience.',
     ],
-    client: 'Bonds Decor',
+    client: 'Proton.ai',
     year: '2026',
     role: 'Freelance Graphic Designer',
-    scope: 'Art direction, brand, strategy',
-    tools: 'Adobe Creative Suite, Claude, ChatGPT',
+    scope: 'Creative direction, illustration, layout',
+    tools: 'Figma, Claude Code, Claude Design, ChatGPT',
+    sections: [
+      {
+        heading: 'The concept',
+        body: [
+          'Inspired by the tradition of annual Wrapped-style recaps, this campaign celebrates each customer’s achievements through a modern, polished visual language. The concept turns personal milestones, standout moments, and meaningful data into trophies worth recognizing.',
+          'Bold typography, vibrant colours, and refined graphic details give the campaign a playful, contemporary personality, while keeping each customer’s achievements at the centre of the experience.',
+        ],
+      },
+      {
+        heading: 'Finding the right expression',
+        body: [
+          'The project evolved through several rounds of exploration and client feedback. Early concepts paired layered packaging-inspired compositions with illustrated character archetypes. As the campaign developed, we explored how to make those archetypes feel relevant to a broad customer base without relying on a person’s appearance to represent their achievements.',
+          'The direction ultimately shifted to custom trophies. Each design represented the behaviour behind its award, rather than simply illustrating its name: a robot for AI adoption, a signed contract for closing deals, and a coffee cup with a sun motif for early starts.',
+          'A shared pedestal, cohesive colour treatment, and consistent illustration style connected the collection, while distinct sculptural tops gave each award its own identity. And the most coveted: The Proton Legend.',
+        ],
+      },
+      {
+        heading: 'Balancing personality with practicality',
+        body: [
+          'A central challenge was translating a richly textured concept into a system that could support a technically complex, personalized campaign.',
+          'I simplified the layouts and decorative elements as the project progressed, giving the numbers more space and reducing the complexity of the reusable assets.',
+          'The resulting system brought together expressive typography, repeatable patterns, illustrative details, and clear information hierarchy. Reveal cards and social share cards extended that same visual language across different moments in the customer experience.',
+        ],
+      },
+      {
+        heading: 'The result',
+        body: [
+          'The final design collection included data-led story cards, a reveal teaser, a complete suite of custom archetype trophies, and coordinated reveal and share graphics, organized in Figma for review and handoff. Collaboration across design, marketing, and engineering brought these elements together into the full campaign experience.',
+          'Proton Wrapped became a celebration of the different ways people contribute: through consistency, curiosity, connection, initiative, and follow-through. The project was an exercise in adapting a creative vision through collaboration, preserving its personality while making it clearer, more cohesive, and practical to produce.',
+        ],
+      },
+    ],
   },
   4: {
     intro: [
@@ -334,6 +375,15 @@ const heroes: Record<number, HeroLoop> = {
     gifFallback: false,
     tint: '#1b2232', // the navy ground
   },
+  3: {
+    src: '/media/project-03/proton-wrapped',
+    alt: 'Proton Wrapped 2026 playing on a phone against a bright blue ground: a personalized year-in-review that flips through story cards of a customer’s stats, from conversations logged and their power hour to tasks closed and where they rank, before revealing their archetype trophy, The Proton Legend.',
+    // The opening card, “Michael, here’s your 2026 so far”, so the still
+    // matches where the loop begins.
+    sources: ['mp4'],
+    gifFallback: false,
+    tint: '#1c55ff', // the blue ground
+  },
   9: {
     src: '/media/project-09/shopify-backups',
     alt: 'An animated Rewind hero for Shopify: a product card flashes “Oops! It looks like this product was deleted,” then the Vault restores it and a checklist of products, themes and collections ticks green.',
@@ -354,12 +404,6 @@ const heroImages: Record<number, ProjectImage> = {
     alt: 'Three young children and an adult tend a vegetable garden thick with tomatoes and greens, the photograph set on a lime ground beside the Wild Fauna monogram and hand-drawn flower and butterfly doodles.',
     width: 1080,
     height: 864,
-  },
-  3: {
-    src: '/media/project-03/bonds-decor-tee.webp',
-    alt: 'A navy pocket tee, the Bonds Decor script logo printed on the pocket in cream above a paintbrush trailing yellow, blue and red stripes.',
-    width: 1174,
-    height: 1328,
   },
   5: {
     src: '/media/project-05/ruckify-esg-cover.webp',
@@ -855,60 +899,6 @@ const galleries: Record<number, ProjectGallery> = {
       },
     ],
   ],
-  3: [
-    [
-      {
-        src: '/media/project-03/bonds-tee.webp',
-        alt: 'A navy pocket tee with the Bonds Decor script logo printed on the pocket in cream above a paintbrush trailing yellow, blue and red stripes.',
-        width: 901,
-        height: 1126,
-      },
-      {
-        src: '/media/project-03/bonds-loyaltycard.webp',
-        alt: 'Bonds Decor loyalty cards on navy: one illustrated with nine paint cans reading “Grab eight paint cans and get the ninth paint can free”, the other carrying the logo and the words Loyalty Program.',
-        width: 896,
-        height: 1120,
-      },
-    ],
-    [
-      {
-        src: '/media/project-03/bonds-centennial-logo.webp',
-        alt: 'The centennial lockup on cream: the Bonds script above the paintbrush and its three stripes, set beside “100 Years of Business”.',
-        width: 1920,
-        height: 1080,
-      },
-    ],
-    [
-      {
-        src: '/media/project-03/bonds-store.webp',
-        alt: 'The new store interior, the Bonds Decor logo painted large in cream across a deep navy wall above the polished concrete floor.',
-        width: 1448,
-        height: 814,
-      },
-    ],
-    [
-      {
-        src: '/media/project-03/bonds-mascot.webp',
-        alt: 'A line-drawn mascot in navy on cream: a smiling driver in a flat cap at the wheel of a pickup loaded with a wooden chair and open paint cans.',
-        width: 1920,
-        height: 1080,
-      },
-    ],
-    [
-      {
-        src: '/media/project-03/bonds-paint.webp',
-        alt: 'Six paintbrushes on navy, each loaded with a different colour — green, teal, orange, red, blue and yellow — over swatch cards of the same shades.',
-        width: 735,
-        height: 1102,
-      },
-      {
-        src: '/media/project-03/bonds-truck.webp',
-        alt: 'The delivery truck wrapped in navy, its box panel carrying the Bonds Decor logo under the line “Making houses into homes, since 1927”.',
-        width: 1774,
-        height: 887,
-      },
-    ],
-  ],
 };
 
 // Banners inside the project pages, a separate slot from the work-grid tiles
@@ -920,6 +910,8 @@ const pageHeroes: Record<number, HeroLoop> = {
   1: heroes[1],
   // Rewind Hero Animations opens on its tile's loop too, for the same reason.
   9: heroes[9],
+  // As does Proton Wrapped.
+  3: heroes[3],
   8: {
     src: '/media/project-08/ssc-guidelines',
     alt: 'The Sole Sneaker Club brand guidelines flicking through their pages — cover, welcome, mood board, logo and mark, mascot, colour palette, typefaces, hoodies, tees, caps, social, and a closing thanks.',
@@ -952,12 +944,6 @@ const pageHeroImages: Record<number, ProjectImage> = {
   7: {
     src: '/media/project-07/tweed-hero.webp',
     alt: 'The Tweed script wordmark in white over a close-up of a brown houndstooth jacket worn with a mustard tee.',
-    width: 1920,
-    height: 1080,
-  },
-  3: {
-    src: '/media/project-03/bonds-logo.webp',
-    alt: 'The Bonds Decor logo on deep navy: “Bonds” in cream script above a paintbrush trailing yellow, blue and red stripes into the word DECOR.',
     width: 1920,
     height: 1080,
   },
