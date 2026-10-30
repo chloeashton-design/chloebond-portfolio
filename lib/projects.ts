@@ -81,6 +81,11 @@ export interface ProjectImage {
 export interface ProjectVideo extends HeroLoop {
   kind: 'video';
   ratio: '16/9' | '5/4' | '4/5' | '1/1';
+  /**
+   * A hairline border and rounded corners, for footage whose own ground is as
+   * white as the page and would otherwise have no edge.
+   */
+  framed?: boolean;
 }
 
 /**
@@ -248,6 +253,7 @@ const content: Record<number, ProjectContent> = {
                 src: '/media/project-02/rewind-guidelines-scroll',
                 alt: 'A scroll through the Rewind brand guidelines microsite: sections on the Rewind name, logo, colour, typography, accessibility, iconography, photography, gradients and downloads, with a sidebar to jump between them.',
                 ratio: '16/9',
+                framed: true,
                 sources: ['mp4'],
                 gifFallback: false,
                 tint: '#ffffff', // the site's own white ground

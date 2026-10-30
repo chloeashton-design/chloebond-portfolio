@@ -287,6 +287,12 @@
   }
 }
 
+/* Gives white-ground footage an edge against the white page. */
+.framed {
+  border: 1px solid var(--line);
+  border-radius: clamp(8px, 1cqw, 14px);
+}
+
 .galleryImage {
   display: block;
   width: 100%;

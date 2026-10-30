@@ -98,7 +98,12 @@ function GalleryRows({ rows }: { rows: ProjectGallery }) {
                   tint={item.tint}
                 />
               ) : item.kind === 'video' ? (
-                <HeroLoop key={item.src} hero={item} ratio={item.ratio} />
+                <HeroLoop
+                  key={item.src}
+                  hero={item}
+                  ratio={item.ratio}
+                  className={item.framed ? styles.framed : undefined}
+                />
               ) : !isStill(item) ? null : (
                 <Image
                   key={item.src}
