@@ -267,6 +267,14 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
+  /* Five leave one over: centre it under the pairs rather than strand it
+     on the left. */
+  .galleryRow[data-columns='5'] > :last-child {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc((100% - clamp(10px, 1.6cqw, 22px)) / 2);
+  }
+
   /* Two rows of six fall into four rows of three. */
   .galleryRow[data-columns='6'] {
     grid-template-columns: repeat(3, 1fr);

@@ -357,9 +357,74 @@ const content: Record<number, ProjectContent> = {
       },
       {
         heading: 'The result',
-        // The share cards, one per archetype trophy, for customers to post
-        // their result.
+        // The campaign in order: the story cards a customer taps through,
+        // then the share cards, one per archetype trophy, they post at the end.
         media: [
+          [
+            {
+              src: '/media/project-03/proton-story-01.webp',
+              alt: 'The opening story card: “Michael, here’s your 2026 so far on Proton,” on a navy card over a bright blue pattern of Proton icons.',
+              width: 720,
+              height: 1280,
+            },
+            {
+              src: '/media/project-03/proton-story-02.webp',
+              alt: 'A story card reading “4,612 conversations. All written down.” on a blue card over a navy speech-bubble pattern.',
+              width: 720,
+              height: 1280,
+            },
+            {
+              src: '/media/project-03/proton-story-03.webp',
+              alt: 'A story card reading “2,021 conversations with Pronto AI agent,” with 984 hours back and 123 workdays saved, on a white card over a lime sparkle pattern.',
+              width: 720,
+              height: 1280,
+            },
+            {
+              src: '/media/project-03/proton-story-04.webp',
+              alt: 'A story card reading “9:46AM is your power hour” on a navy card over a blue clock pattern.',
+              width: 720,
+              height: 1280,
+            },
+            {
+              src: '/media/project-03/proton-story-05.webp',
+              alt: 'A story card reading “43 workdays in a row” on a white card over a coral ground of handwritten to-dos.',
+              width: 720,
+              height: 1280,
+            },
+          ],
+          [
+            {
+              src: '/media/project-03/proton-story-06.webp',
+              alt: 'A story card reading “1,060 tasks closed out” on a blue card over a navy checkmark pattern.',
+              width: 720,
+              height: 1280,
+            },
+            {
+              src: '/media/project-03/proton-story-07.webp',
+              alt: 'A story card reading “Where you stand at Company X: top 3%” on a white card over a lime rosette pattern.',
+              width: 720,
+              height: 1280,
+            },
+            {
+              src: '/media/project-03/proton-story-08.webp',
+              alt: 'The reveal teaser: “Something about how you worked this year stood out. We gave it a name…” on a navy grid.',
+              width: 720,
+              height: 1280,
+            },
+            {
+              src: '/media/project-03/proton-story-09.webp',
+              alt: 'The reveal: “Michael is the Proton Legend,” with the gold Proton Legend trophy, 4,612 actions in 2026 so far.',
+              width: 720,
+              height: 1280,
+            },
+            {
+              src: '/media/project-03/proton-story-10.webp',
+              alt: 'The closing story card: “That’s your 2026 so far,” with a Share my Wrapped button, over the blue Proton icon pattern.',
+              width: 720,
+              height: 1280,
+            },
+          ],
+          'divider',
           [
             {
               src: '/media/project-03/proton-share-augmented.webp',
