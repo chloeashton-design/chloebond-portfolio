@@ -1290,6 +1290,14 @@ const pageHeroes: Record<number, HeroLoop> = {
   1: heroes[1],
   // Rewind Hero Animations opens on its tile's loop too, for the same reason.
   9: heroes[9],
+  2: {
+    src: '/media/project-02/rewind-brand-reel',
+    alt: 'A reel of the new Rewind brand: the gold chevron and wordmark on deep navy, the Deep Navy, Mango, Light Neutral and Pure White palette with its vertical accents, Space Grotesk and Inter type specimens, headline stats in white and mango, and the motion gradients.',
+    // Opens on the logo, so the poster is taken there.
+    sources: ['mp4'],
+    gifFallback: false,
+    tint: '#020917', // Deep Navy
+  },
   3: {
     src: '/media/project-03/proton-wrapped',
     alt: 'Proton Wrapped 2026 playing on a phone against a bright blue ground: a personalized year-in-review that flips through story cards of a customer’s stats, from conversations logged and their power hour to tasks closed and where they rank, before revealing their archetype trophy, The Proton Legend.',
@@ -1336,9 +1344,8 @@ const pageHeroImages: Record<number, ProjectImage> = {
   },
 };
 
-// Projects whose work can't be shown yet. Rewind Brand stays under wraps until
-// the brand itself launches.
-const COMING_SOON = new Set([2]);
+// Projects whose work can't be shown yet. Empty since the Rewind brand launched.
+const COMING_SOON = new Set<number>([]);
 
 // Full pages shown as one continuous scroll below the overview.
 const siteScrolls: Record<number, SiteScroll> = {
