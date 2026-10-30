@@ -276,11 +276,95 @@ const content: Record<number, ProjectContent> = {
         body: [
           'I also built an AI brand system in Claude Design. The internal version gives the team a library of templates for presentation decks, social media, and one-pagers, each one designed and vetted by me. Set constraints are built into every template, so the work stays consistent and on brand. Even the most inexperienced designer can create design-worthy assets.',
         ],
+        after: [
+          {
+            rows: [
+              [
+                {
+                  kind: 'video',
+                  src: '/media/project-02/rewind-social-animated',
+                  alt: 'A Rewind social profile filling with posts in the new brand: a new feature announcement, a CEO quote, an event invitation, a new integration and a live webinar.',
+                  ratio: '16/9',
+                  posterTime: 3, // the grid filled in
+                  sources: ['mp4'],
+                  gifFallback: false,
+                  tint: '#050a1c', // the navy ground
+                },
+                {
+                  src: '/media/project-02/rewind-social-claude.webp',
+                  alt: 'A “New integration: Backups for Claude” graphic: the Claude icon on a glowing gold tile in a grid of dark rounded squares, with rewind.com/news in the corner.',
+                  width: 1920,
+                  height: 1080,
+                },
+              ],
+            ],
+            caption: {
+              label: 'Social',
+              text: 'An animated profile of posts in the new brand, and a launch graphic for a new integration.',
+            },
+          },
+        ],
       },
       {
         heading: 'The result',
         body: [
           'The rebrand landed with full executive alignment and minimal rounds of revisions. With AI doing the heavy lifting on adoption, the new brand scaled across the company, internally and externally, without design becoming a bottleneck. Teams could create what they needed on their own, and design time went back to creative thinking and strategy. Rewind gained the confident, enterprise-ready brand it needed to compete for larger deals.',
+        ],
+        after: [
+          {
+            rows: [
+              [
+                {
+                  src: '/media/project-02/rewind-business-cards.webp',
+                  alt: 'Rewind business cards in deep navy: the front blind-embossed with the chevron mark and wordmark, the back carrying a name and contact details beside the gold chevron.',
+                  width: 1726,
+                  height: 1252,
+                },
+                {
+                  src: '/media/project-02/rewind-signage.webp',
+                  alt: 'A free-standing digital sign in a dark tiled lobby reading “Building resilience today, for whatever comes tomorrow,” with the gold chevron above and the rewind wordmark below.',
+                  width: 826,
+                  height: 1252,
+                },
+              ],
+            ],
+            caption: {
+              label: 'Print and signage',
+              text: 'Business cards and environmental signage.',
+            },
+          },
+          {
+            rows: [
+              [
+                {
+                  src: '/media/project-02/rewind-website-laptop.webp',
+                  alt: 'A laptop on a blue-lit desk showing the closing call to action of the Rewind website, “Ready to keep your business shipping?”, above the site footer.',
+                  width: 2000,
+                  height: 947,
+                },
+              ],
+            ],
+            caption: {
+              label: 'Web',
+              text: 'The website, carried through to its closing call to action and footer.',
+            },
+          },
+          {
+            rows: [
+              [
+                {
+                  src: '/media/project-02/rewind-one-pager.webp',
+                  alt: 'The Shopify one-pager, “SaaS resilience for Shopify”, shown with its detail panels: features, platform coverage, the cost of downtime, customer logos and a testimonial.',
+                  width: 2000,
+                  height: 949,
+                },
+              ],
+            ],
+            caption: {
+              label: 'Sales collateral',
+              text: 'A one-pager for Shopify, built for the sales team.',
+            },
+          },
         ],
       },
     ],
