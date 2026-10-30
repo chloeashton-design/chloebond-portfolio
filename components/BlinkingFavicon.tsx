@@ -19,12 +19,12 @@ const frame = (body: string) =>
   )}`;
 
 const HALF = frame(
-  '<path d="M2 12s4-3 10-3 10 3 10 3-4 3-10 3S2 12 2 12Z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>' +
+  '<path d="M2 12s4-3 10-3 10 3 10 3-4 3-10 3S2 12 2 12Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>' +
     '<ellipse cx="12" cy="12" rx="3.3" ry="1.9" fill="currentColor"/>',
 );
 // Shut: the lid as a single line, dipping a little like a closed eye does.
 const SHUT = frame(
-  '<path d="M2 12s4 2 10 2 10-2 10-2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>',
+  '<path d="M2 12s4 2 10 2 10-2 10-2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>',
 );
 
 const STEP_MS = 55; // per frame: the whole blink is over in about a fifth of a second
