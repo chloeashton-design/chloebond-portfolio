@@ -283,14 +283,14 @@ const content: Record<number, ProjectContent> = {
               width: 800,
               height: 1000,
             },
+          ],
+          [
             {
               src: '/media/project-03/proton-archetype-coffee.webp',
               alt: 'An archetype character in a beanie and orange check jacket, holding a steaming mug, both marked with a rising sun.',
               width: 800,
               height: 1000,
             },
-          ],
-          [
             {
               src: '/media/project-03/proton-archetype-rope.webp',
               alt: 'An archetype character with goggles pushed up into curly white hair, in a green jacket and harness, holding a coiled rope.',
@@ -309,6 +309,8 @@ const content: Record<number, ProjectContent> = {
               width: 800,
               height: 1000,
             },
+          ],
+          [
             {
               src: '/media/project-03/proton-archetype-crystal-ball.webp',
               alt: 'An archetype character in a purple headscarf and robe, holding a crystal ball with a rising bar chart and a sparkle inside.',
@@ -318,6 +320,18 @@ const content: Record<number, ProjectContent> = {
             {
               src: '/media/project-03/proton-archetype-cap.webp',
               alt: 'An archetype character in a lime cap and work jacket with overall straps, arms crossed and smiling.',
+              width: 800,
+              height: 1000,
+            },
+            {
+              src: '/media/project-03/proton-archetype-rocket.webp',
+              alt: 'An archetype character with a blonde ponytail tied in a pink bow, in a pink jacket and neckerchief, holding a paper rocket.',
+              width: 800,
+              height: 1000,
+            },
+            {
+              src: '/media/project-03/proton-archetype-chain.webp',
+              alt: 'An archetype character in a headband and periwinkle track jacket, smiling and holding up a chain of linked rings.',
               width: 800,
               height: 1000,
             },
