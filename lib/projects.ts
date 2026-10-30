@@ -361,102 +361,6 @@ const content: Record<number, ProjectContent> = {
             rows: [
               [
                 {
-                  src: '/media/project-03/proton-share-augmented.webp',
-                  alt: 'The Augmented share card: a gold trophy topped with a robot head, on a blue pedestal, beside “[Name], you’re the Augmented” and the line “If Pronto had a best friend, it’d be you!”',
-                  width: 800,
-                  height: 1000,
-                },
-                {
-                  src: '/media/project-03/proton-share-closer.webp',
-                  alt: 'The Closer share card: a gold trophy topped with a signed contract with a fountain pen, on a blue pedestal, beside “[Name], you’re the Closer” and the line “Deals are boxed, taped, and shipped thanks to you!”',
-                  width: 800,
-                  height: 1000,
-                },
-                {
-                  src: '/media/project-03/proton-share-daily-driver.webp',
-                  alt: 'The Daily Driver share card: a gold trophy topped with a calendar page with a row of ticks, on a blue pedestal, beside “[Name], you’re the Daily Driver” and the line “Like boxes in a warehouse, your call logs stack up!”',
-                  width: 800,
-                  height: 1000,
-                },
-                {
-                  src: '/media/project-03/proton-share-extra-mile.webp',
-                  alt: 'The Extra Mile share card: a gold trophy topped with two facing heads sharing a speech bubble, on a blue pedestal, beside “[Name], you’re the Extra Mile” and the line “For your customers, you would walk 500 miles…”',
-                  width: 800,
-                  height: 1000,
-                },
-              ],
-              [
-                {
-                  src: '/media/project-03/proton-share-fast-mover.webp',
-                  alt: 'The Fast Mover share card: a gold trophy topped with a lightning bolt, on a blue pedestal, beside “[Name], you’re the Fast Mover” and the line “The headlines are in, your legend status is rising!”',
-                  width: 800,
-                  height: 1000,
-                },
-                {
-                  src: '/media/project-03/proton-share-fixer.webp',
-                  alt: 'The Fixer share card: a gold trophy topped with a clipboard of ticked tasks, on a blue pedestal, beside “[Name], you’re the Fixer” and the line “Your to-do list is more like an all-done list!”',
-                  width: 800,
-                  height: 1000,
-                },
-                {
-                  src: '/media/project-03/proton-share-full-package.webp',
-                  alt: 'The Full Package share card: a gold trophy topped with a shipping box with the Proton icon rising out of it, on a blue pedestal, beside “[Name], you’re the Full Package” and the line “You distribute success wherever you go!”',
-                  width: 800,
-                  height: 1000,
-                },
-                {
-                  src: '/media/project-03/proton-share-go-to.webp',
-                  alt: 'The Go-To share card: a gold trophy topped with a hub of connected contacts, on a blue pedestal, beside “[Name], you’re the Go-To” and the line “You’re in so many places at once, you need a clone!”',
-                  width: 800,
-                  height: 1000,
-                },
-              ],
-              [
-                {
-                  src: '/media/project-03/proton-share-problem-solver.webp',
-                  alt: 'The Problem Solver share card: a gold trophy topped with a report under a magnifying glass, on a blue pedestal, beside “[Name], you’re the Problem Solver” and the line “A rare breed, backed by data!”',
-                  width: 800,
-                  height: 1000,
-                },
-                {
-                  src: '/media/project-03/proton-share-proton-legend.webp',
-                  alt: 'The Proton Legend share card: a gold trophy topped with a figure holding the Proton icon overhead, on a blue pedestal, beside “[Name], you’re the Proton Legend” and the line “They’ll be telling stories about your year for a while!”',
-                  width: 800,
-                  height: 1000,
-                },
-                {
-                  src: '/media/project-03/proton-share-real-deal.webp',
-                  alt: 'The Real Deal share card: a gold trophy topped with a handshake, on a blue pedestal, beside “[Name], you’re the Real Deal” and the line “To your customers, you’re like family!”',
-                  width: 800,
-                  height: 1000,
-                },
-                {
-                  src: '/media/project-03/proton-share-self-starter.webp',
-                  alt: 'The Self-Starter share card: a gold trophy topped with a steaming mug with a sun motif, on a blue pedestal, beside “[Name], you’re the Self-Starter” and the line “The rooster wakes up because it hears you working!”',
-                  width: 800,
-                  height: 1000,
-                },
-              ],
-            ],
-            caption: {
-              label: 'Trophy collection',
-              text: 'Twelve archetype awards, each with a share card customers could post to social.',
-            },
-          },
-        ],
-      },
-      {
-        heading: 'Balancing personality with practicality',
-        body: [
-          'A central challenge was translating a richly textured concept into a system that could support a technically complex, personalized campaign.',
-          'I simplified the layouts and decorative elements as the project progressed, giving the numbers more space and reducing the complexity of the reusable assets.',
-          'The resulting system brought together expressive typography, repeatable patterns, illustrative details, and clear information hierarchy. Reveal cards and social share cards extended that same visual language across different moments in the customer experience.',
-        ],
-        after: [
-          {
-            rows: [
-              [
-                {
                   src: '/media/project-03/proton-story-01.webp',
                   alt: 'The opening story card: “Michael, here’s your 2026 so far on Proton,” on a navy card over a bright blue pattern of Proton icons.',
                   width: 720,
@@ -511,6 +415,102 @@ const content: Record<number, ProjectContent> = {
             caption: {
               label: 'Story cards',
               text: 'The data-led cards customers tap through, from the opening welcome to their archetype reveal.',
+            },
+          },
+        ],
+      },
+      {
+        heading: 'Balancing personality with practicality',
+        body: [
+          'A central challenge was translating a richly textured concept into a system that could support a technically complex, personalized campaign.',
+          'I simplified the layouts and decorative elements as the project progressed, giving the numbers more space and reducing the complexity of the reusable assets.',
+          'The resulting system brought together expressive typography, repeatable patterns, illustrative details, and clear information hierarchy. Reveal cards and social share cards extended that same visual language across different moments in the customer experience.',
+        ],
+        after: [
+          {
+            rows: [
+              [
+                {
+                  src: '/media/project-03/proton-trophy-augmented.webp',
+                  alt: 'The Augmented share card: a gold trophy topped with a robot head, on a blue pedestal labelled Augmented, with the line “If Pronto had a best friend, it’d be you!”',
+                  width: 800,
+                  height: 1000,
+                },
+                {
+                  src: '/media/project-03/proton-trophy-closer.webp',
+                  alt: 'The Closer share card: a gold trophy topped with a signed contract with a fountain pen, on a blue pedestal labelled Closer, with the line “Deals are boxed, taped, and shipped thanks to you!”',
+                  width: 800,
+                  height: 1000,
+                },
+                {
+                  src: '/media/project-03/proton-trophy-daily-driver.webp',
+                  alt: 'The Daily Driver share card: a gold trophy topped with a calendar page with a row of ticks, on a blue pedestal labelled Daily Driver, with the line “Like boxes in a warehouse, your call logs stack up!”',
+                  width: 800,
+                  height: 1000,
+                },
+                {
+                  src: '/media/project-03/proton-trophy-extra-mile.webp',
+                  alt: 'The Extra Mile share card: a gold trophy topped with two facing heads sharing a speech bubble, on a blue pedestal labelled Extra Mile, with the line “For your customers, you would walk 500 miles…”',
+                  width: 800,
+                  height: 1000,
+                },
+              ],
+              [
+                {
+                  src: '/media/project-03/proton-trophy-fast-mover.webp',
+                  alt: 'The Fast Mover share card: a gold trophy topped with a lightning bolt, on a blue pedestal labelled Fast Mover, with the line “The headlines are in, your legend status is rising!”',
+                  width: 800,
+                  height: 1000,
+                },
+                {
+                  src: '/media/project-03/proton-trophy-fixer.webp',
+                  alt: 'The Fixer share card: a gold trophy topped with a clipboard of ticked tasks, on a blue pedestal labelled Fixer, with the line “Your to-do list is more like an all-done list!”',
+                  width: 800,
+                  height: 1000,
+                },
+                {
+                  src: '/media/project-03/proton-trophy-full-package.webp',
+                  alt: 'The Full Package share card: a gold trophy topped with a shipping box with the Proton icon rising out of it, on a blue pedestal labelled Full Package, with the line “You distribute success wherever you go!”',
+                  width: 800,
+                  height: 1000,
+                },
+                {
+                  src: '/media/project-03/proton-trophy-go-to.webp',
+                  alt: 'The Go-To share card: a gold trophy topped with a hub of connected contacts, on a blue pedestal labelled Go-To, with the line “You’re in so many places at once, you need a clone!”',
+                  width: 800,
+                  height: 1000,
+                },
+              ],
+              [
+                {
+                  src: '/media/project-03/proton-trophy-problem-solver.webp',
+                  alt: 'The Problem Solver share card: a gold trophy topped with a report under a magnifying glass, on a blue pedestal labelled Problem Solver, with the line “A rare breed, backed by data!”',
+                  width: 800,
+                  height: 1000,
+                },
+                {
+                  src: '/media/project-03/proton-trophy-proton-legend.webp',
+                  alt: 'The Proton Legend share card: a gold trophy topped with a figure holding the Proton icon overhead, on a blue pedestal labelled Proton Legend, with the line “They’ll be telling stories about your year for a while!”',
+                  width: 800,
+                  height: 1000,
+                },
+                {
+                  src: '/media/project-03/proton-trophy-real-deal.webp',
+                  alt: 'The Real Deal share card: a gold trophy topped with a handshake, on a blue pedestal labelled Real Deal, with the line “To your customers, you’re like family!”',
+                  width: 800,
+                  height: 1000,
+                },
+                {
+                  src: '/media/project-03/proton-trophy-self-starter.webp',
+                  alt: 'The Self-Starter share card: a gold trophy topped with a steaming mug with a sun motif, on a blue pedestal labelled Self-Starter, with the line “The rooster wakes up because it hears you working!”',
+                  width: 800,
+                  height: 1000,
+                },
+              ],
+            ],
+            caption: {
+              label: 'Trophy collection',
+              text: 'Twelve archetype awards, each with a share card customers could post to social.',
             },
           },
         ],
