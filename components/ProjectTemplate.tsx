@@ -222,7 +222,15 @@ export default function ProjectTemplate({ project, nextProject }: { project: Pro
       {content.sections?.map((section) => (
         <Fragment key={section.heading}>
           {section.media ? (
-            <GalleryRows rows={section.media} />
+            <>
+              <GalleryRows rows={section.media} />
+              {section.mediaCaption ? (
+                <p className={styles.mediaCaption}>
+                  <span className={styles.mediaCaptionLabel}>{section.mediaCaption.label}</span>
+                  {section.mediaCaption.text}
+                </p>
+              ) : null}
+            </>
           ) : (
             <section className={styles.wideRow}>
               <PlaceholderImage ratio="16/9" label="Section image" sublabel="landscape 16 : 9" />

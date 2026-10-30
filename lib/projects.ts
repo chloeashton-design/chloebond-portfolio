@@ -48,6 +48,8 @@ export interface ProjectSection {
   body: string[];
   /** The rows above the heading. Without them the slot shows a placeholder. */
   media?: ProjectGallery;
+  /** A line under the media, for artwork that needs framing -- an abandoned direction, say. */
+  mediaCaption?: { label: string; text: string };
 }
 
 /** One piece of project artwork, rendered at its own intrinsic ratio. */
@@ -246,7 +248,15 @@ const content: Record<number, ProjectContent> = {
     sections: [
       {
         heading: 'The concept',
-        // The early character archetypes, before the direction moved to trophies.
+        body: [
+          'Inspired by the tradition of annual Wrapped-style recaps, this campaign celebrates each customer’s achievements through a modern, polished visual language. The concept turns personal milestones, standout moments, and meaningful data into trophies worth recognizing.',
+          'Bold typography, vibrant colours, and refined graphic details give the campaign a playful, contemporary personality, while keeping each customer’s achievements at the centre of the experience.',
+        ],
+      },
+      {
+        heading: 'Finding the right expression',
+        // The first direction: illustrated character archetypes, set aside
+        // for trophies. Labelled as such so they don't read as the final work.
         media: [
           [
             {
@@ -281,15 +291,12 @@ const content: Record<number, ProjectContent> = {
             },
           ],
         ],
+        mediaCaption: {
+          label: 'Initial direction',
+          text: 'Twelve illustrated archetypes, later set aside in favour of custom trophies.',
+        },
         body: [
-          'Inspired by the tradition of annual Wrapped-style recaps, this campaign celebrates each customer’s achievements through a modern, polished visual language. The concept turns personal milestones, standout moments, and meaningful data into trophies worth recognizing.',
-          'Bold typography, vibrant colours, and refined graphic details give the campaign a playful, contemporary personality, while keeping each customer’s achievements at the centre of the experience.',
-        ],
-      },
-      {
-        heading: 'Finding the right expression',
-        body: [
-          'The project evolved through several rounds of exploration and client feedback. Early concepts paired layered packaging-inspired compositions with illustrated character archetypes. As the campaign developed, we explored how to make those archetypes feel relevant to a broad customer base without relying on a person’s appearance to represent their achievements.',
+          'The project evolved through several rounds of exploration and client feedback. Early concepts paired layered packaging-inspired compositions with illustrated character archetypes. As the campaign developed, we realized the characters couldn’t represent everyone. Each customer would receive just one archetype, and we didn’t want a single person to stand in for a whole group.',
           'The direction ultimately shifted to custom trophies. Each design represented the behaviour behind its award, rather than simply illustrating its name: a robot for AI adoption, a signed contract for closing deals, and a coffee cup with a sun motif for early starts.',
           'A shared pedestal, cohesive colour treatment, and consistent illustration style connected the collection, while distinct sculptural tops gave each award its own identity. And the most coveted: The Proton Legend.',
         ],

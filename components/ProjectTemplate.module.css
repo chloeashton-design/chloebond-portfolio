@@ -180,6 +180,27 @@
   }
 }
 
+/* Frames the artwork above it, sitting in the gallery's margin. */
+.mediaCaption {
+  margin: clamp(4px, 0.6cqw, 8px) clamp(20px, 4.5cqw, 72px) 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 14px;
+  font-size: clamp(12.5px, 1cqw, 14px);
+  line-height: 1.45;
+  color: var(--ink-4);
+}
+
+.mediaCaptionLabel {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: clamp(9px, 0.95cqw, 10.5px);
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
 .sectionHeading {
   font-family: var(--font-serif);
   font-weight: 400;
@@ -228,8 +249,9 @@
 
 /* A lineup -- a set of characters, say -- read as one collection. */
 .galleryRow[data-columns='4'],
-.galleryRow[data-columns='5'] {
-  grid-template-columns: var(--cols, repeat(auto-fit, minmax(min(150px, 100%), 1fr)));
+.galleryRow[data-columns='5'],
+.galleryRow[data-columns='6'] {
+  grid-template-columns: var(--cols, repeat(auto-fit, minmax(min(120px, 100%), 1fr)));
 }
 
 /* Too narrow to sit anything side by side. Matches the specificity of the
@@ -243,6 +265,11 @@
   .galleryRow[data-columns='4'],
   .galleryRow[data-columns='5'] {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Two rows of six fall into four rows of three. */
+  .galleryRow[data-columns='6'] {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
