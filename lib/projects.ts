@@ -290,6 +290,8 @@ const content: Record<number, ProjectContent> = {
                   gifFallback: false,
                   tint: '#050a1c', // the navy ground
                 },
+              ],
+              [
                 {
                   src: '/media/project-02/rewind-social-claude.webp',
                   alt: 'A “New integration: Backups for Claude” graphic: the Claude icon on a glowing gold tile in a grid of dark rounded squares, with rewind.com/news in the corner.',
