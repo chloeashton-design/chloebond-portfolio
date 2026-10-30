@@ -246,6 +246,41 @@ const content: Record<number, ProjectContent> = {
     sections: [
       {
         heading: 'The concept',
+        // The early character archetypes, before the direction moved to trophies.
+        media: [
+          [
+            {
+              src: '/media/project-03/proton-archetype-globe.webp',
+              alt: 'An archetype character in a teal blazer, waving with one hand and cradling a glowing globe of connected nodes in the other.',
+              width: 800,
+              height: 1000,
+            },
+            {
+              src: '/media/project-03/proton-archetype-tablet.webp',
+              alt: 'An archetype character in a light blue blazer, adjusting her glasses while holding a tablet showing chat bubbles, with more speech bubbles rising beside her.',
+              width: 800,
+              height: 1000,
+            },
+            {
+              src: '/media/project-03/proton-archetype-laurel.webp',
+              alt: 'An archetype character in a gold blazer, hands on hips and smiling, wearing a gold laurel crown with sparkles either side.',
+              width: 800,
+              height: 1000,
+            },
+            {
+              src: '/media/project-03/proton-archetype-pen.webp',
+              alt: 'A grey-haired archetype character in a red vest and tie, raising a fountain pen and holding a folder marked with a forward arrow.',
+              width: 800,
+              height: 1000,
+            },
+            {
+              src: '/media/project-03/proton-archetype-coffee.webp',
+              alt: 'An archetype character in a beanie and orange check jacket, holding a steaming mug, both marked with a rising sun.',
+              width: 800,
+              height: 1000,
+            },
+          ],
+        ],
         body: [
           'Inspired by the tradition of annual Wrapped-style recaps, this campaign celebrates each customer’s achievements through a modern, polished visual language. The concept turns personal milestones, standout moments, and meaningful data into trophies worth recognizing.',
           'Bold typography, vibrant colours, and refined graphic details give the campaign a playful, contemporary personality, while keeping each customer’s achievements at the centre of the experience.',
