@@ -11,19 +11,20 @@ import { useEffect } from 'react';
  * shows anywhere this script doesn't run.
  */
 
-// The same eye as app/icon.svg, on the same white ground.
+// The same eye as app/icon.svg: transparent, black on a light tab bar and
+// white on a dark one.
 const frame = (body: string) =>
   `data:image/svg+xml,${encodeURIComponent(
-    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect width="24" height="24" fill="#ffffff"/>${body}</svg>`,
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><style>svg{color:#000000}@media (prefers-color-scheme:dark){svg{color:#ffffff}}</style>${body}</svg>`,
   )}`;
 
 const HALF = frame(
-  '<path d="M2 12s4-3 10-3 10 3 10 3-4 3-10 3S2 12 2 12Z" fill="none" stroke="#000000" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>' +
-    '<ellipse cx="12" cy="12" rx="3.3" ry="1.9" fill="#000000"/>',
+  '<path d="M2 12s4-3 10-3 10 3 10 3-4 3-10 3S2 12 2 12Z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>' +
+    '<ellipse cx="12" cy="12" rx="3.3" ry="1.9" fill="currentColor"/>',
 );
 // Shut: the lid as a single line, dipping a little like a closed eye does.
 const SHUT = frame(
-  '<path d="M2 12s4 2 10 2 10-2 10-2" fill="none" stroke="#000000" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>',
+  '<path d="M2 12s4 2 10 2 10-2 10-2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>',
 );
 
 const STEP_MS = 55; // per frame: the whole blink is over in about a fifth of a second
