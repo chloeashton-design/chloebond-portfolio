@@ -255,7 +255,18 @@ const content: Record<number, ProjectContent> = {
     sections: [
       {
         heading: 'The concept',
-        media: 'placeholder',
+        media: {
+          rows: [
+            [
+              {
+                src: '/media/project-03/proton-share-post.webp',
+                alt: 'A phone on a bright blue ground showing a social post: an account manager shares that logging every call added up to 4,612 conversations and 43 workdays in a row, and that they’re now a Proton Legend, above the Proton Legend share card with its gold trophy.',
+                width: 1920,
+                height: 1080,
+              },
+            ],
+          ],
+        },
         body: [
           'Inspired by the tradition of annual Wrapped-style recaps, this campaign celebrates each customer’s achievements through a modern, polished visual language. The concept turns personal milestones, standout moments, and meaningful data into trophies worth recognizing.',
           'Bold typography, vibrant colours, and refined graphic details give the campaign a playful, contemporary personality, while keeping each customer’s achievements at the centre of the experience.',
